@@ -1,0 +1,23 @@
+name: Linting CSS
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - '**.css'
+      - 'pnpm-lock.yaml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '**.css'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  lint-css:
+    runs-on: ubuntu-latest
+    name: Stylelint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Run Lint Checks
+        run: pnpm lint:css

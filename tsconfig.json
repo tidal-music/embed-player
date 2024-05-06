@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "allowJs": true,
+    "target": "es2021",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports" : true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@tidal-music/player-web-components": [
+        "./node_modules/@tidal-music/player-web-components"
+      ]
+    }
+  },
+  "include": ["src"],
+}

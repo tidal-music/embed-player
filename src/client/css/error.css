@@ -1,0 +1,20 @@
+@import url("variables.css");
+@import url("dialog-base.css");
+@import url("dialog-error.css");
+
+body {
+  font-family: Nationale, system-ui;
+}
+
+.top-right-icons {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 11;
+}
+
+.top-right-icons svg {
+  width: 24px;
+  height: 26px;
+  fill: #fff;
+}

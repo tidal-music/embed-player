@@ -1,0 +1,260 @@
+/*
+  Overrides to turn a "classic" layout to a grid one.
+  Since vidoe is always a "grid", it's stuff is here too.
+*/
+
+/**
+ *  Grid layout:
+ *
+ *    - Image (media item - cover/video/playlist image) has 100% widht and/or height.
+ *    - Image is max 800px wide
+ *    - Image shall not scale if media item width < 100%
+ *    - Playlist should be under image if width < ~500px (tbd)
+ *    - Playlist should be hidden if available space under image < ~200px (tbd)
+ *    - Playlist is hidden when list width < ~1/2 of media image
+ *    - Logo shall lie in top right in grid with list
+ *    - Logo shall lie over cover (top right) in grid without list
+ *    - Grid design with list has media information on top of list, not overlaying cover
+ *    - Unless list is only videos. Then regular media information overlay is shown.con
+ *    - Video shall only play as grid
+ *    - Classic plays only audio
+ */
+
+/*
+  :hover doesn't work great on touch devices. To work around this we have
+  UIHiderController for hiding UI when "not hovering" on mobile.
+  Thus, do not use :hover in this file without prefixing with
+  :not(.touchy-device) (which disables hover rules for touch devies!)
+*/
+
+.gridify-wrapper {
+  position: relative;
+}
+
+.gridify-wrapper .imagery-holder {
+  width: 100%;
+  height: 100%;
+}
+
+main.gridify-wrapper {
+  background: none;
+}
+
+.gridify-wrapper .left-compartment {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.gridify-wrapper .right-compartment {
+  z-index: 1;
+}
+
+.imagery-holder--video {
+  background-color: black;
+}
+
+.gridify-wrapper .classic-header {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.gridify-wrapper .classic-header .media-information {
+  font-size: 16px;
+  min-height: 32px;
+  margin-bottom: 4px;
+
+  & span {
+    line-height: 1.3em;
+  }
+
+  & .media-album {
+    font-size: 20px;
+  }
+
+  & .media-artist {
+    color: white;
+  }
+}
+
+/* Collectiions has 3 rows á 16px! */
+.gridify-wrapper .media-type--is-collection .classic-header .media-information {
+  min-height: 64px;
+}
+
+@media (height <= 200px) {
+  .gridify-wrapper .classic-header .media-information {
+    font-size: 14px;
+    min-height: 28px;
+  }
+}
+
+.gridify:not(.media-type--is-collection--only-videos) .media-item-list {
+  display: none;
+}
+
+.embed-player .gridify .right-compartment {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  padding: 0;
+  max-width: none;
+  width: auto;
+  max-height: 92px;
+}
+
+.gridify-wrapper .top-right-icons {
+  z-index: 3;
+}
+
+.ui-hide-cleaning-victim {
+  opacity: 1;
+  pointer-events: auto;
+  transition: var(--simple-opacity-transition);
+}
+
+.gridify-wrapper {
+  & .imagery-holder {
+    opacity: 0.7;
+  }
+
+  &:hover .imagery-holder,
+  &.touchy-device .imagery-holder {
+    opacity: 0.5;
+  }
+
+  &.showing-finished-dialog .imagery-holder,
+  &.media-is-playing .imagery-holder,
+  &.media-is-playing.ui-hider--hidden-controls .imagery-holder {
+    opacity: 1;
+  }
+}
+
+.gridify-wrapper.embed-player.media-is-playing {
+  &.ui-hider--hidden-controls.fullscreen-active .ui-hide-cleaning-victim,
+  &:not(.touchy-device, :hover, :focus-within) .ui-hide-cleaning-victim,
+  &.ui-hider--hidden-controls.touchy-device .ui-hide-cleaning-victim {
+    opacity: 0;
+    pointer-events: auto;
+  }
+}
+
+.gridify-wrapper.initial-state-before-playing {
+  & tidal-current-time,
+  & tidal-duration-time {
+    opacity: 0;
+    pointer-events: 0;
+  }
+}
+
+/* Everything for "clean ui initially" logic for TIDAL.com */
+.tidal-hide.gridify-wrapper.initial-state-before-playing {
+  & .media-information {
+    display: none;
+  }
+
+  & .progress-bar-track,
+  &:not(.ui-hider--hidden-controls, .touchy-device) .media-type--is-collection:hover .player button.next-track,
+  & .toggle-fullscreen {
+    opacity: 0;
+    pointer-events: 0;
+  }
+}
+
+@media (orientation: portrait) {
+  .embed-media-type--is-collection--only-videos:not(.layout-option-grid-forced, .fullscreen-active) .classic-header,
+  .embed-media-type--is-collection--only-videos:not(.layout-option-grid-forced, .fullscreen-active) .left-compartment {
+    max-height: 56.25vw;
+  }
+}
+
+.gridify-wrapper.embed-media-type--videos.initial-state-before-playing {
+  & .player tidal-play-trigger {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 25vh;
+    height: 25vh;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+
+    & span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    & svg {
+      width: 50%;
+      height: 50%;
+      margin-left: 7%;
+    }
+  }
+
+  & .player {
+    height: 0;
+  }
+}
+
+.show-loading-spinner .embed-media-type--videos.embed-media-type--is-live-stream .player tidal-play-trigger {
+  opacity: 0;
+  transform: scale(0) translate(-50%, -50%);
+  transition: all 1s ease;
+}
+
+.media-item-list--hidden.gridify-wrapper {
+  & .right-compartment {
+    width: calc(100vw - 32px) !important;
+  }
+
+  & tidal-video-view,
+  & .left-compartment,
+  & .cover-art {
+    width: 100% !important;
+  }
+}
+
+.gridify-wrapper.embed-media-type--mix .tidal-logo {
+  display: none;
+}
+
+/*
+  Collections with media items list shall have media information
+  over the list, not on top of the cover
+*/
+@media (width >= 600px) and (height <= 310px) {
+  .layout-type-wrapper.media-type--is-collection--only-videos.gridify .media-item-list-wrapper {
+    top: 0;
+    max-height: 100vh;
+    width: calc(100vw - calc(var(--img-max) * 1.77));
+
+    .initial-state-before-playing & {
+      top: 0;
+      max-height: 100vh;
+    }
+  }
+}
+
+/* "BANNERS" */
+
+@media (width >= 600px) and (height <= 310px) {
+  .media-type--is-collection.gridify .right-compartment {
+    max-height: 96px;
+    width: calc(177.777vh - 32px);
+
+    .initial-state-before-playing & {
+      max-height: 80px;
+      transition: max-height 134ms ease;
+    }
+  }
+}

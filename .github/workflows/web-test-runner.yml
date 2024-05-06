@@ -1,0 +1,29 @@
+name: Web Test Runner
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - '**.js'
+      - 'pnpm-lock.yaml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '**.js'
+      - 'pnpm-lock.yaml'
+
+concurrency:
+  group: wtr-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web-test-runner:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Install Playwright Browsers
+        run: pnpm dlx playwright install --with-deps
+      - name: Run unit tests
+        run: pnpm test

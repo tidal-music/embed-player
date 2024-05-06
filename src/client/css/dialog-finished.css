@@ -1,0 +1,98 @@
+.dialog--finished .external-link,
+.dialog--finished .replay-button {
+  background-color: white;
+  color: black;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 150ms ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.dialog--finished .replay-button svg {
+  transition: transform 500ms ease;
+}
+
+.dialog--finished .replay-button:hover svg {
+  transform: rotateZ(360deg);
+}
+
+.dialog--finished[open] .replay-button {
+  padding: 2px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  place-content: center;
+  margin-right: 16px;
+  border-radius: 50%;
+
+  & svg {
+    fill: currentcolor;
+    height: 28px;
+    width: 28px;
+    transform: translateY(2px);
+  }
+}
+
+.dialog--finished .media-information,
+.dialog--finished .lower-part {
+  display: flex;
+  flex: 1;
+  width: 80vw;
+}
+
+.dialog--finished .media-information {
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.dialog--finished .lower-part {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (height <= 165px) {
+  .dialog--finished[open] {
+    & .external-link {
+      top: 50%;
+    }
+
+    & .media-information {
+      display: none;
+    }
+
+    & .lower-part {
+      align-items: center;
+    }
+  }
+}
+
+@media (height <= 100px) {
+  .dialog--finished[open] {
+    & .external-link {
+      bottom: 0;
+      top: auto;
+    }
+
+    & .media-information {
+      display: none;
+    }
+
+    & .lower-part {
+      align-items: center;
+    }
+  }
+}
+
+@media (height <= 165px) {
+  .dialog--finished[open] .media-information {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+name: Linting JS
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - '**.js'
+      - 'pnpm-lock.yaml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '**.js'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  lint-js:
+    runs-on: ubuntu-latest
+    name: Eslint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Run Lint Checks
+        run: pnpm lint:js
+  type-check:
+    runs-on: ubuntu-latest
+    name: TypeScript
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Run Type Checks
+        run: pnpm typecheck

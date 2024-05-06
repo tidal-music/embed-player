@@ -1,0 +1,9 @@
+/* All these imports are inlined via esbuild */
+@import url("variables.css");
+@import url("base.css");
+@import url("classic.css");
+@import url("dialog-base.css");
+@import url("dialog-finished.css");
+@import url("dialog-share.css");
+@import url("dialog-nostr.css");
+@import url("loading-spinner.css");

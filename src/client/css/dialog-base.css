@@ -1,0 +1,46 @@
+dialog {
+  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  background-color: transparent;
+  opacity: 0;
+  transition: var(--simple-opacity-transition);
+  overflow: hidden;
+  border: none;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(2px);
+}
+
+dialog[open] {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+dialog[open] .media-information {
+  width: 100vw;
+  text-align: center;
+  justify-content: center;
+}
+
+.button--close-dialog {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.button--close-dialog svg {
+  pointer-events: none;
+  width: 24px;
+}
+
+.external-link:focus {
+  outline: thin dotted var(--cyan);
+}

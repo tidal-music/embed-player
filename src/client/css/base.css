@@ -1,0 +1,463 @@
+/* stylelint-disable-next-line */
+html,
+body {
+  margin: 0;
+  user-select: none;
+  font-family: Nationale, system-ui;
+  font-weight: 500;
+  height: 100%;
+
+  /*
+    From Twitter Bootstrap "reboot" normalize CSS.
+    overflow-style and tap-highlight-color not supported by
+    autoprefixer in PostCSS.
+    https://github.com/twbs/bootstrap/blob/5b8eaffc1216ef648aa50cda252269aa0a917229/dist/css/bootstrap-reboot.css
+  */
+  text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 1;
+}
+
+/* Hide native cast button */
+tidal-video-view video::-internal-media-controls-overlay-cast-button {
+  display: none;
+}
+
+body {
+  overflow: hidden;
+  max-width: 100vw; /* Helps iOS Safari keep within screen width */
+}
+
+svg {
+  fill: currentcolor;
+  width: inherit;
+  height: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+
+  &:focus {
+    outline: thin dotted var(--cyan);
+  }
+}
+
+tidal-video-view {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+a {
+  color: currentcolor;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a[href*="/artist/"] + a[href*="/artist/"]::before {
+  content: ",";
+  margin-right: 0.5ch;
+}
+
+/*
+  The base 64 image here is the SVG icon sidebar:explore with an integrated fill colour of #78777f
+*/
+.imagery-holder.show-fallback-image {
+  background-color: #242428;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguMSw0LjY1VjE1LjkxYTMuNDUsMy40NSwwLDEsMCwxLjUsMi44NFY1Ljg1TDE5LjgsMy40OVYxNC4xMUEzLjQ1LDMuNDUsMCwxLDAsMjEuMywxN1YxLjYxWm0tMS45NSwxNmEyLDIsMCwxLDEsMS45NS0yQTIsMiwwLDAsMSw2LjE1LDIwLjdabTExLjctMS44YTEuOTUsMS45NSwwLDEsMSwyLTEuOTVBMiwyLDAsMCwxLDE3Ljg1LDE4LjlaIiBmaWxsPSIjNzg3NzdmIj48L3BhdGg+PC9zdmc+");
+  background-size: 42% 42%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+h1.media-title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.floating-explicit-badge {
+  position: absolute;
+  width: 52px;
+  height: 16px;
+  bottom: 16px;
+  right: 16px;
+  margin: 0;
+  display: none;
+}
+
+.tidal-hide .floating-explicit-badge {
+  display: block;
+}
+
+.media-information > header svg {
+  height: 1em;
+  margin-left: 0.3em;
+  flex-shrink: 0;
+  width: 52px;
+}
+
+.media-information > header {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Elipsis in title with exclusive badge */
+.media-information > header > div {
+  min-width: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.media-item-list-wrapper {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  min-height: 0;
+}
+
+media-item-list {
+  flex: 1;
+}
+
+.media-item-list--hidden .media-item-list {
+  visibility: hidden;
+}
+
+.imagery-holder {
+  margin: 0;
+  width: auto;
+  height: 100%;
+  transition: var(--simple-opacity-transition);
+}
+
+/* Makes sure text for broken image is not visible on fallback image */
+.imagery-holder img {
+  color: transparent;
+}
+
+.playback-state-icon .pause-icon svg,
+.playback-state-icon .play-icon svg {
+  display: none;
+}
+
+.embed-player.media-is-playing .playback-state-icon .pause-icon svg,
+.embed-player:not(.media-is-playing) .playback-state-icon .play-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.embed-player.fullscreen-active {
+  width: 100vw;
+  height: 100vh;
+  max-height: none;
+  max-width: none;
+
+  /* Hide track list in fullscreen */
+  & .media-item-list {
+    display: none;
+  }
+
+  & .left-compartment {
+    height: 100vh;
+  }
+}
+
+.live-indicator-wrapper {
+  flex: 1;
+  text-align: right;
+  margin-right: 0.5rem;
+
+  .initial-state-before-playing & {
+    margin-top: -2.25rem;
+  }
+
+  & svg {
+    height: 22px;
+  }
+}
+
+tidal-progress-bar {
+  color: var(--cyan);
+  background-color: var(--grey4);
+  height: 4px;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: 1px;
+  border-radius: 6px;
+
+  .initial-state-before-playing & {
+    color: var(--grey4);
+  }
+
+  &:focus {
+    outline: thin dotted var(--cyan);
+  }
+
+  .initial-state-before-playing.gridify-wrapper & {
+    opacity: 0;
+    pointer-events: 0;
+  }
+}
+
+.player tidal-play-trigger,
+.player button {
+  display: none;
+  pointer-events: none;
+  touch-action: none;
+  width: 14px;
+  height: 14px;
+
+  & svg {
+    pointer-events: none;
+  }
+
+  &.toggle-fullscreen {
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 150ms ease, var(--simple-opacity-transition);
+  }
+}
+
+.player tidal-play-trigger {
+  display: block;
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+
+  & svg {
+    pointer-events: none;
+  }
+}
+
+/* stylelint-disable max-line-length */
+.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing):hover .player button.toggle-fullscreen,
+.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing).touchy-device .player button.toggle-fullscreen,
+.embed-media-type--videos.fullscreen-enabled:not(.initial-state-before-playing):hover .player button.toggle-fullscreen {
+  display: block;
+  pointer-events: auto;
+  max-width: 14px;
+  margin-left: 6px;
+  opacity: 1;
+}
+/* stylelint-enable max-line-length */
+
+/* Player buttons to hide when not hovering */
+.media-type--is-collection .player .previous-track,
+.media-type--is-collection .player .next-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0;
+  opacity: 0;
+  margin-left: -0.5em;
+  transition: width 150ms ease, var(--simple-opacity-transition);
+
+  &:disabled {
+    display: none;
+  }
+
+  .initial-state-before-playing & {
+    display: none;
+  }
+}
+
+.embed-player:not(.ui-hider--hidden-controls) {
+  &:not(.touchy-device):hover .media-type--is-collection .player button,
+  &:not(.touchy-device):focus-within .media-type--is-collection .player button,
+  &.touchy-device .media-type--is-collection .player button {
+    width: 14px;
+    height: 14px;
+    margin-left: 0;
+    opacity: 1;
+    color: white;
+    pointer-events: auto;
+  }
+}
+
+.player .toggle-fullscreen .fullscreen-icon {
+  display: none;
+  color: #fff;
+  width: 14px;
+  height: 14px;
+
+  .fullscreen-active &.minimize-icon {
+    display: block;
+    pointer-events: auto;
+  }
+
+  .embed-player:not(.fullscreen-active) &.maximize-icon {
+    display: block;
+    pointer-events: auto;
+  }
+
+  & svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.top-right-icons {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  margin: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30px;
+  color: white;
+
+  .embed-player.tidal-hide & {
+    display: none;
+  }
+}
+
+.top-right-icons svg {
+  width: 24px;
+  height: 26px;
+}
+
+.top-right-icons svg:not(:first-child) {
+  margin-left: 30px;
+}
+
+.open-share-dialog {
+  color: white;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.open-share-dialog,
+.tidal-logo {
+  transition: var(--simple-opacity-transition);
+}
+
+.open-share-dialog {
+  opacity: 0;
+}
+
+.tidal-logo {
+  opacity: 1;
+
+  &:focus {
+    outline: thin dotted var(--cyan);
+  }
+}
+
+.embed-player {
+  &:not(.touchy-device):hover .open-share-dialog,
+  &:not(.touchy-device):focus-within .open-share-dialog,
+  &.touchy-device .open-share-dialog,
+  &.tidal-hide {
+    opacity: 1;
+  }
+}
+
+.layout-type-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout-type-wrapper .media-item-list {
+  flex: 1;
+  min-height: 0; /* Flexbox bug in FF - TEP-302 */
+}
+
+.time-limit-count-down {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.media-information .time-limit-count-down span {
+  display: inline;
+}
+
+.preroll--playing .media-information {
+  & .media-album,
+  & .media-title,
+  & .media-artist {
+    opacity: 0;
+  }
+}
+
+.preroll--playing .progress-bar-track {
+  background-color: #ffb800;
+}
+
+media-item-list + .external-link {
+  display: flex;
+  background-color: var(--black);
+  transition: background-color 150ms ease;
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  font-size: 12px;
+  flex: none;
+
+  &:active {
+    background-color: var(--grey7);
+  }
+
+  &:hover {
+    background-color: var(--grey6);
+  }
+
+  &:focus {
+    background-color: var(--grey6);
+    text-decoration: underline;
+    outline: none;
+  }
+
+  .media-is-playing & {
+    background-color: var(--grey6);
+  }
+
+  & svg {
+    height: 14px;
+    margin-right: 8px;
+    max-width: 16px;
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--grey4);
+  border-radius: 4px;
+}
+
+tidal-current-time,
+tidal-duration-time {
+  text-rendering: geometricprecision;
+  font-variant-numeric: tabular-nums;
+}

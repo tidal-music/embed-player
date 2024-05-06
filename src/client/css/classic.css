@@ -1,0 +1,379 @@
+/* LAYOUT */
+
+.classic-header {
+  display: flex;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 12px;
+  overflow: hidden;
+  max-height: 100vh;
+  min-height: 80px;
+  flex-shrink: 0;
+}
+
+.left-compartment {
+  position: relative; /* For placing play button relative to image/video */
+}
+
+.right-compartment {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.right-compartment {
+  flex: 10 0;
+}
+
+.media-information {
+  width: calc(100% - 45px);
+}
+
+.right-compartment .media-information .media-album {
+  display: none;
+}
+
+.media-type--is-collection .media-information .media-album {
+  display: block;
+}
+
+/* Fixed image widths, defined in variables.css */
+@media (width >= 200px) {
+  .left-compartment {
+    width: var(--img1);
+    border: 0 solid pink;
+  }
+
+  .imagery-holder {
+    width: var(--img1);
+    height: var(--img1);
+  }
+
+  .embed-media-type--mix .cover-art,
+  .embed-media-type--playlists .cover-art {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  main .right-compartment {
+    width: calc(100vw - var(--img1));
+  }
+}
+
+@media (height <= 200px) or (width <= 200px) {
+  .layout-type-wrapper .classic-header .media-information {
+    font-size: 14px;
+  }
+}
+
+/* Single track in 300x250 ad format */
+@media (width >= 200px) and (width <= 300px) and (height >= 120px) {
+  .embed-media-type--tracks:not(.gridify-wrapper) {
+    height: var(--img1);
+    max-height: var(--img1);
+    position: relative;
+  }
+}
+
+@media (width >= 420px) {
+  .layout-type-wrapper.media-type--is-collection .classic-header .media-information .media-title {
+    display: block;
+  }
+}
+
+/* CONTENT */
+
+.cover-art,
+tidal-video-view {
+  display: inline-block;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 80px;
+  min-width: 80px;
+  vertical-align: top;
+}
+
+.cover-art {
+  object-fit: cover;
+}
+
+tidal-video-view {
+  object-fit: contain;
+  max-height: 100%;
+  aspect-ratio: 1 / 1; /* container, not video */
+}
+
+/* MEDIA INFORMATION */
+
+.media-information {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  font-size: 16px;
+
+  @media (height <= 96px) {
+    font-size: 14px;
+  }
+}
+
+.showing-finished-dialog .classic-header .media-information {
+  opacity: 0;
+}
+
+.media-information h1,
+.media-information span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  display: block;
+  color: #fff;
+
+  &.media-artist {
+    font-size: 0.875em;
+    color: var(--grey4);
+  }
+
+  & a {
+    color: currentcolor;
+    text-decoration: none;
+  }
+
+  & a:hover,
+  & a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+/* PLAYER */
+
+.player {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  gap: 0.5em;
+}
+
+/* VIDEO PLAYLISTS */
+
+.media-type--is-collection--only-videos:not(.gridify, .banner) {
+  & .classic-header {
+    flex-direction: column;
+    max-height: none;
+  }
+
+  & .left-compartment {
+    width: 100vw;
+    max-height: calc(100vw / (16 / 9));
+  }
+
+  & .right-compartment {
+    width: calc(100vw - 30px);
+  }
+}
+
+@media (height <= 96px) {
+  .media-information {
+    font-size: 14px;
+  }
+}
+
+@media (width <= 200px) {
+  .media-information {
+    font-size: 14px;
+  }
+}
+
+/**
+ * MEDIA QUERIES FOR RESPONSIVE CONTENT/
+ */
+
+/* VERY NARROW -> FULL WIDTH IMAGE */
+
+@media (width <= 200px) {
+  .classic-header {
+    flex-direction: column;
+    max-height: none;
+    height: auto;
+  }
+
+  .embed-player {
+    position: relative;
+  }
+
+  .left-compartment,
+  .left-compartment .cover-art,
+  .left-compartment tidal-video-view {
+    width: 100vw;
+  }
+
+  .right-compartment {
+    max-width: none;
+  }
+
+  .cover-art,
+  tidal-video-view {
+    width: 100vw;
+    max-height: none;
+    max-width: none;
+  }
+
+  .media-item-list {
+    position: auto;
+  }
+
+  .media-information {
+    width: 100%;
+  }
+
+  .explicit,
+  .duration {
+    display: none;
+  }
+}
+
+/*
+  Fix for IE bug:
+  https://stackoverflow.com/questions/28627879/flexbox-not-filling-height-in-ie11
+  https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
+*/
+@media all and (width <= 200px) {
+  .MSIE .right-compartment {
+    min-height: 100px;
+  }
+}
+
+/**
+ * "Banners" - long & low
+ */
+@media (width >= 420px) and (50px <= height <= 310px) {
+  :root {
+    --img1: 100vh;
+  }
+
+  main.layout-type-wrapper .classic-header {
+    max-height: none;
+  }
+
+  main .left-compartment {
+    max-width: none;
+  }
+
+  main .right-compartment {
+    max-width: none;
+  }
+
+  .media-type--is-collection {
+    & .left-compartment,
+    & .cover-art {
+      width: var(--img1);
+      height: var(--img1);
+    }
+  }
+
+  /* Show link below "banner" playlists */
+  .media-type--is-collection .media-item-list {
+    width: calc(100vw - 100vh);
+  }
+
+  main.media-type--is-collection--only-videos {
+    & .left-compartment,
+    & .cover-art,
+    & tidal-video-view {
+      width: 177.777vh;
+      max-width: 100%;
+      height: 100vh;
+    }
+
+    & .media-information {
+      width: calc(177.777vh - 68px);
+    }
+  }
+
+  main.media-type--is-collection--only-videos {
+    & .media-item-list {
+      width: calc(100vw - 177.777vh);
+    }
+  }
+
+  .only-videos .top-right-icons {
+    left: calc(100% - 40px);
+  }
+}
+
+/* Very low embeds hsa no room for track list or external link */
+@media (height <= 125px) {
+  .left-compartment,
+  img.cover-art {
+    width: 100vh;
+    height: 100vh; /* Force image to fill height */
+  }
+
+  .media-type--videos .left-compartment,
+  .media-type--videos img.cover-art {
+    width: 177.777vh;
+  }
+
+  .media-item-list {
+    display: none;
+  }
+
+  .MSIE .media-information * {
+    line-height: 20px;
+  }
+}
+
+@media (width >= 600px) and (height <= 310px) {
+  :root {
+    --img-max: 100vh;
+  }
+
+  .layout-type-wrapper.media-type--is-collection .media-item-list-wrapper {
+    height: 100vh;
+
+    transition: max-height 250ms var(--animation-timing);
+    position: fixed;
+    right: 0;
+
+    top: 112px;
+    max-height: calc(100vh - 112px);
+
+    width: calc(100vw - var(--img-max));
+  }
+
+  .media-type--is-collection:not(.gridify) .classic-header {
+    max-height: 100vh;
+  }
+
+  .media-type--is-collection:not(.gridify, .banner) .left-compartment {
+    width: var(--img-max);
+    max-width: var(--img-max);
+  }
+
+  .media-type--is-collection:not(.gridify) .right-compartment {
+    max-height: 96px;
+  }
+
+  .embed-media-type--is-collection--only-videos .top-right-icons {
+    right: calc(100vw - calc(var(--img-max) * 1.77));
+  }
+
+  .media-type--is-collection:not(.gridify) .classic-header {
+    max-height: 100vh;
+  }
+
+  .media-type--is-collection:not(.gridify, .banner) .left-compartment {
+    width: var(--img-max);
+    max-width: var(--img-max);
+  }
+
+  /* Make sure we don't reach below/above eventual TIDAL logo in "classic" mode. */
+  .classic-header .media-information span {
+    max-width: calc(100% - 32px);
+    transition: max-width 120ms ease;
+  }
+}

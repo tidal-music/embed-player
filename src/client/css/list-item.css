@@ -1,0 +1,137 @@
+:host {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 42px;
+  grid-template-rows: none;
+  align-items: center;
+  font-size: 14px;
+  height: 48px;
+  contain: strict;
+  contain-intrinsic-height: 48px;
+}
+
+::slotted(svg) {
+  opacity: 1;
+}
+
+:host(:hover) {
+  background-color: rgb(36, 36, 40);
+}
+
+:host(:focus-visible) {
+  outline: var(--cyan) dotted 2px;
+  outline-offset: -2px;
+}
+
+:host([disabled]) {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.index-col {
+  text-align: center;
+}
+
+::slotted([slot="duration"]) {
+  text-align: right;
+  padding-right: 12px;
+}
+
+:host(:hover) ::slotted([slot="index"]),
+tidal-play-trigger {
+  display: none;
+}
+
+tidal-play-trigger {
+  height: 48px;
+  place-items: center;
+}
+
+:host(.current) tidal-play-trigger,
+:host(:hover) tidal-play-trigger {
+  display: grid;
+}
+
+/* touchscreens */
+@media (hover: none) and (pointer: coarse) {
+  tidal-play-trigger {
+    touch-action: none;
+    pointer-events: none;
+  }
+}
+
+:host(.current) {
+  color: var(--cyan);
+}
+
+.col {
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+::slotted([slot="artist"]),
+::slotted([slot="title"]) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+::slotted([slot="artist"]) {
+  font-weight: 300;
+  font-size: 12px;
+  color: #78777f;
+}
+
+::slotted([slot*="-icon"]) {
+  display: block;
+  width: 48px;
+  height: 16px;
+}
+
+::slotted([slot*="-badge"]) {
+  display: inline;
+  height: 16px;
+}
+
+::slotted([slot="video-badge"]) {
+  width: 42px;
+}
+
+::slotted([slot="explicit-badge"]) {
+  width: 52px;
+}
+
+::slotted([slot="video-icon"]),
+::slotted([slot="pause-icon"]),
+:host(.current) ::slotted([slot="index"]),
+:host(.current[data-playback-state="PLAYING"]) ::slotted([slot="play-icon"]) {
+  display: none;
+}
+
+:host([product-type="video"]) ::slotted([slot="video-icon"]),
+:host(.current[data-playback-state="PLAYING"]) ::slotted([slot="pause-icon"]) {
+  display: grid;
+}
+
+::slotted(time) {
+  font-variant-numeric: tabular-nums;
+}
+
+::slotted([slot="thumbnail"]) {
+  height: 40px;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+.metadata {
+  display: inline-flex;
+  gap: 10px;
+  overflow: hidden;
+  align-items: center;
+  margin-right: 10px;
+}

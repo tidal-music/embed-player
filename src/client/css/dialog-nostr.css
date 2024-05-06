@@ -1,0 +1,84 @@
+.dialog--nostr {
+  color: white;
+}
+
+.dialog--nostr .buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: .5em;
+}
+
+.dialog--nostr .button {
+  all: unset;
+  background-color: #242429;
+  color: rgb(244, 244, 244);
+  border-radius: 6px;
+  padding: 0.5em 1em;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 150ms ease;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.dialog--nostr .button--login {
+  background-color: rgba(163, 84, 178, 0.5);
+  border-color: rgba(163, 84, 178, 0.6);
+
+  &:hover {
+    background-color: rgba(163, 84, 178, 0.6);
+    border-color: rgba(163, 84, 178, 0.7);
+  }
+}
+
+.dialog--nostr nostr-login-button[loading] .button--login {
+  padding: 0.542em;
+}
+
+.dialog--nostr .button--connect {
+  background-color: rgba(84, 179, 178, 0.5);
+  border-color: rgba(84, 179, 178, 0.6);
+
+  &:hover {
+    background-color: rgba(84, 179, 178, 0.6);
+    border-color: rgba(84, 179, 178, 0.7);
+  }
+}
+
+.dialog--nostr .button--close-dialog {
+  background-color: rgba(179, 93, 81, 0.5);
+  border-color: rgba(179, 93, 81, 0.6);
+}
+
+.dialog--nostr p {
+  font-size: 14px;
+  margin: 0;
+  padding: 0 0.8em 1em;
+  border-radius: 6px;
+}
+
+.dialog--nostr nostr-login-button[loading] span,
+.dialog--nostr nostr-login-button svg {
+  display: none;
+}
+
+.dialog--nostr nostr-login-button svg {
+  height: 14px;
+}
+
+.dialog--nostr nostr-login-button[loading] svg {
+  display: block;
+}
+
+.dialog--nostr p.error {
+  margin: 0 0 1em;
+  padding: 0.8em 1em;
+  transition: all 500ms ease;
+  color: white;
+  background-color: #ff3269;
+}
