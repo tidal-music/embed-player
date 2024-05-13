@@ -1,4 +1,3 @@
-// @ts-expect-error - TS cannot find it?
 import hashTable from '../../dist/hash-table.json' assert { type: 'json' };
 
 /**
@@ -20,7 +19,6 @@ const isOnLambdaStage = process.env.AWS_ENV
 export const isLambdaForSure =
   isOnLambda && (isOnLambdaProd || isOnLambdaStage);
 
-const s3BucketName = isOnLambdaProd ? '' : '.stage';
 /**
  * Gives link to resource on S3 if on Lambda, if locally, uses /s3 endpoint.
  * @param {string} srcFileName
@@ -30,7 +28,7 @@ export function getS3Link(srcFileName) {
   const distFilePath = hashTable[srcFileName];
 
   if (isLambdaForSure && distFilePath) {
-    return `https://embed${s3BucketName}.tidal.com/embed-resources/${distFilePath}`;
+    return `/embed-resources/${distFilePath}`;
   }
 
   if (!distFilePath) {
@@ -40,5 +38,7 @@ export function getS3Link(srcFileName) {
     });
   }
 
-  return isOnLambda ? `/local-embed-resources/${distFilePath}` : `/local-embed-resources/${srcFileName}`;
+  return isOnLambda
+    ? `/local-embed-resources/${distFilePath}`
+    : `/local-embed-resources/${srcFileName}`;
 }
