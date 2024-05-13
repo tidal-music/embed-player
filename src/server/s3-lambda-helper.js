@@ -1,3 +1,4 @@
+// @ts-expect-error - TS cannot find it?
 import hashTable from '../../dist/hash-table.json' assert { type: 'json' };
 
 /**
