@@ -67,11 +67,17 @@ async function updateHashTable (newData) {
   return await writeFile('dist/hash-table.json', JSON.stringify(updatedHashTable), 'utf-8');
 }
 
-Promise.all([
-  hashIt('img/error-background-image.jpg'),
-  hashIt('img/loader.svg'),
-  hashIt('img/icons.svg')
-])
+const additionsText = await readFile('additions.json', 'utf8');
+const additions = JSON.parse(additionsText);
+
+const filesToHash = [
+  'img/error-background-image.jpg',
+  'img/loader.svg',
+  'img/icons.svg',
+  ...additions.staticFiles
+]
+
+Promise.all(filesToHash.map(hashIt))
   .then(values => {
     const hashTable = values.reduce(
       (ak, kur) => Object.assign(ak, kur) /* ...at 🇳🇴 */
