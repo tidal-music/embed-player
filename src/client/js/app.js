@@ -922,9 +922,4 @@ registerEventListeners();
 updateExternalLinks();
 registerExternalLinkClickHandlers();
 enforceVideoPlaylistGrid();
-
-const nostrEnabled = false;
-
-if (nostrEnabled) {
-  checkForNostr();
-}
+checkForNostr();
