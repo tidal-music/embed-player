@@ -1,6 +1,6 @@
 /* eslint-env node */
 import { renderEmbed, renderError } from './render.js';
-import { isOnLambdaProd } from './s3-lambda-helper.js';
+import { isOnLambdaProd } from './static-file-helper.js';
 import { generateHTML as generateTestPageHTML } from './test-page/handler.js';
 
 // Private function to print object

@@ -18,9 +18,9 @@ import { embed as embedHandler } from '../../../dist/server/handler.js';
 const app = express();
 
 // isOnLambda = mimicking prod locally, use dist, else src.
-const s3Folder = 'dist/client';
+const staticFilesFolder = 'dist/client';
 
-app.use('/local-embed-resources/', express.static(s3Folder));
+app.use('/local-embed-resources/', express.static(staticFilesFolder));
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 app.get('/', async (req, res) => {
