@@ -8,7 +8,7 @@ This repository contains the front-end and back-end source code for the TIDAL Em
 
 Build the project by issuing the `pnpm build` command. Mind the environment variables below.
 
-The build commands outputs to the dist folder where the front-end parts are outputted to the dist/client folder and the AWS Lambda code to the dist/server folder.
+The build commands outputs to the dist folder where the front-end parts are outputted to the dist/client folder and the AWS Lambda code to the dist/server folder. Adjust the `getStaticFileLink()` method to where you deploy your front-end resources.
 
 ### Environment Variables
 
