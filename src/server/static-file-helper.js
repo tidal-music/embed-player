@@ -21,11 +21,11 @@ export const isLambdaForSure =
   isOnLambda && (isOnLambdaProd || isOnLambdaStage);
 
 /**
- * Gives link to resource on S3 if on Lambda, if locally, uses /s3 endpoint.
+ * Gives the link to front-end resources.
  * @param {string} srcFileName
  */
 
-export function getS3Link(srcFileName) {
+export function getStaticFileLink(srcFileName) {
   const distFilePath = hashTable[srcFileName];
 
   if (isLambdaForSure && distFilePath) {

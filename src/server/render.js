@@ -1,5 +1,5 @@
 /* eslint-env node */
-import { getS3Link } from './s3-lambda-helper.js';
+import { getStaticFileLink } from './static-file-helper.js';
 
 /**
  * Get the SVG string for a specific icon type.
@@ -7,7 +7,7 @@ import { getS3Link } from './s3-lambda-helper.js';
  * @returns {string} - The SVG string for the icon.
  */
 export function generateSVG(type) {
-  const pathToIconsSVG = getS3Link('img/icons.svg');
+  const pathToIconsSVG = getStaticFileLink('img/icons.svg');
 
   return `<svg xmlns="http://www.w3.org/2000/svg"><use href="${pathToIconsSVG}#${type}" /></svg>`;
 }
@@ -676,7 +676,7 @@ function generatePageHTML(options) {
   const dialogTitle = (isCollection ? album : title) || title;
   const dialogSubtitle = artist;
 
-  const appJSSrc = getS3Link('js/app.js');
+  const appJSSrc = getStaticFileLink('js/app.js');
 
   const embedClasses = [
     `embed-media-type--${itemType}`,
@@ -710,9 +710,9 @@ function generatePageHTML(options) {
   `
     : '';
 
-  const mainCSSHref = getS3Link('css/main.css');
-  const gridAdditionsCSSHref = getS3Link('css/grid-additions.css');
-  const listItemCSSHref = getS3Link('css/list-item.css');
+  const mainCSSHref = getStaticFileLink('css/main.css');
+  const gridAdditionsCSSHref = getStaticFileLink('css/grid-additions.css');
+  const listItemCSSHref = getStaticFileLink('css/list-item.css');
 
   const includeGridStyles =
     layout === 'gridify' || isCollectionWithOnlyVideos || coverInitially;
@@ -776,7 +776,7 @@ function generatePageHTML(options) {
     <link rel=preload href="${mainCSSHref}" as=style>
     ${maybePreloadGridAdditionsStyles}
     ${maybePreloadListItemStyles}
-    <link rel=preload href="${getS3Link(
+    <link rel=preload href="${getStaticFileLink(
       'fonts/nationale-medium.woff2',
     )}" as=font>
     <title>TIDAL Embed Player</title>
@@ -785,9 +785,9 @@ function generatePageHTML(options) {
       font-family:Nationale;
       font-weight:500;
       font-display:fallback;
-      src:url('${getS3Link(
+      src:url('${getStaticFileLink(
         'fonts/nationale-medium.woff2',
-      )}') format('woff2'), url('${getS3Link(
+      )}') format('woff2'), url('${getStaticFileLink(
         'fonts/nationale-medium.woff',
       )}') format('woff')
     }
@@ -811,7 +811,7 @@ function generatePageHTML(options) {
   <body>
     <div class="embed-player initial-state-before-playing ${embedClasses}">
       <figure class=loading-spinner>
-        <img src="${getS3Link(
+        <img src="${getStaticFileLink(
           'img/loader.svg',
         )}" crossorigin="anonymous" alt="Loading spinner...">
       </figure>
@@ -858,7 +858,7 @@ function mediaItemIsVideo(mediaItem) {
 
 export const renderError = () => {
   const message = 'Try TIDAL';
-  const errorCSSHref = getS3Link('css/error.css');
+  const errorCSSHref = getStaticFileLink('css/error.css');
 
   return `
     <!DOCTYPE html>
@@ -867,7 +867,7 @@ export const renderError = () => {
       <title>TIDAL Embed Player</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <style>.dialog--error {background-image:url('${getS3Link(
+      <style>.dialog--error {background-image:url('${getStaticFileLink(
         'img/error-background-image.jpg',
       )}')}</style>
       <link rel="stylesheet" href="${errorCSSHref}">
