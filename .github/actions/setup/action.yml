@@ -17,6 +17,3 @@ runs:
     - name: Install dependencies
       shell: bash
       run: pnpm install --frozen-lockfile
-    - name: Ensure Playwright dependencies are installed
-      shell: bash
-      run:  pnpm exec playwright install
