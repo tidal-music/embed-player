@@ -1,16 +1,19 @@
 name: Linting JS
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
     paths:
       - '**.js'
       - 'pnpm-lock.yaml'
+      - '.github/'
   pull_request:
     branches: [ "main" ]
     paths:
       - '**.js'
       - 'pnpm-lock.yaml'
+      - '.github/'
 
 jobs:
   lint-js:

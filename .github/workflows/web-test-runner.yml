@@ -1,16 +1,19 @@
 name: Web Test Runner
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
     paths:
       - '**.js'
       - 'pnpm-lock.yaml'
+      - '.github/'
   pull_request:
     branches: [ "main" ]
     paths:
       - '**.js'
       - 'pnpm-lock.yaml'
+      - '.github/'
 
 concurrency:
   group: wtr-${{ github.event.pull_request.number || github.ref }}

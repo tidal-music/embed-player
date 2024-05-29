@@ -1,6 +1,7 @@
 name: Cypress
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
     paths:
@@ -8,6 +9,7 @@ on:
       - 'cypress/'
       - 'cypress.config.cjs'
       - 'pnpm-lock.yaml'
+      - '.github/'
   pull_request:
     branches: [ "main" ]
     paths:
@@ -15,6 +17,7 @@ on:
       - 'cypress/'
       - 'cypress.config.cjs'
       - 'pnpm-lock.yaml'
+      - '.github/'
 
 concurrency:
   group: cypress-${{ github.event.pull_request.number || github.ref }}
