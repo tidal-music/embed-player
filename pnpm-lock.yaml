@@ -23,7 +23,7 @@ importers:
         version: 0.2.0
       '@tidal-music/player-web-components':
         specifier: ^0.1.2
-        version: 0.1.2
+        version: link:../tidal-sdk-web/packages/player-web-components
       '@types/mocha':
         specifier: ^10.0.6
         version: 10.0.6
@@ -728,9 +728,6 @@ packages:
 
   '@tidal-music/common@0.1.5':
     resolution: {integrity: sha512-C71JfsJ5P1CwObGTOlRH9vDjo4mruV5WeE6C0JmR8eVoivIaf1Ou9QCI7pDa7aWuCUjOOm3Dd5p5MkJ3aCDXHA==}
-
-  '@tidal-music/player-web-components@0.1.2':
-    resolution: {integrity: sha512-78e/W08B5fLolVh62RGRtEeosfvNO19N2bw4Wq1sKFro+p+Pu5k6X3ywjPOFc2f8/yFztTcw/R+hzEn04y3/gA==}
 
   '@tidal-music/player@0.2.0':
     resolution: {integrity: sha512-tLBtjPcalLiHLHwJSq3FzK4boLOxRsRG2/3nkNhPm2cMk7Cg2aJpOyXsvEdMIm/40MXWKeKWVm9hqdVwCc525w==}
@@ -4864,8 +4861,6 @@ snapshots:
       lodash: 4.17.21
 
   '@tidal-music/common@0.1.5': {}
-
-  '@tidal-music/player-web-components@0.1.2': {}
 
   '@tidal-music/player@0.2.0': {}
 

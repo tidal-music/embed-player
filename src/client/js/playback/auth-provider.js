@@ -25,7 +25,9 @@ class DefaultCredentialsProvider {
       };
     }
 
-    throw new ReferenceError('You are running without setting an EMBED_API_TOKEN variable');
+    throw new ReferenceError(
+      'You are running without setting an EMBED_API_TOKEN variable',
+    );
   }
 }
 
@@ -47,31 +49,43 @@ class NostrCredentialsProvider {
    * @type {import('@tidal-music/common/dist').GetCredentials} fn
    */
   async getCredentials() {
-    const accessToken = nostrAuthProvider.getAccessToken();
+    let accessToken = nostrAuthProvider.getAccessToken();
+    let userId = nostrAuthProvider.getUserId();
 
     if (!accessToken) {
-      await nostrAuthProvider.renewAccessToken();
+      const { accessToken: newAccessToken, userId: newUserId } =
+        await nostrAuthProvider.renewAccessToken();
+
+      accessToken = newAccessToken;
+      userId = newUserId;
+
       this.#busFn(credentialsUpdatedEvent);
     }
 
-    if (process.env.EMBED_API_TOKEN__NOSTR) {
+    if (accessToken && userId && process.env.EMBED_API_TOKEN__NOSTR) {
       return {
         clientId: process.env.EMBED_API_TOKEN__NOSTR,
         requestedScopes: ['playback'],
-        // @ts-expect-error Can't be null here
         token: accessToken,
+        userId: String(userId),
       };
     }
 
-    throw new ReferenceError('You are running without setting an EMBED_API_TOKEN variable');
+    throw new ReferenceError(
+      'You are running without setting an EMBED_API_TOKEN variable',
+    );
   }
 }
 
 class NostrAuthProvider {
   /** @type {string|null} */
   #accessToken = sessionStorage.getItem('accessToken');
-
   #channel = new BroadcastChannel('nostr_auth');
+
+  /** @type {number|null} */
+  #userId = sessionStorage.getItem('userId')
+    ? parseInt(sessionStorage.getItem('userId') ?? '0', 10)
+    : null;
 
   constructor() {
     this.#channel.addEventListener('message', e => {
@@ -85,6 +99,14 @@ class NostrAuthProvider {
     return this.#accessToken;
   }
 
+  getUserId() {
+    return this.#userId;
+  }
+
+  /**
+   *s
+   * @returns {Promise<{ accessToken: string, userId: number }>}
+   */
   async renewAccessToken() {
     const challengeResponse = await fetch(
       'https://auth.tidal.com/v1/nostr/challenge',
@@ -99,7 +121,7 @@ class NostrAuthProvider {
       tags: [],
     };
 
-    // @ts-ignore
+    // @ts-expect-error window.nostr not typed
     const signedEvent = await window.nostr.signEvent(event);
     const base64Event = btoa(JSON.stringify(signedEvent));
 
@@ -111,7 +133,9 @@ class NostrAuthProvider {
     if (process.env.EMBED_API_TOKEN__NOSTR) {
       fields.append('client_id', process.env.EMBED_API_TOKEN__NOSTR);
     } else {
-      console.warn('You are running without setting an EMBED_API_TOKEN__NOSTR variable, login with nostr will not work.');
+      console.warn(
+        'You are running without setting an EMBED_API_TOKEN__NOSTR variable, login with nostr will not work.',
+      );
     }
 
     fields.append('scope', 'playback');
@@ -130,14 +154,17 @@ class NostrAuthProvider {
     const loginJson = await loginResponse.json();
 
     if (loginResponse.ok) {
-      const { access_token: accessToken } = loginJson;
+      const { access_token: accessToken, user_id: userId } = loginJson;
 
       this.#accessToken = accessToken;
+      this.#userId = userId;
 
       sessionStorage.setItem('accessToken', accessToken);
+      sessionStorage.setItem('userId', userId);
+
       this.#channel.postMessage(accessToken);
 
-      return accessToken;
+      return { accessToken, userId };
     }
 
     throw new Error(JSON.stringify(loginJson));
