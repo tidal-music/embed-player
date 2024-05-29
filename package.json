@@ -5,7 +5,7 @@
   "description": "TIDAL Embed Player with Serverless AWS Lambda rendering",
   "type": "module",
   "engine": {
-    "node": "20.12.2",
+    "node": "20.14.0",
     "pnpm": ">=9.1.3"
   },
   "browserslist": [
