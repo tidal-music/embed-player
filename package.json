@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@esm-bundle/chai": "^4.3.4-fix.0",
+    "@playwright/test": "^1.44.1",
     "@tidal-music/common": "^0.1.5",
     "@tidal-music/player": "^0.2.0",
     "@tidal-music/player-web-components": "^0.1.2",

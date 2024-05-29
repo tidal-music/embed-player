@@ -15,6 +15,9 @@ importers:
       '@esm-bundle/chai':
         specifier: ^4.3.4-fix.0
         version: 4.3.4-fix.0
+      '@playwright/test':
+        specifier: ^1.44.1
+        version: 1.44.1
       '@tidal-music/common':
         specifier: ^0.1.5
         version: 0.1.5
@@ -598,6 +601,11 @@ packages:
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@playwright/test@1.44.1':
+    resolution: {integrity: sha512-1hZ4TNvD5z9VuhNJ/walIjvMVvYkZKf71axoF/uiAqpntQJXpG64dlXhoDXE3OczPuTuvjf/M5KWFg5VAVUS3Q==}
+    engines: {node: '>=16'}
+    hasBin: true
 
   '@puppeteer/browsers@2.2.2':
     resolution: {integrity: sha512-hZ/JhxPIceWaGSEzUZp83/8M49CoxlkuThfTR7t4AoCu5+ZvJ3vktLm60Otww2TXeROB5igiZ8D9oPQh6ckBVg==}
@@ -3200,8 +3208,18 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
+  playwright-core@1.44.1:
+    resolution: {integrity: sha512-wh0JWtYTrhv1+OSsLPgFzGzt67Y7BE/ZS3jEqgGBlp2ppp1ZDj8c+9IARNW4dwf1poq5MgHreEM2KV/GuR4cFA==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   playwright@1.43.1:
     resolution: {integrity: sha512-V7SoH0ai2kNt1Md9E3Gwas5B9m8KR2GVvwZnAI6Pg0m3sh7UvgiYhRrhsziCmqMJNouPckiOhk8T+9bSAK0VIA==}
+    engines: {node: '>=16'}
+    hasBin: true
+
+  playwright@1.44.1:
+    resolution: {integrity: sha512-qr/0UJ5CFAtloI3avF95Y0L1xQo6r3LQArLIg/z/PoGJ6xa+EwzrwO5lpNr/09STxdHuUoP2mvuELJS+hLdtgg==}
     engines: {node: '>=16'}
     hasBin: true
 
@@ -4751,6 +4769,10 @@ snapshots:
       fastq: 1.17.1
 
   '@pkgr/core@0.1.1': {}
+
+  '@playwright/test@1.44.1':
+    dependencies:
+      playwright: 1.44.1
 
   '@puppeteer/browsers@2.2.2':
     dependencies:
@@ -7874,9 +7896,17 @@ snapshots:
 
   playwright-core@1.43.1: {}
 
+  playwright-core@1.44.1: {}
+
   playwright@1.43.1:
     dependencies:
       playwright-core: 1.43.1
+    optionalDependencies:
+      fsevents: 2.3.2
+
+  playwright@1.44.1:
+    dependencies:
+      playwright-core: 1.44.1
     optionalDependencies:
       fsevents: 2.3.2
 
