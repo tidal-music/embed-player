@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      esbuild-plugin-copy:
-        specifier: ^2.1.1
-        version: 2.1.1(esbuild@0.20.2)
     devDependencies:
       '@esm-bundle/chai':
         specifier: ^4.3.4-fix.0
@@ -31,8 +27,8 @@ importers:
         specifier: ^20.12.7
         version: 20.12.7
       '@web/test-runner':
-        specifier: ^0.18.1
-        version: 0.18.1
+        specifier: ^0.18.2
+        version: 0.18.2
       '@web/test-runner-playwright':
         specifier: ^0.11.0
         version: 0.11.0
@@ -45,6 +41,9 @@ importers:
       esbuild-plugin-clean:
         specifier: ^1.0.1
         version: 1.0.1(esbuild@0.20.2)
+      esbuild-plugin-copy:
+        specifier: ^2.1.1
+        version: 2.1.1(esbuild@0.20.2)
       esbuild-postcss:
         specifier: ^0.0.4
         version: 0.0.4(esbuild@0.20.2)(postcss@8.4.38)
@@ -1038,8 +1037,8 @@ packages:
     resolution: {integrity: sha512-s+f43DSAcssKYVOD9SuzueUcctJdHzq1by45gAnSCKa9FQcaTbuYe8CzmxA21g+NcL5+ayo4z+MA9PO4H+PssQ==}
     engines: {node: '>=18.0.0'}
 
-  '@web/test-runner@0.18.1':
-    resolution: {integrity: sha512-jB/9vrpGVtcLY6/7sPpKpSheQ3wWY9P5aQcz2SK2gMHTq3gNpa51NAyec0Al7EFpHvJ1wKYTGRLB2gPyEoJeDg==}
+  '@web/test-runner@0.18.2':
+    resolution: {integrity: sha512-jA+957ic31aG/f1mr1b+HYzf/uTu4QsvFhyVgTKi2s5YQYGBbtfzx9PnYi47MVC9K9OHRbW8cq2Urds9qwSU3w==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -5357,7 +5356,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@web/test-runner@0.18.1':
+  '@web/test-runner@0.18.2':
     dependencies:
       '@web/browser-logs': 0.4.0
       '@web/config-loader': 0.3.1
