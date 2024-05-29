@@ -38,11 +38,12 @@
     "@tidal-music/player-web-components": "^0.1.2",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.7",
-    "@web/test-runner": "^0.18.1",
+    "@web/test-runner": "^0.18.2",
     "@web/test-runner-playwright": "^0.11.0",
     "cypress": "^13.7.2",
     "esbuild": "^0.20.2",
     "esbuild-plugin-clean": "^1.0.1",
+    "esbuild-plugin-copy": "^2.1.1",
     "esbuild-postcss": "^0.0.4",
     "eslint": "~8",
     "eslint-config-tidal": "3.2.0",
@@ -53,6 +54,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "npm-run-all": "^4.1.5",
+    "playwright": "1.43.1",
     "postcss": "^8.4.38",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^9.5.4",
@@ -62,8 +64,5 @@
     "stylelint-config-standard": "^36.0.0",
     "svgo": "^3.2.0",
     "typescript": "^5.4.4"
-  },
-  "dependencies": {
-    "esbuild-plugin-copy": "^2.1.1"
   }
 }
