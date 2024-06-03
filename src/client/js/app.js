@@ -903,7 +903,12 @@ enforceVideoPlaylistGrid();
   const interval = setInterval(() => {
     if (counter >= 5) {
       clearInterval(interval);
-      return;
+
+      if (!('nostr' in window)) {
+        console.error(
+          'Nostr not available in window. Install a NIP-07 extension or try another one.',
+        );
+      }
     }
 
     if ('nostr' in window) {
