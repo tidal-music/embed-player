@@ -49,30 +49,44 @@ class NostrCredentialsProvider {
    * @type {import('@tidal-music/common/dist').GetCredentials} fn
    */
   async getCredentials() {
-    let accessToken = nostrAuthProvider.getAccessToken();
-    let userId = nostrAuthProvider.getUserId();
+    try {
+      let accessToken = nostrAuthProvider.getAccessToken();
+      let userId = nostrAuthProvider.getUserId();
 
-    if (!accessToken) {
-      const { accessToken: newAccessToken, userId: newUserId } =
-        await nostrAuthProvider.renewAccessToken();
+      if (!accessToken) {
+        const { accessToken: newAccessToken, userId: newUserId } =
+          await nostrAuthProvider.renewAccessToken();
 
-      accessToken = newAccessToken;
-      userId = newUserId;
+        accessToken = newAccessToken;
+        userId = newUserId;
 
-      this.#busFn(credentialsUpdatedEvent);
+        this.#busFn(credentialsUpdatedEvent);
+      }
+
+      if (accessToken && userId && process.env.EMBED_API_TOKEN__NOSTR) {
+        return {
+          clientId: process.env.EMBED_API_TOKEN__NOSTR,
+          requestedScopes: ['playback'],
+          token: accessToken,
+          userId: String(userId),
+        };
+      }
+    } catch (e) {
+      document.dispatchEvent(
+        new CustomEvent('nostr-login-error', {
+          detail: e,
+        }),
+      );
     }
 
-    if (accessToken && userId && process.env.EMBED_API_TOKEN__NOSTR) {
-      return {
-        clientId: process.env.EMBED_API_TOKEN__NOSTR,
-        requestedScopes: ['playback'],
-        token: accessToken,
-        userId: String(userId),
-      };
+    if (!process.env.EMBED_API_TOKEN__NOSTR) {
+      throw new ReferenceError(
+        'You are running without setting an EMBED_API_TOKEN variable',
+      );
     }
 
     throw new ReferenceError(
-      'You are running without setting an EMBED_API_TOKEN variable',
+      'Nostr auth provider does not provide credentials',
     );
   }
 }
