@@ -3,7 +3,6 @@ import {
   setCredentialsProvider,
 } from '@tidal-music/player-web-components';
 
-import { NostrLoginButton } from './components/nostr-login-button.js';
 import DialogController from './dialog-controller.js';
 import DOMRefs from './dom-refs.js';
 import { $, $$ } from './fake-query.js';
@@ -16,10 +15,8 @@ import {
   isOnMobileWithTouchScreen,
 } from './helpers/index.js';
 import MessageBridge from './message-bridge.js';
-import {
-  defaultCredentialsProvider,
-  nostrCredentialsProvider,
-} from './playback/auth-provider.js';
+import { showNostrDialog } from './nostr.js';
+import { defaultCredentialsProvider } from './playback/auth-provider.js';
 import ShareController from './share-controller.js';
 import TidalMedia from './tidal-media.js';
 import UIHideController from './ui-hide-controller.js';
@@ -783,29 +780,6 @@ function showFallbackImage() {
   }
 }
 
-async function checkForNostr() {
-  if ('nostr' in window) {
-    if (sessionStorage.getItem('accessToken')) {
-      setCredentialsProvider(nostrCredentialsProvider);
-    } else {
-      await import('./components/nostr-login-button.js');
-
-      DialogController.show('nostr');
-    }
-
-    document
-      .querySelector('nostr-login-button')
-      ?.addEventListener('error', e => {
-        const p = document.querySelector('.dialog--nostr p');
-
-        if (p && e.target instanceof NostrLoginButton) {
-          p.textContent = e.target.error;
-          p.classList.add('error');
-        }
-      });
-  }
-}
-
 window.onresize = () => {
   checkBannerRatio();
 };
@@ -917,9 +891,35 @@ if (
   $('.player')?.remove();
 }
 
-checkIfFullscreenEnabled();
-registerEventListeners();
-updateExternalLinks();
-registerExternalLinkClickHandlers();
-enforceVideoPlaylistGrid();
-checkForNostr();
+function runNostrInterval() {
+  let counter = 0;
+
+  const interval = setInterval(() => {
+    if (counter >= 10) {
+      clearInterval(interval);
+
+      if (!('nostr' in window)) {
+        console.error(
+          'Nostr not available in window. Install a NIP-07 extension or try another one.',
+        );
+      }
+    }
+
+    if ('nostr' in window) {
+      clearInterval(interval);
+
+      showNostrDialog();
+    } else {
+      counter++;
+    }
+  }, 500);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  checkIfFullscreenEnabled();
+  registerEventListeners();
+  updateExternalLinks();
+  registerExternalLinkClickHandlers();
+  enforceVideoPlaylistGrid();
+  runNostrInterval();
+});
