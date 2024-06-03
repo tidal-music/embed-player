@@ -901,7 +901,7 @@ enforceVideoPlaylistGrid();
   let counter = 0;
 
   const interval = setInterval(() => {
-    if (counter >= 5) {
+    if (counter >= 10) {
       clearInterval(interval);
 
       if (!('nostr' in window)) {
