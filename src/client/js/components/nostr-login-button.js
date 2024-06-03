@@ -8,12 +8,12 @@ export class NostrLoginButton extends HTMLElement {
     super();
 
     this.addEventListener('click', () => {
-      setCredentialsProvider(nostrCredentialsProvider);
-
       this.setAttribute('loading', 'loading');
 
+      setCredentialsProvider(nostrCredentialsProvider);
+
       nostrCredentialsProvider.bus(e => {
-        if (e.type === 'credentialsUpdated') {
+        if (e.detail.type === 'credentialsUpdated') {
           this.removeAttribute('loading');
           DialogController.close('nostr');
         }
