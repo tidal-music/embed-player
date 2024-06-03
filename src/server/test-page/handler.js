@@ -97,10 +97,8 @@ function getRandomPlaylistID() {
 
 export const generateHTML = queryParameters => {
   // Is running as a Lambda
-  const isProd = process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV;
-  const embedBaseUrl = isProd
-    ? 'https://embed.stage.tidal.com'
-    : 'http://localhost:3000';
+  // const isProd = process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV;
+  const embedBaseUrl = '';
   const oldWimp = queryParameters ? queryParameters.oldWimp : false;
 
   const previewEmbedFormats = html`
@@ -112,7 +110,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-1">Album Classic - 444x96</h5>
         <iframe
-          src="http://localhost:3000/albums/${getRandomAlbumID()}"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}"
           loading="lazy"
           width="444"
           height="96"
@@ -120,7 +118,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-2">Album Grid - 360x360</h5>
         <iframe
-          src="http://localhost:3000/albums/${getRandomAlbumID()}?layout=gridify"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}?layout=gridify"
           loading="lazy"
           width="360"
           height="360"
@@ -128,7 +126,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-3">Album Classic - 360x360</h5>
         <iframe
-          src="http://localhost:3000/albums/${getRandomAlbumID()}"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}"
           loading="lazy"
           width="360"
           height="360"
@@ -136,7 +134,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-4">Album Classic with list - 600x700</h5>
         <iframe
-          src="http://localhost:3000/albums/${getRandomAlbumID()}"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}"
           loading="lazy"
           width="600"
           height="700"
@@ -144,7 +142,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-5">Album with list - 800x300</h5>
         <iframe
-          src="http://localhost:3000/albums/${getRandomAlbumID()}"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}"
           loading="lazy"
           width="850"
           height="300"
@@ -152,7 +150,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-5">Album with list - 800x300 (w explicits)</h5>
         <iframe
-          src="http://localhost:3000/albums/77708040"
+          src="${embedBaseUrl}/albums/77708040"
           loading="lazy"
           width="850"
           height="300"
@@ -160,7 +158,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-7">Cover slide to classic + list below</h5>
         <iframe
-          src="http://localhost:3000/albums/${getRandomAlbumID()}?coverInitially=true"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}?coverInitially=true"
           loading="lazy"
           width="360"
           height="360"
@@ -170,7 +168,7 @@ export const generateHTML = queryParameters => {
           Album Classic with list - 600x700 - Many artists
         </h5>
         <iframe
-          src="http://localhost:3000/albums/76990540?coverInitially=true"
+          src="${embedBaseUrl}/albums/76990540?coverInitially=true"
           loading="lazy"
           width="600"
           height="700"
@@ -186,7 +184,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-1">Track Classic - 348x96</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
           loading="lazy"
           width="348"
           height="96"
@@ -194,7 +192,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-2">Track Classic - 400x96</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
           loading="lazy"
           width="400"
           height="96"
@@ -202,7 +200,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-3">Track Classic - 500x120</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
           loading="lazy"
           width="500"
           height="120"
@@ -210,7 +208,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-4">Track Classic - 600x120</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
           loading="lazy"
           width="600"
           height="120"
@@ -218,7 +216,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-5">Track Grid - 200x200</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}?layout=gridify"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?layout=gridify"
           loading="lazy"
           width="200"
           height="200"
@@ -226,7 +224,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-6">Track Grid - 350x350</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}?layout=gridify"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?layout=gridify"
           loading="lazy"
           width="350"
           height="350"
@@ -234,7 +232,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-7">Track Grid - 550x550</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}?layout=gridify"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?layout=gridify"
           loading="lazy"
           width="550"
           height="550"
@@ -250,7 +248,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="video-example-1">Video small - 500x282</h5>
         <iframe
-          src="http://localhost:3000/videos/${getRandomVideoID()}"
+          src="${embedBaseUrl}/videos/${getRandomVideoID()}"
           loading="lazy"
           width="500"
           height="282"
@@ -258,7 +256,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="video-example-3">Video big - 720x406</h5>
         <iframe
-          src="http://localhost:3000/videos/${getRandomVideoID()}"
+          src="${embedBaseUrl}/videos/${getRandomVideoID()}"
           loading="lazy"
           width="720"
           height="406"
@@ -266,7 +264,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="video-exlusive-badge-example">Video Exlusive Badge Example</h5>
         <iframe
-          src="http://localhost:3000/videos/90570909"
+          src="${embedBaseUrl}/videos/90570909"
           loading="lazy"
           width="720"
           height="406"
@@ -274,7 +272,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="video-live-example-one">Video Live VOD Replace</h5>
         <iframe
-          src="http://localhost:3000/videos/93295618"
+          src="${embedBaseUrl}/videos/93295618"
           loading="lazy"
           width="720"
           height="406"
@@ -282,11 +280,11 @@ export const generateHTML = queryParameters => {
 
         <!--
       <h5 id="video-vod-preroll-time-limit-example">Video - On-demand with preroll and time limit</h5>
-      <iframe src="http://localhost:3000/videos/91324976" loading="lazy" width="720" height="406"></iframe>
+      <iframe src="${embedBaseUrl}/videos/91324976" loading="lazy" width="720" height="406"></iframe>
 
 
       <h5 id="video-live-preroll">Video - Live with preroll</h5>
-      <iframe src="http://localhost:3000/videos/70419832" loading="lazy" width="720" height="406"></iframe>
+      <iframe src="${embedBaseUrl}/videos/70419832" loading="lazy" width="720" height="406"></iframe>
       -->
       </details>
     </article>
@@ -299,19 +297,19 @@ export const generateHTML = queryParameters => {
       </summary>
 
       <h5 id="video-vod-preroll-time-limit-example">TIDAL Channel</h5>
-      <iframe src="http://localhost:3000/videos/140146556" loading="lazy" width="500" height="282"></iframe>
+      <iframe src="${embedBaseUrl}/videos/140146556" loading="lazy" width="500" height="282"></iframe>
 
       <h5 id="live-video-example-1">Full</h5>
-      <iframe src="http://localhost:3000/videos/174102050" loading="lazy" width="500" height="282"></iframe>
+      <iframe src="${embedBaseUrl}/videos/174102050" loading="lazy" width="500" height="282"></iframe>
 
       <h5 id="live-video-example-1">Full, with pre-roll</h5>
-      <iframe src="http://localhost:3000/videos/173649967" loading="lazy" width="500" height="282"></iframe>
+      <iframe src="${embedBaseUrl}/videos/173649967" loading="lazy" width="500" height="282"></iframe>
 
       <h5 id="live-video-example-1">30s preview</h5>
-      <iframe src="http://localhost:3000/videos/173650011" loading="lazy" width="500" height="282"></iframe>
+      <iframe src="${embedBaseUrl}/videos/173650011" loading="lazy" width="500" height="282"></iframe>
 
       <h5 id="live-video-example-1">30s preview, with preroll</h5>
-      <iframe src="http://localhost:3000/videos/173649985" loading="lazy" width="500" height="282"></iframe>
+      <iframe src="${embedBaseUrl}/videos/173649985" loading="lazy" width="500" height="282"></iframe>
   </article>
   -->
 
@@ -323,7 +321,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-1">Classic - 444x96</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomPlaylistID()}"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}"
           loading="lazy"
           width="444"
           height="96"
@@ -331,7 +329,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-2">Grid - 360x360</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomPlaylistID()}?layout=gridify"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?layout=gridify"
           loading="lazy"
           width="360"
           height="360"
@@ -339,7 +337,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-3">Classic - 700x600 - List below</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomPlaylistID()}"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}"
           loading="lazy"
           width="700"
           height="600"
@@ -347,7 +345,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-4">Classic - 850x300 - List on side</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomPlaylistID()}"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}"
           loading="lazy"
           width="850"
           height="300"
@@ -362,7 +360,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-5">800x600 - List below</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomVideoPlaylistID()}"
+          src="${embedBaseUrl}/playlists/${getRandomVideoPlaylistID()}"
           loading="lazy"
           width="600"
           height="800"
@@ -370,7 +368,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-6">800x600 - List below - With thumbnails</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomVideoPlaylistID()}?thumbnails=true"
+          src="${embedBaseUrl}/playlists/${getRandomVideoPlaylistID()}?thumbnails=true"
           loading="lazy"
           width="600"
           height="800"
@@ -378,7 +376,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-8">850x300 - List on side</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomVideoPlaylistID()}"
+          src="${embedBaseUrl}/playlists/${getRandomVideoPlaylistID()}"
           loading="lazy"
           width="850"
           height="300"
@@ -388,7 +386,7 @@ export const generateHTML = queryParameters => {
           850x300 - List on side - With thumbnails
         </h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomVideoPlaylistID()}?thumbnails=true"
+          src="${embedBaseUrl}/playlists/${getRandomVideoPlaylistID()}?thumbnails=true"
           loading="lazy"
           width="850"
           height="300"
@@ -396,7 +394,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-10">Grid - 500x282</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomVideoPlaylistID()}?layout=grid"
+          src="${embedBaseUrl}/playlists/${getRandomVideoPlaylistID()}?layout=grid"
           loading="lazy"
           width="500"
           height="282"
@@ -404,7 +402,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-12">600x800 - List below</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomVideoPlaylistID()}?thumbnails=true"
+          src="${embedBaseUrl}/playlists/${getRandomVideoPlaylistID()}?thumbnails=true"
           loading="lazy"
           width="600"
           height="800"
@@ -416,7 +414,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-14">600x800 - List below</h5>
         <iframe
-          src="http://localhost:3000/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
+          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
           loading="lazy"
           width="600"
           height="800"
@@ -424,7 +422,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-15">800x350 - List side</h5>
         <iframe
-          src="http://localhost:3000/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
+          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
           loading="lazy"
           width="850"
           height="300"
@@ -432,7 +430,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-16">Grid - 360x360</h5>
         <iframe
-          src="http://localhost:3000/playlists/a0862cec-07f0-4531-9842-19e2434623ee?layout=gridify"
+          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee?layout=gridify"
           loading="lazy"
           width="360"
           height="360"
@@ -440,7 +438,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-7">Cover slide to classic + list below</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomPlaylistID()}?coverInitially=true"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?coverInitially=true"
           loading="lazy"
           width="360"
           height="360"
@@ -450,7 +448,7 @@ export const generateHTML = queryParameters => {
 
         <h5>Old rectangular editorial playlist image</h5>
         <iframe
-          src="http://localhost:3000/playlists/b87651e8-5270-4e5a-827c-509514439aef"
+          src="${embedBaseUrl}/playlists/b87651e8-5270-4e5a-827c-509514439aef"
           loading="lazy"
           width="850"
           height="300"
@@ -458,7 +456,7 @@ export const generateHTML = queryParameters => {
 
         <h5>Old user playlist image</h5>
         <iframe
-          src="http://localhost:3000/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
+          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
           loading="lazy"
           width="850"
           height="300"
@@ -474,7 +472,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="mix-example-1">Mix Classic - 444x96</h5>
         <iframe
-          src="http://localhost:3000/mix/${getRandomMixID()}"
+          src="${embedBaseUrl}/mix/${getRandomMixID()}"
           loading="lazy"
           width="444"
           height="96"
@@ -482,7 +480,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="mix-example-2">Mix Grid - 360x360</h5>
         <iframe
-          src="http://localhost:3000/mix/${getRandomMixID()}?layout=gridify"
+          src="${embedBaseUrl}/mix/${getRandomMixID()}?layout=gridify"
           loading="lazy"
           width="360"
           height="360"
@@ -490,7 +488,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="mix-example-3">Mix Classic - 360x360</h5>
         <iframe
-          src="http://localhost:3000/mix/${getRandomMixID()}"
+          src="${embedBaseUrl}/mix/${getRandomMixID()}"
           loading="lazy"
           width="360"
           height="360"
@@ -498,7 +496,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="mix-example-4">Mix Classic with list - 600x700</h5>
         <iframe
-          src="http://localhost:3000/mix/${getRandomMixID()}"
+          src="${embedBaseUrl}/mix/${getRandomMixID()}"
           loading="lazy"
           width="600"
           height="700"
@@ -506,7 +504,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="mix-example-5">Mix with list - 800x300</h5>
         <iframe
-          src="http://localhost:3000/mix/${getRandomMixID()}"
+          src="${embedBaseUrl}/mix/${getRandomMixID()}"
           loading="lazy"
           width="800"
           height="300"
@@ -514,7 +512,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="mix-example-7">Cover slide to classic + list below</h5>
         <iframe
-          src="http://localhost:3000/mix/${getRandomMixID()}?coverInitially=true"
+          src="${embedBaseUrl}/mix/${getRandomMixID()}?coverInitially=true"
           loading="lazy"
           width="360"
           height="360"
@@ -530,7 +528,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-2">Track Classic</h5>
         <iframe
-          src="http://localhost:3000/tracks/106750510"
+          src="${embedBaseUrl}/tracks/106750510"
           loading="lazy"
           width="400"
           height="96"
@@ -538,7 +536,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="track-example-6">Track Grid</h5>
         <iframe
-          src="http://localhost:3000/tracks/119986218?layout=gridify"
+          src="${embedBaseUrl}/tracks/119986218?layout=gridify"
           loading="lazy"
           width="500"
           height="500"
@@ -546,7 +544,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-video">Video Grid</h5>
         <iframe
-          src="http://localhost:3000/videos/94781839"
+          src="${embedBaseUrl}/videos/94781839"
           loading="lazy"
           width="500"
           height="282"
@@ -554,7 +552,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="album-example-1">Album Classic</h5>
         <iframe
-          src="http://localhost:3000/albums/202466232"
+          src="${embedBaseUrl}/albums/202466232"
           loading="lazy"
           width="444"
           height="96"
@@ -562,7 +560,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-album">Album Grid</h5>
         <iframe
-          src="http://localhost:3000/albums/18283830?layout=gridify"
+          src="${embedBaseUrl}/albums/18283830?layout=gridify"
           loading="lazy"
           width="500"
           height="500"
@@ -570,7 +568,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-track">Track Grid (cleanInitially)</h5>
         <iframe
-          src="http://localhost:3000/tracks/119644843?cleanInitially=true&layout?gridify"
+          src="${embedBaseUrl}/tracks/119644843?cleanInitially=true&layout?gridify"
           loading="lazy"
           width="500"
           height="500"
@@ -578,7 +576,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-video">Video Grid (cleanInitially)</h5>
         <iframe
-          src="http://localhost:3000/videos/64415005?cleanInitially=true"
+          src="${embedBaseUrl}/videos/64415005?cleanInitially=true"
           loading="lazy"
           width="500"
           height="500"
@@ -586,7 +584,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-album">Album Grid (cleanInitially)</h5>
         <iframe
-          src="http://localhost:3000/albums/120419967?cleanInitially=true"
+          src="${embedBaseUrl}/albums/120419967?cleanInitially=true"
           loading="lazy"
           width="500"
           height="500"
@@ -604,7 +602,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-track">Track Grid</h5>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?cleanInitially=true&layout=gridifty"
           loading="lazy"
           width="500"
           height="500"
@@ -612,7 +610,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-video">Video Grid</h5>
         <iframe
-          src="http://localhost:3000/videos/${getRandomVideoID()}?cleanInitially=true"
+          src="${embedBaseUrl}/videos/${getRandomVideoID()}?cleanInitially=true"
           loading="lazy"
           width="500"
           height="282"
@@ -620,7 +618,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-album">Album Grid</h5>
         <iframe
-          src="http://localhost:3000/albums/${getRandomAlbumID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}?cleanInitially=true&layout=gridifty"
           loading="lazy"
           width="500"
           height="500"
@@ -628,7 +626,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-playlist">Playlist Grid</h5>
         <iframe
-          src="http://localhost:3000/playlists/${getRandomPlaylistID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?cleanInitially=true&layout=gridifty"
           loading="lazy"
           width="500"
           height="500"
@@ -644,7 +642,7 @@ export const generateHTML = queryParameters => {
 
         <h4>Track - media events sent at onplay, onpause and onended</h4>
         <iframe
-          src="http://localhost:3000/tracks/${getRandomTrackID()}?sendMediaEvents=true"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?sendMediaEvents=true"
           loading="lazy"
           width="348"
           height="96"
@@ -653,7 +651,7 @@ export const generateHTML = queryParameters => {
         <h4>Track - toggle playback via command</h4>
         <div data-trigger-playback-victim="true">
           <iframe
-            src="http://localhost:3000/tracks/${getRandomTrackID()}"
+            src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
             loading="lazy"
             width="348"
             height="96"
@@ -664,7 +662,7 @@ export const generateHTML = queryParameters => {
 
         <h4>Video - media events sent at onplay, onpause and onended</h4>
         <iframe
-          src="http://localhost:3000/videos/${getRandomVideoID()}?sendMediaEvents=true"
+          src="${embedBaseUrl}/videos/${getRandomVideoID()}?sendMediaEvents=true"
           loading="lazy"
           width="500"
           height="282"
@@ -680,7 +678,7 @@ export const generateHTML = queryParameters => {
 
         <h4>Track error</h4>
         <iframe
-          src="http://localhost:3000/tracks/4981787465393"
+          src="${embedBaseUrl}/tracks/4981787465393"
           loading="lazy"
           width="348"
           height="96"
@@ -688,7 +686,7 @@ export const generateHTML = queryParameters => {
 
         <h4>Video error</h4>
         <iframe
-          src="http://localhost:3000/videos/4981793"
+          src="${embedBaseUrl}/videos/4981793"
           loading="lazy"
           width="500"
           height="282"
@@ -696,7 +694,7 @@ export const generateHTML = queryParameters => {
 
         <h4>Album error - Not found</h4>
         <iframe
-          src="http://localhost:3000/albums/4981793"
+          src="${embedBaseUrl}/albums/4981793"
           loading="lazy"
           width="444"
           height="96"
@@ -704,7 +702,7 @@ export const generateHTML = queryParameters => {
 
         <h4>Playlist error - Not found</h4>
         <iframe
-          src="http://localhost:3000/playlists/4981793"
+          src="${embedBaseUrl}/playlists/4981793"
           loading="lazy"
           width="540"
           height="360"
@@ -712,13 +710,13 @@ export const generateHTML = queryParameters => {
 
         <h4>Collection error - All tracks unstreamable</h4>
         <iframe
-          src="http://localhost:3000/playlists/d7be72b1-a80c-4c02-b786-ceebceb28952"
+          src="${embedBaseUrl}/playlists/d7be72b1-a80c-4c02-b786-ceebceb28952"
           loading="lazy"
           width="600"
           height="700"
         ></iframe>
         <iframe
-          src="http://localhost:3000/playlists/d7be72b1-a80c-4c02-b786-ceebceb28952"
+          src="${embedBaseUrl}/playlists/d7be72b1-a80c-4c02-b786-ceebceb28952"
           loading="lazy"
           width="600"
           height="120"
@@ -726,13 +724,13 @@ export const generateHTML = queryParameters => {
 
         <h4>Collection error - Some tracks unstreamable</h4>
         <iframe
-          src="http://localhost:3000/playlists/bfd5fc87-584b-41d0-862b-897a09412a75"
+          src="${embedBaseUrl}/playlists/bfd5fc87-584b-41d0-862b-897a09412a75"
           loading="lazy"
           width="600"
           height="700"
         ></iframe>
         <iframe
-          src="http://localhost:3000/playlists/bfd5fc87-584b-41d0-862b-897a09412a75"
+          src="${embedBaseUrl}/playlists/bfd5fc87-584b-41d0-862b-897a09412a75"
           loading="lazy"
           width="600"
           height="120"
@@ -740,7 +738,7 @@ export const generateHTML = queryParameters => {
 
         <h4>No image - should show fallback image</h4>
         <iframe
-          src="http://localhost:3000/playlists/050acbe2-a4e3-4525-862a-c168035e9dec"
+          src="${embedBaseUrl}/playlists/050acbe2-a4e3-4525-862a-c168035e9dec"
           loading="lazy"
           width="600"
           height="700"
