@@ -897,7 +897,7 @@ updateExternalLinks();
 registerExternalLinkClickHandlers();
 enforceVideoPlaylistGrid();
 
-(function checkNostrProperty() {
+document.addEventListener('DOMContentLoaded', () => {
   let counter = 0;
 
   const interval = setInterval(() => {
@@ -919,4 +919,4 @@ enforceVideoPlaylistGrid();
       counter++;
     }
   }, 500);
-})();
+});
