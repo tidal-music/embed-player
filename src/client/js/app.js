@@ -891,13 +891,7 @@ if (
   $('.player')?.remove();
 }
 
-checkIfFullscreenEnabled();
-registerEventListeners();
-updateExternalLinks();
-registerExternalLinkClickHandlers();
-enforceVideoPlaylistGrid();
-
-document.addEventListener('DOMContentLoaded', () => {
+function runNostrInterval() {
   let counter = 0;
 
   const interval = setInterval(() => {
@@ -919,4 +913,13 @@ document.addEventListener('DOMContentLoaded', () => {
       counter++;
     }
   }, 500);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  checkIfFullscreenEnabled();
+  registerEventListeners();
+  updateExternalLinks();
+  registerExternalLinkClickHandlers();
+  enforceVideoPlaylistGrid();
+  runNostrInterval();
 });
