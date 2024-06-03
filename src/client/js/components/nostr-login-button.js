@@ -8,24 +8,20 @@ export class NostrLoginButton extends HTMLElement {
     super();
 
     this.addEventListener('click', () => {
-      try {
-        setCredentialsProvider(nostrCredentialsProvider);
-        this.setAttribute('loading', 'loading');
-        DialogController.close('nostr');
-      } catch (e) {
-        this.removeAttribute('loading');
+      setCredentialsProvider(nostrCredentialsProvider);
 
-        const json = JSON.parse(e.message);
+      this.setAttribute('loading', 'loading');
 
-        if (json.sub_status === 1005) {
-          this.error =
-            'Nostr account not connected to TIDAL. Click connect below then try again.';
-        } else {
-          this.error = json.error_description;
+      nostrCredentialsProvider.bus(e => {
+        if (e.type === 'credentialsUpdated') {
+          this.removeAttribute('loading');
+          DialogController.close('nostr');
         }
+      });
 
-        this.dispatchEvent(new Event('error'));
-      }
+      document.addEventListener('nostr-login-error', () => {
+        this.removeAttribute('loading');
+      });
     });
   }
 
