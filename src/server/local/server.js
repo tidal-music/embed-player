@@ -10,6 +10,7 @@
 
 import express from 'express';
 
+/* eslint-disable-next-line import/no-unresolved */
 import { embed as embedHandler } from '../../../dist/server/handler.js';
 
 const app = express();
