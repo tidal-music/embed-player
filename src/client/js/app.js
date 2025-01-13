@@ -308,9 +308,6 @@ function triggerCustomShareIntent(variant) {
     case 'facebook-messenger':
       shareController.openFacebookMessengerWindow(shareData);
       break;
-    case 'twitter':
-      shareController.openTwitterShareWindow(shareData);
-      break;
     case 'link':
       shareController
         .copyTextToClipboard(shareData.url)
@@ -328,6 +325,9 @@ function triggerCustomShareIntent(variant) {
             DOMRefs.shareDialog?.classList.remove('copy--failed');
           }, 2000);
         });
+      break;
+    case 'twitter':
+      shareController.openTwitterShareWindow(shareData);
       break;
     default:
       break;
@@ -516,11 +516,11 @@ function registerEventListeners() {
       currentState = event.detail.state;
 
       switch (event.detail.state) {
-        case 'PLAYING':
-          handlePlaybackStart();
-          break;
         case 'NOT_PLAYING':
           handlePlaybackStop();
+          break;
+        case 'PLAYING':
+          handlePlaybackStart();
           break;
         default:
           break;
@@ -627,7 +627,6 @@ function registerEventListeners() {
     if (DOMRefs.embedWrapper) {
       autoplayVideoInstersectionObserver.observe(DOMRefs.embedWrapper);
     }
-
 
     document.addEventListener('embed-entered-viewport', () => {
       // Stop silent autoplay loop if we leave viewport
