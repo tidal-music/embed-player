@@ -32,7 +32,6 @@
     "gh-action:start": "LAMBDA_TASK_ROOT=true AWS_EXECUTION_ENV=true AWS_ENV=fakelamda node src/server/local/index.js"
   },
   "devDependencies": {
-    "@esm-bundle/chai": "4.3.4-fix.0",
     "@tidal-music/common": "^0.1.5",
     "@tidal-music/player": "^0.2.0",
     "@tidal-music/player-web-components": "^0.1.2",
@@ -64,5 +63,8 @@
     "stylelint-config-standard": "^36.0.1",
     "svgo": "^3.3.2",
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "chai": "^5.1.2"
   }
 }
