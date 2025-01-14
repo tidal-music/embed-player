@@ -10,9 +10,10 @@
 
 import express from 'express';
 
-/* eslint-disable-next-line import/no-unresolved */
+/* eslint-disable import/no-unresolved */
+// @ts-expect-error - TS cannot find it until we've built.
 import { embed as embedHandler } from '../../../dist/server/handler.js';
-
+/* eslint-enable import/no-unresolved */
 const app = express();
 
 // isOnLambda = mimicking prod locally, use dist, else src.

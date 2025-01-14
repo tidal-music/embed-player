@@ -1,4 +1,7 @@
+/* eslint-disable import/no-unresolved */
+// @ts-expect-error - TS cannot find it until we've built.
 import hashTable from '../../dist/hash-table.json' assert { type: 'json' };
+/* eslint-enable import/no-unresolved */
 
 /**
  * True when testing prod locally, false if dev env.
