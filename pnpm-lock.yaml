@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      chai:
-        specifier: ^5.1.2
-        version: 5.1.2
     devDependencies:
       '@tidal-music/common':
         specifier: ^0.1.5
@@ -33,6 +29,9 @@ importers:
       '@web/test-runner-playwright':
         specifier: ^0.11.0
         version: 0.11.0
+      chai:
+        specifier: ^5.1.2
+        version: 5.1.2
       cypress:
         specifier: ^13.17.0
         version: 13.17.0
