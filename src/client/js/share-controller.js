@@ -53,7 +53,7 @@ export default class ShareController {
         // @ts-expect-error - Cannot type generic with JSDoc
         resolve();
       } catch (error) {
-        reject(error);
+        reject(error instanceof Error ? error : new Error(error));
       }
 
       document.body.removeChild(textArea);

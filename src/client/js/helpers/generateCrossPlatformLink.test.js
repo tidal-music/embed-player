@@ -1,5 +1,5 @@
 /* eslint-env mocha */
-import { expect } from '@esm-bundle/chai';
+import { expect } from 'chai';
 
 import generateCrossPlatformLink from './generateCrossPlatformLink.js';
 

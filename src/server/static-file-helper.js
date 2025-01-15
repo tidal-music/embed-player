@@ -1,5 +1,7 @@
-// @ts-expect-error - TS cannot find it?
+/* eslint-disable import/no-unresolved */
+// @ts-expect-error - TS cannot find it until we've built.
 import hashTable from '../../dist/hash-table.json' assert { type: 'json' };
+/* eslint-enable import/no-unresolved */
 
 /**
  * True when testing prod locally, false if dev env.
@@ -8,10 +10,10 @@ export const isOnLambda =
   process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV;
 
 export const isOnLambdaProd = process.env.AWS_ENV
-  ? process.env.AWS_ENV.indexOf('prod') !== -1
+  ? process.env.AWS_ENV.includes('prod')
   : false;
 const isOnLambdaStage = process.env.AWS_ENV
-  ? process.env.AWS_ENV.indexOf('stage') !== -1
+  ? process.env.AWS_ENV.includes('stage')
   : false;
 
 /**

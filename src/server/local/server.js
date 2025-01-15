@@ -11,10 +11,9 @@
 import express from 'express';
 
 /* eslint-disable import/no-unresolved */
-// @ts-expect-error - You need to build before you can run!
+// @ts-expect-error - TS cannot find it until we've built.
 import { embed as embedHandler } from '../../../dist/server/handler.js';
 /* eslint-enable import/no-unresolved */
-
 const app = express();
 
 // isOnLambda = mimicking prod locally, use dist, else src.
@@ -22,7 +21,6 @@ const staticFilesFolder = 'dist/client';
 
 app.use('/local-embed-resources/', express.static(staticFilesFolder));
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
 app.get('/', async (req, res) => {
   const embedResult = await embedHandler({
     queryStringParameters: req.query,
@@ -31,7 +29,6 @@ app.get('/', async (req, res) => {
   res.send(embedResult.body);
 });
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
 app.get('/:type/:id?', async (req, res) => {
   const embedResult = await embedHandler({
     pathParameters: req.params,

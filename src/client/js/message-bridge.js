@@ -48,7 +48,7 @@ export default class MessageBridge {
     if (typeof message === 'string') {
       try {
         message = JSON.parse(message);
-      } catch (e) {
+      } catch {
         return; // If invalid JSON it is not for us
       }
     }
