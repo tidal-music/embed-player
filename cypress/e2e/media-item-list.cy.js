@@ -34,7 +34,7 @@ describe('Media item list', () => {
     });
   });
 
-  describe('classic album, 96px high', () => {
+  describe('classic album, 122px high', () => {
     it('should have media item list in DOM', () => {
       bootIntoClassicAlbum();
 
@@ -90,7 +90,7 @@ describe('Media item list', () => {
     });
   });
 
-  describe('classic playlist, 96px high', () => {
+  describe('classic playlist, 122px high', () => {
     it('should have media item list in DOM', () => {
       bootIntoClassicPlaylist();
 

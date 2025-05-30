@@ -36,18 +36,18 @@ export default {
   bootIntoClassicTrack (id = 598182) {
     return bootIntoURLPath(`/tracks/${id}`, {
       width: DEFAULT_WINDOW_WIDTH,
-      height: 96
+      height: 122
     });
   },
 
   bootIntoClassicAlbum (id = 242964125) {
-    bootIntoURLPath(`/albums/${id}`, { width: 444, height: 96 });
+    bootIntoURLPath(`/albums/${id}`, { width: 444, height: 122 });
 
     return waitForCollectionHydration(id);
   },
 
   bootIntoClassicPlaylist (id = 'c989958b-c60a-4bdc-b58f-25236c6c1e8a') {
-    bootIntoURLPath(`/playlists/${id}`, { width: 444, height: 96 });
+    bootIntoURLPath(`/playlists/${id}`, { width: 444, height: 122 });
 
     return waitForCollectionHydration(id);
   },
