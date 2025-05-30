@@ -7,7 +7,7 @@
     margin-top: -24vh;
   }
 
-  @media (height <= 96px) {
+  @media (height <= 120px) {
     display: none;
   }
 }
@@ -62,7 +62,7 @@
     width: 80vw;
   }
 
-  @media (height <= 96px) {
+  @media (height <= 120px) {
     align-items: center;
   }
 }

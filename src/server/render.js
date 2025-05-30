@@ -3,7 +3,7 @@ import { getStaticFileLink } from './static-file-helper.js';
 
 /**
  * Get the SVG string for a specific icon type.
- * @param {('close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'twitter' | 'videoBadge')} type - The type of the icon.
+ * @param {('close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'tidalLongLogo' | 'twitter' | 'videoBadge')} type - The type of the icon.
  * @returns {string} - The SVG string for the icon.
  */
 export function generateSVG(type) {
@@ -418,12 +418,6 @@ function getPlayerHTML({ duration, isLiveStream, productId, productType }) {
 
   return `
     <div class="player ui-hide-cleaning-victim">
-      <tidal-play-trigger tabindex="1" product-id=${productId} product-type=${productType}>
-        <i class="playback-state-icon">
-          <span class="play-icon">${generateSVG('play')}</span>
-          <span class="pause-icon">${generateSVG('pause')}</span>
-        </i>
-      </tidal-play-trigger>
       <button class="previous-track" aria-label="Play previous track">
         ${generateSVG('previous')}
       </button>
@@ -441,6 +435,12 @@ function getPlayerHTML({ duration, isLiveStream, productId, productType }) {
           'minimize',
         )}</span>
       </button>
+      <tidal-play-trigger tabindex="1" product-id=${productId} product-type=${productType}>
+        <i class="playback-state-icon">
+          <span class="play-icon">${generateSVG('play')}</span>
+          <span class="pause-icon">${generateSVG('pause')}</span>
+        </i>
+      </tidal-play-trigger>
     </div>
   `;
 }
@@ -449,7 +449,7 @@ function getTopRightIconsHTML() {
   return `
   <div class="top-right-icons ui-hide-cleaning-victim">
     <a href="https://tidal.com" target="_blank" class="tidal-logo" aria-label="Visit TIDAL">
-      ${generateSVG('tidalLogo')}
+      ${generateSVG('tidalLongLogo')}
     </a>
     <button class="open-share-dialog" aria-label="Share">
       ${generateSVG('share')}
@@ -585,7 +585,7 @@ function generateImageryHoldersHTML({
   let sizesAttribute = image ? image.sizes : '';
 
   if (isCollection && layout !== 'gridify') {
-    sizesAttribute = '96px';
+    sizesAttribute = '120px';
   }
 
   const figureClasses = [

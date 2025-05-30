@@ -48,6 +48,11 @@ main.gridify-wrapper {
   overflow: hidden;
   position: absolute;
   top: 0;
+  padding: 0;
+}
+
+.gridify-wrapper .cover-art {
+  border: none;
 }
 
 .gridify-wrapper .right-compartment {
@@ -249,7 +254,7 @@ main.gridify-wrapper {
 
 @media (width >= 600px) and (height <= 310px) {
   .media-type--is-collection.gridify .right-compartment {
-    max-height: 96px;
+    max-height: 120px;
     width: calc(177.777vh - 32px);
 
     .initial-state-before-playing & {

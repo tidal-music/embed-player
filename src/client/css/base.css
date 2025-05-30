@@ -81,6 +81,7 @@ a[href*="/artist/"] + a[href*="/artist/"]::before {
 h1.media-title {
   font-size: 1rem;
   margin: 0;
+  line-height: 1.5;
 }
 
 .floating-explicit-badge {
@@ -190,8 +191,8 @@ media-item-list {
 }
 
 tidal-progress-bar {
-  color: var(--cyan);
-  background-color: var(--grey4);
+  color: light-dark(var(--black), var(--white));
+  background-color: light-dark(var(--utilities-shadow-no-dark-mode-shadow-10), transparent);
   height: 4px;
   flex: 1;
   overflow: hidden;
@@ -200,11 +201,11 @@ tidal-progress-bar {
   border-radius: 6px;
 
   .initial-state-before-playing & {
-    color: var(--grey4);
+    color: transparent;
   }
 
   &:focus {
-    outline: thin dotted var(--cyan);
+    outline: thin dotted var(--white);
   }
 
   .initial-state-before-playing.gridify-wrapper & {
@@ -237,9 +238,26 @@ tidal-progress-bar {
   pointer-events: auto;
   width: 14px;
   height: 14px;
+  background-color: var(--white);
+  border-radius: 50%;
+  padding: 11px;
+  cursor: pointer;
+  margin-left: 16px;
+
+  /* Elevation/20 */
+  box-shadow: 0 4px 8px 0 var(--utilities-shadow-no-dark-mode-shadow-10), 0 2px 16px 0 var(--utilities-shadow-no-dark-mode-shadow-10);
 
   & svg {
     pointer-events: none;
+    color: var(--black);
+  }
+}
+
+.media-is-playing .player tidal-play-trigger {
+  background-color: light-dark(var(--emphasis-10), var(--fill-30));
+
+  & svg {
+    color: var(--white)
   }
 }
 
@@ -314,15 +332,15 @@ tidal-progress-bar {
 .top-right-icons {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 16px;
   margin: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 30px;
-  color: white;
+  width: 69px;
+  color: light-dark(var(--emphasis-20), rgba(255, 255, 255, 0.7));
 
   .embed-player.tidal-hide & {
     display: none;
@@ -339,7 +357,7 @@ tidal-progress-bar {
 }
 
 .open-share-dialog {
-  color: white;
+  color: light-dark(var(--emphasis-20), rgba(255, 255, 255, 0.7));
 
   & svg {
     width: 20px;
@@ -362,9 +380,21 @@ tidal-progress-bar {
   &:focus {
     outline: thin dotted var(--cyan);
   }
+
+  & svg {
+    width: 69px;
+    height: 9px;
+  }
 }
 
 .embed-player {
+  /**
+   * Light/Dark mode support
+   * Use light-dark() function to get colors based on the current theme.
+   * Example: color: light-dark(black, white);
+   */
+  color-scheme: light dark;
+
   &:not(.touchy-device):hover .open-share-dialog,
   &:not(.touchy-device):focus-within .open-share-dialog,
   &.touchy-device .open-share-dialog,
@@ -378,6 +408,9 @@ tidal-progress-bar {
   flex-flow: column nowrap;
   height: 100vh;
   overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  box-sizing: border-box;
 }
 
 .layout-type-wrapper .media-item-list {
@@ -460,4 +493,14 @@ tidal-current-time,
 tidal-duration-time {
   text-rendering: geometricprecision;
   font-variant-numeric: tabular-nums;
+  font-size: 8px;
+  color: light-dark(var(--emphasis-10), var(--text-20));
+  font-weight: 700;
+  letter-spacing: 0.96px;
+  position: absolute;
+  bottom: 0;
+}
+
+tidal-duration-time {
+  right: 60px;
 }

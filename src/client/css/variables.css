@@ -11,6 +11,15 @@
   --animation-timing: cubic-bezier(0.19, 1, 0.22, 1);
 
   /* Possible widths for cover art image. Multiply by 1.5 for video width */
-  --img1: 96px;
+  --img1: 88px;
   --img-max: 375px;
+
+
+  /* design tokens 2025: */
+  --text-20: rgba(255, 255, 255, 0.55);
+  --fill-30: rgba(255, 255, 255, 0.15);
+  --opacity-contrast-fill-thick: rgba(255, 255, 255, 0.60);
+  --utilities-shadow-no-dark-mode-shadow-10: rgba(0, 0, 0, 0.10);
+  --emphasis-20: #737373;
+  --emphasis-10: #B2B2B2;
 }

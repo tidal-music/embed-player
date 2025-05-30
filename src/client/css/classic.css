@@ -2,8 +2,8 @@
 
 .classic-header {
   display: flex;
-  background-color: var(--black);
-  color: var(--white);
+  background-color: light-dark(var(--white), var(--black));
+  color: light-dark(var(--black), var(--white));
   font-size: 12px;
   overflow: hidden;
   max-height: 100vh;
@@ -13,10 +13,11 @@
 
 .left-compartment {
   position: relative; /* For placing play button relative to image/video */
+  padding: 16px;
 }
 
 .right-compartment {
-  padding: 8px 12px;
+  padding: 16px 16px 16px 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -40,11 +41,6 @@
 
 /* Fixed image widths, defined in variables.css */
 @media (width >= 200px) {
-  .left-compartment {
-    width: var(--img1);
-    border: 0 solid pink;
-  }
-
   .imagery-holder {
     width: var(--img1);
     height: var(--img1);
@@ -98,6 +94,10 @@ tidal-video-view {
 
 .cover-art {
   object-fit: cover;
+  border-radius: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 16px 0 var(--utilities-shadow-no-dark-mode-shadow-10), 0 4px 32px 0 var(--utilities-shadow-no-dark-mode-shadow-10);
+  box-sizing: border-box;
 }
 
 tidal-video-view {
@@ -114,7 +114,7 @@ tidal-video-view {
   flex-flow: column;
   font-size: 16px;
 
-  @media (height <= 96px) {
+  @media (height <= 120px) {
     font-size: 14px;
   }
 }
@@ -130,11 +130,13 @@ tidal-video-view {
   text-overflow: ellipsis;
   font-weight: 500;
   display: block;
-  color: #fff;
 
   &.media-artist {
-    font-size: 0.875em;
-    color: var(--grey4);
+    font-size: 12px;
+    color: light-dark(var(--emphasis-20), var(--opacity-contrast-fill-thick));
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: 0.18px;
   }
 
   & a {
@@ -154,8 +156,8 @@ tidal-video-view {
 .player {
   display: flex;
   align-items: center;
-  height: 20px;
   gap: 0.5em;
+  position: relative;
 }
 
 /* VIDEO PLAYLISTS */
@@ -176,7 +178,7 @@ tidal-video-view {
   }
 }
 
-@media (height <= 96px) {
+@media (height <= 120px) {
   .media-information {
     font-size: 14px;
   }
@@ -251,10 +253,6 @@ tidal-video-view {
  * "Banners" - long & low
  */
 @media (width >= 420px) and (50px <= height <= 310px) {
-  :root {
-    --img1: 100vh;
-  }
-
   main.layout-type-wrapper .classic-header {
     max-height: none;
   }
@@ -305,14 +303,8 @@ tidal-video-view {
   }
 }
 
-/* Very low embeds hsa no room for track list or external link */
+/* Very low embeds have no room for track list or external link */
 @media (height <= 125px) {
-  .left-compartment,
-  img.cover-art {
-    width: 100vh;
-    height: 100vh; /* Force image to fill height */
-  }
-
   .media-type--videos .left-compartment,
   .media-type--videos img.cover-art {
     width: 177.777vh;
@@ -355,7 +347,7 @@ tidal-video-view {
   }
 
   .media-type--is-collection:not(.gridify) .right-compartment {
-    max-height: 96px;
+    max-height: 120px;
   }
 
   .embed-media-type--is-collection--only-videos .top-right-icons {
