@@ -324,19 +324,6 @@ tidal-video-view {
     --img-max: 100vh;
   }
 
-  .layout-type-wrapper.media-type--is-collection .media-item-list-wrapper {
-    height: 100vh;
-
-    transition: max-height 250ms var(--animation-timing);
-    position: fixed;
-    right: 0;
-
-    top: 112px;
-    max-height: calc(100vh - 112px);
-
-    width: calc(100vw - var(--img-max));
-  }
-
   .media-type--is-collection:not(.gridify) .classic-header {
     max-height: 100vh;
   }

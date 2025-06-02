@@ -439,41 +439,10 @@ tidal-progress-bar {
   background-color: #ffb800;
 }
 
-media-item-list + .external-link {
-  display: flex;
-  background-color: var(--black);
-  transition: background-color 150ms ease;
-  text-decoration: none;
-  color: white;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  font-size: 12px;
-  flex: none;
-
-  &:active {
-    background-color: var(--grey7);
-  }
-
-  &:hover {
-    background-color: var(--grey6);
-  }
-
-  &:focus {
-    background-color: var(--grey6);
-    text-decoration: underline;
-    outline: none;
-  }
-
-  .media-is-playing & {
-    background-color: var(--grey6);
-  }
-
-  & svg {
-    height: 14px;
-    margin-right: 8px;
-    max-width: 16px;
-  }
+media-item-list {
+  background-color: light-dark(var(--white), var(--black));
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 *::-webkit-scrollbar {
@@ -481,11 +450,11 @@ media-item-list + .external-link {
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--black);
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--grey4);
+  background: light-dark(var(--emphasis-10), var(--fill-30));
   border-radius: 4px;
 }
 

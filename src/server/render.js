@@ -50,11 +50,11 @@ function getPlaylistCreator(creatorObject, playlistType) {
 
   /* eslint default-case: 0 */
   switch (playlistType) {
-    case 'USER':
-    case 'PUBLIC':
-      return 'User';
     case 'EDITORIAL':
       return 'TIDAL';
+    case 'PUBLIC':
+    case 'USER':
+      return 'User';
     case 'ARTIST':
     default:
       return generateArtistString();
@@ -65,7 +65,7 @@ function escapeHTML(string) {
   const entityMap = {
     '"': '&quot;',
     '&': '&amp;',
-    "'": '&#39;', // eslint-disable-line quotes
+    "'": '&#39;',
     '/': '&#x2F;',
     '<': '&lt;',
     '=': '&#x3D;',
@@ -181,6 +181,7 @@ function artistsArrayToLinks(artists) {
  * @param {Object} json
  * @returns {MediaInformation}
  */
+// eslint-disable-next-line complexity
 function formatEmbedDataItem(itemType, itemId, json) {
   let artist = '';
 
@@ -209,16 +210,15 @@ function formatEmbedDataItem(itemType, itemId, json) {
   let dialogSubtitle = artist;
 
   switch (itemType) {
-    case 'tracks':
-      imageId = json.album.cover;
-      title = json.title;
-      imageType = 'albums';
-      duration = json?.duration ?? 0; // Show full duration length for tracks, updates to real duration or 30 s on playback.
-      break;
     case 'albums':
       imageId = json.cover;
       album = json.title;
       imageType = 'albums';
+      break;
+    case 'mix':
+      album = json.title;
+      artist = json.subTitle;
+      dialogSubtitle = json.subTitle;
       break;
     case 'playlists':
       album = json.title;
@@ -228,16 +228,17 @@ function formatEmbedDataItem(itemType, itemId, json) {
       artistLinks = artist;
       imageType = json.squareImage ? 'playlistsSquare' : itemType;
       break;
+    case 'tracks':
+      imageId = json.album.cover;
+      title = json.title;
+      imageType = 'albums';
+      duration = json?.duration ?? 0; // Show full duration length for tracks, updates to real duration or 30 s on playback.
+      break;
     case 'videos':
       title = json.title;
       imageId = json.imageId;
       imageType = 'videos';
       duration = json?.duration ?? 0; // Show full duration length for videos
-      break;
-    case 'mix':
-      album = json.title;
-      artist = json.subTitle;
-      dialogSubtitle = json.subTitle;
       break;
     default:
       imageId = undefined;
@@ -471,7 +472,7 @@ function assumeItemTypeFromObject(item) {
  */
 function generateMediaItemListHTML(itemsJson, parentItemType, options) {
   try {
-    const { link, renderThumbnails } = options;
+    const { renderThumbnails } = options;
 
     const listItems = itemsJson
       ? itemsJson
@@ -547,7 +548,6 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
     return `
       <div class="media-item-list-wrapper">
         <media-item-list role="list">${listItems}</media-item-list>
-        <a href="${link}" class="external-link" target="_blank">Listen to full</a>
       </div>
     `.trim();
   } catch (e) {
@@ -731,16 +731,6 @@ function generatePageHTML(options) {
   const maybeIncludeMediaListItemTemplates = isCollection
     ? `
     <template id="wc-media-item-list">
-      <style>
-      :host {
-        background-color: var(--grey7);
-        color: var(--white);
-        width: 100%;
-        max-width: 100vw;
-        overflow: hidden;
-        overflow-y: scroll;
-      }
-      </style>
       <slot></slot>
     </template>
     <template id="wc-list-item">
@@ -792,7 +782,6 @@ function generatePageHTML(options) {
       )}') format('woff')
     }
     body {opacity:0;transition:opacity 200ms ease}
-    media-item-list{background-color:#101012}
     </style>
     <style id="svg-fouc">
     list-item svg {
@@ -926,7 +915,7 @@ export const renderEmbed = options => {
   const isLiveStream =
     embedItem.streamType === 'LIVE' || embedItem.type === 'Live Stream';
 
-  if (itemTypesWithMediaItemList.indexOf(itemType) !== -1) {
+  if (itemTypesWithMediaItemList.includes(itemType)) {
     // Mix media items are not scoped under an item prop. Limit to 50.
     items = mediaItems.items
       .map(obj => ('item' in obj ? obj.item : obj))
