@@ -75,8 +75,8 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5
       playwright:
-        specifier: 1.43.1
-        version: 1.43.1
+        specifier: 1.52.0
+        version: 1.52.0
       postcss:
         specifier: ^8.4.49
         version: 8.4.49
@@ -3556,14 +3556,14 @@ packages:
     resolution: {integrity: sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==}
     engines: {node: '>=4'}
 
-  playwright-core@1.43.1:
-    resolution: {integrity: sha512-EI36Mto2Vrx6VF7rm708qSnesVQKbxEWvPrfA1IPY6HgczBplDx7ENtx+K2n4kJ41sLLkuGfmb0ZLSSXlDhqPg==}
-    engines: {node: '>=16'}
+  playwright-core@1.52.0:
+    resolution: {integrity: sha512-l2osTgLXSMeuLZOML9qYODUQoPPnUsKsb5/P6LJ2e6uPKXUdPK5WYhN4z03G+YNbWmGDY4YENauNu4ZKczreHg==}
+    engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.43.1:
-    resolution: {integrity: sha512-V7SoH0ai2kNt1Md9E3Gwas5B9m8KR2GVvwZnAI6Pg0m3sh7UvgiYhRrhsziCmqMJNouPckiOhk8T+9bSAK0VIA==}
-    engines: {node: '>=16'}
+  playwright@1.52.0:
+    resolution: {integrity: sha512-JAwMNMBlxJ2oD1kce4KPtMkDeKGHQstdpFPcPH3maElAXon/QZeTvtsfXmTMRyO9TslfoYOXkSsvao2nE1ilTw==}
+    engines: {node: '>=18'}
     hasBin: true
 
   portfinder@1.0.32:
@@ -5940,7 +5940,7 @@ snapshots:
     dependencies:
       '@web/test-runner-core': 0.13.4
       '@web/test-runner-coverage-v8': 0.8.0
-      playwright: 1.43.1
+      playwright: 1.52.0
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -8555,11 +8555,11 @@ snapshots:
 
   pify@3.0.0: {}
 
-  playwright-core@1.43.1: {}
+  playwright-core@1.52.0: {}
 
-  playwright@1.43.1:
+  playwright@1.52.0:
     dependencies:
-      playwright-core: 1.43.1
+      playwright-core: 1.52.0
     optionalDependencies:
       fsevents: 2.3.2
 
