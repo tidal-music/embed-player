@@ -1,12 +1,12 @@
 /*
   Overrides to turn a "classic" layout to a grid one.
-  Since vidoe is always a "grid", it's stuff is here too.
+  Since video is always a "grid", it's stuff is here too.
 */
 
 /**
  *  Grid layout:
  *
- *    - Image (media item - cover/video/playlist image) has 100% widht and/or height.
+ *    - Image (media item - cover/video/playlist image) has 100% width and/or height.
  *    - Image is max 800px wide
  *    - Image shall not scale if media item width < 100%
  *    - Playlist should be under image if width < ~500px (tbd)
@@ -15,7 +15,7 @@
  *    - Logo shall lie in top right in grid with list
  *    - Logo shall lie over cover (top right) in grid without list
  *    - Grid design with list has media information on top of list, not overlaying cover
- *    - Unless list is only videos. Then regular media information overlay is shown.con
+ *    - Unless list is only videos. Then regular media information overlay is shown
  *    - Video shall only play as grid
  *    - Classic plays only audio
  */
@@ -24,7 +24,7 @@
   :hover doesn't work great on touch devices. To work around this we have
   UIHiderController for hiding UI when "not hovering" on mobile.
   Thus, do not use :hover in this file without prefixing with
-  :not(.touchy-device) (which disables hover rules for touch devies!)
+  :not(.touchy-device) (which disables hover rules for touch devices!)
 */
 
 .gridify-wrapper {
@@ -88,7 +88,7 @@ main.gridify-wrapper {
   }
 }
 
-/* Collectiions has 3 rows á 16px! */
+/* Collections has 3 rows á 16px! */
 .gridify-wrapper .media-type--is-collection .classic-header .media-information {
   min-height: 64px;
 }
