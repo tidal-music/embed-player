@@ -234,7 +234,7 @@ function handleClickOnExternalLinks() {
   // Google Analytics is disabled for now
   // triggerGAEvent('click_visit_tidal');
   if (currentState === 'PLAYING') {
-    // @ts-expect-error - Click existss
+    // @ts-expect-error - Click exists
     DOMRefs.playPauseButton?.click();
   }
 }
@@ -263,9 +263,9 @@ function registerExternalLinkClickHandlers() {
 /**
  * There are cases where an iframe does not allow fullscreen.
  * This adds a class to embedWrapper if we can fullscreen, and also
- * loads the screenfull libarary.
+ * loads the screenfull library.
  *
- * If not; the abscense of this class will hide the fullscreen button.
+ * If not; the absence of this class will hide the fullscreen button.
  */
 async function checkIfFullscreenEnabled() {
   if (uiHideController.fullscreenEnabled()) {

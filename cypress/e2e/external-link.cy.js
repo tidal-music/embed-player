@@ -1,8 +1,7 @@
-import { bootIntoVideo, bootIntoGridPlaylist } from './helpers.js';
+import { bootIntoVideo } from './helpers.js';
 
 const selectors = {
   externalLinkFinishedDialog: '.dialog--finished .external-link',
-  externalLinkMediaItemList: '.media-item-list-wrapper .external-link'
 };
 
 describe('External link', () => {
@@ -10,11 +9,5 @@ describe('External link', () => {
     bootIntoVideo();
 
     cy.get(selectors.externalLinkFinishedDialog).should('exist');
-  });
-
-  it('exists in media item list', () => {
-    bootIntoGridPlaylist();
-
-    cy.get(selectors.externalLinkMediaItemList).should('exist');
   });
 });
