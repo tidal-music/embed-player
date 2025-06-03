@@ -19,6 +19,7 @@
   --text-20: rgba(255, 255, 255, 0.55);
   --fill-30: rgba(255, 255, 255, 0.15);
   --opacity-contrast-fill-thick: rgba(255, 255, 255, 0.60);
+  --opacity-contrast-fill-thin: rgba(255, 255, 255, 0.20);
   --utilities-shadow-no-dark-mode-shadow-10: rgba(0, 0, 0, 0.10);
   --emphasis-20: #737373;
   --emphasis-10: #B2B2B2;

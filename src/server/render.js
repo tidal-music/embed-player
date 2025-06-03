@@ -3,7 +3,7 @@ import { getStaticFileLink } from './static-file-helper.js';
 
 /**
  * Get the SVG string for a specific icon type.
- * @param {('close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'tidalLongLogo' | 'twitter' | 'videoBadge')} type - The type of the icon.
+ * @param {('close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'tidalLongLogo' | 'twitter' | 'videoBadge' | 'upload')} type - The type of the icon.
  * @returns {string} - The SVG string for the icon.
  */
 export function generateSVG(type) {
@@ -393,12 +393,14 @@ function getMediaInformationHTML({
   } else {
     topHeader = titleHeader;
   }
+  const isUpload = false; // TODO: Implement upload check
 
   return `
     <div class="media-information ui-hide-cleaning-victim">
       <header>
       ${topHeader}
-      ${isExplicit ? generateSVG('explicitBadge') : ''}
+      ${isUpload ? '<i class="badge upload" title="Uploaded">' + generateSVG('upload') + '</i>' : ''}
+      ${isExplicit ? '<i class="badge" title="Explicit">' + generateSVG('explicit') + '</i>' : ''}
       </header>
       ${album ? titleHeader : ''}
       <span class="media-artist" title="Artist: ${artist}">${
@@ -508,9 +510,7 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
                 ? `<span slot="video-badge">${generateSVG('videoBadge')}</span>`
                 : '';
             const maybeExplicitBadge = item.explicit
-              ? `<span slot="explicit-badge">${generateSVG(
-                  'explicitBadge',
-                )}</span>`
+              ? `<span slot="explicit-badge"><i class="badge" title="Explicit">${generateSVG('explicit')}</i></span>`
               : '';
 
             let maybeThumbnail = '';
@@ -705,7 +705,9 @@ function generatePageHTML(options) {
   const maybeExplicitBadge = isExplicit
     ? `
     <figure class=floating-explicit-badge>
-      ${generateSVG('explicitBadge')}
+      <i class="badge" title="Explicit">
+        ${generateSVG('explicit')}
+      </i>
     </figure>
   `
     : '';

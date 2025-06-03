@@ -98,13 +98,6 @@ h1.media-title {
   display: block;
 }
 
-.media-information > header svg {
-  height: 1em;
-  margin-left: 0.3em;
-  flex-shrink: 0;
-  width: 52px;
-}
-
 .media-information > header {
   display: flex;
   align-items: center;
@@ -472,4 +465,27 @@ tidal-duration-time {
 
 tidal-duration-time {
   right: 60px;
+}
+
+.badge {
+  display: inline-flex;
+  height: 16px;
+  color: var(--black);
+  margin-left: 0.3em;
+  flex-shrink: 0;
+  width: 16px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge.upload {
+  border-radius: 4px;
+  border: 1px solid light-dark(rgba(0, 0, 0, 0.10), var(--opacity-contrast-fill-thin));
+  color: light-dark(var(--black), var(--white));
+
+  svg {
+    width: 8px;
+    height: 10px;
+  }
 }

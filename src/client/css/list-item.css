@@ -109,10 +109,6 @@ tidal-play-trigger {
   width: 42px;
 }
 
-::slotted([slot="explicit-badge"]) {
-  width: 52px;
-}
-
 ::slotted([slot="video-icon"]),
 ::slotted([slot="pause-icon"]),
 :host(.current) ::slotted([slot="index"]),
