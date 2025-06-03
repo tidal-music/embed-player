@@ -52,7 +52,7 @@ function getRandomMixID() {
 
 function getRandomAlbumID() {
   const dankIds = [
-    159932869, // Iron Maiden - Nights of the Dead (Master)
+    159933611, // Iron Maiden - Nights of the Dead (Master)
     68638834, // Green Day - American Idiot (Master with some explicit tracks)
     1550545, // Discovery - Daft Punk
     160581228, // Olafur Arnalds - some kind of peace (Master)
