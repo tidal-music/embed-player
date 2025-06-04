@@ -242,7 +242,7 @@ export const generateHTML = queryParameters => {
     <article>
       <details>
         <summary>
-          <h2>On-Demand Videos</h2>
+          <h2>Videos</h2>
         </summary>
 
         <h5 id="video-example-1">Video small - 500x282</h5>
@@ -552,7 +552,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-track">Track Grid</h5>
         <iframe
-          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
@@ -568,7 +568,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-album">Album Grid</h5>
         <iframe
-          src="${embedBaseUrl}/albums/${getRandomAlbumID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
@@ -576,7 +576,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-playlist">Playlist Grid</h5>
         <iframe
-          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
