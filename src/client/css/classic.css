@@ -95,9 +95,10 @@ tidal-video-view {
 .cover-art {
   object-fit: cover;
   border-radius: 1px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 8px 16px 0 var(--utilities-shadow-no-dark-mode-shadow-10), 0 4px 32px 0 var(--utilities-shadow-no-dark-mode-shadow-10);
   box-sizing: border-box;
+  outline: 1px solid light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.08));
+  outline-offset: -1px;
 }
 
 tidal-video-view {
