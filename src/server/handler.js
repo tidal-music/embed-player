@@ -232,11 +232,11 @@ function redirectWimpEmbed(queryParams) {
   const cacheTime = isOnLambdaProd ? 300 : 60;
 
   switch (type) {
-    case 'p':
-      type = 'playlists';
-      break;
     case 'a':
       type = 'albums';
+      break;
+    case 'p':
+      type = 'playlists';
       break;
     case 't':
       type = 'tracks';
@@ -316,8 +316,8 @@ export const embed = async event => {
 
     try {
       switch (event.pathParameters.type) {
-        case 'mix':
-          responseBody = await mix({
+        case 'albums':
+          responseBody = await album({
             country,
             coverInitially,
             disableAnalytics,
@@ -325,8 +325,10 @@ export const embed = async event => {
             layout,
           });
           break;
-        case 'albums':
-          responseBody = await album({
+        case 'embedded':
+          return redirectWimpEmbed(event.queryStringParameters);
+        case 'mix':
+          responseBody = await mix({
             country,
             coverInitially,
             disableAnalytics,
@@ -344,15 +346,8 @@ export const embed = async event => {
             renderThumbnails,
           });
           break;
-        case 'videos':
-          responseBody = await video({
-            country,
-            coverInitially: false,
-            disableAnalytics,
-            itemId,
-            layout: 'gridify',
-            xForwardedFor,
-          });
+        case 'test':
+          responseBody = generateTestPageHTML(event.queryStringParameters);
           break;
         case 'tracks':
           responseBody = await track({
@@ -363,10 +358,15 @@ export const embed = async event => {
             layout,
           });
           break;
-        case 'embedded':
-          return redirectWimpEmbed(event.queryStringParameters);
-        case 'test':
-          responseBody = generateTestPageHTML(event.queryStringParameters);
+        case 'videos':
+          responseBody = await video({
+            country,
+            coverInitially: false,
+            disableAnalytics,
+            itemId,
+            layout: 'gridify',
+            xForwardedFor,
+          });
           break;
         default:
           responseBody = 'Invalid embed type:' + event.pathParameters.type;
