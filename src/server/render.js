@@ -454,9 +454,6 @@ function getTopRightIconsHTML() {
     <a href="https://tidal.com" target="_blank" class="tidal-logo" aria-label="Visit TIDAL">
       ${generateSVG('tidalLongLogo')}
     </a>
-    <button class="open-share-dialog" aria-label="Share">
-      ${generateSVG('share')}
-    </button>
   </div>
   `;
 }
