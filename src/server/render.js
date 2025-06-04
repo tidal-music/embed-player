@@ -150,7 +150,7 @@ function artistsArrayToLinks(artists) {
     ? artists
         .map(
           ({ id, name }) =>
-            `<a href="https://listen.tidal.com/artist/${id}" target="_blank">${name}</a>`,
+            `<a href="https://tidal.com/artist/${id}" target="_blank">${name}</a>`,
         )
         .join('')
     : undefined;
@@ -255,7 +255,7 @@ function formatEmbedDataItem(itemType, itemId, json) {
 
   const itemTypeSingular =
     itemType === 'mix' ? 'mix' : itemType.substring(0, itemType.length - 1);
-  const link = `https://listen.tidal.com/${itemTypeSingular}/${itemId}`;
+  const link = `https://tidal.com/${itemTypeSingular}/${itemId}`;
 
   return {
     album: escapeHTML(album),
