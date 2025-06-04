@@ -74,6 +74,7 @@ function assignMediaProductToPlayTriggers({ id, type }) {
  * of the media information element to that artist.
  */
 function updateCurrentMediaArtistInDOM() {
+  /* noop for now, as we want to keep the artist/creator of the collection
   const artistSlot =
     DOMRefs.mediaItemList?.currentItem?.querySelector('[slot="artist"]');
 
@@ -101,7 +102,7 @@ function updateCurrentMediaArtistInDOM() {
 
       const artists = [...artistSlot.querySelectorAll('a')].reduce(
         (frag, a) => {
-          const anchor = /** @type {HTMLAnchorElement} */ (a.cloneNode(true));
+          const anchor = /** @type {HTMLAnchorElement} * / (a.cloneNode(true));
 
           anchor.classList.add('dynamic-artist');
           frag.appendChild(anchor);
@@ -113,7 +114,7 @@ function updateCurrentMediaArtistInDOM() {
 
       classicHeaderArtist.appendChild(artists);
     }
-  }
+  }*/
 }
 
 function updateCurrentMediaTitleInDOM({ tidalMedia, title }) {

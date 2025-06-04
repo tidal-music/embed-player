@@ -386,12 +386,11 @@ function getMediaInformationHTML({
   title,
 }) {
   let topHeader = '';
-  const titleHeader = `<h1 class="media-title" title="Track: ${title}">${title}</h1>`;
 
   if (album) {
-    topHeader = `<span class="media-album" title="Album: ${album}"><a href="${link}" target="_blank">${album}</a></span>`;
+    topHeader = `<h1 class="media-album" title="Album: ${album}"><a href="${link}" target="_blank">${album}</a></h1>`;
   } else {
-    topHeader = titleHeader;
+    topHeader = `<h1 class="media-title" title="Track: ${title}">${title}</h1>`;
   }
   const isUpload = false; // TODO: Implement upload check
 
@@ -402,7 +401,6 @@ function getMediaInformationHTML({
       ${isUpload ? '<i class="badge upload" title="Uploaded">' + generateSVG('upload') + '</i>' : ''}
       ${isExplicit ? '<i class="badge" title="Explicit">' + generateSVG('explicit') + '</i>' : ''}
       </header>
-      ${album ? titleHeader : ''}
       <span class="media-artist" title="Artist: ${artist}">${
         artistLinks || artist
       }</span>
