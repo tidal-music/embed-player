@@ -102,6 +102,62 @@ export const generateHTML = queryParameters => {
     <article>
       <details>
         <summary>
+          <h2>Default sizes</h2>
+        </summary>
+
+        <h5 id="default-example-1">Track - 500x122</h5>
+        <iframe
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
+          loading="lazy"
+          width="500"
+          height="122"
+        ></iframe>
+
+        <h5 id="default-example-2">Album - 500x275</h5>
+        <iframe
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}"
+          loading="lazy"
+          width="500"
+          height="275"
+        ></iframe>
+
+        <h5 id="default-example-3">Playlist - 500x275</h5>
+        <iframe
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}"
+          loading="lazy"
+          width="500"
+          height="275"
+        ></iframe>
+
+        <h5 id="default-example-4">Video - 500x328</h5>
+        <iframe
+          src="${embedBaseUrl}/videos/${getRandomVideoID()}"
+          loading="lazy"
+          width="500"
+          height="328"
+        ></iframe>
+
+        <h5 id="default-example-5">Mix - 500x275</h5>
+        <iframe
+          src="${embedBaseUrl}/mix/${getRandomMixID()}"
+          loading="lazy"
+          width="500"
+          height="275"
+        ></iframe>
+
+        <h5 id="default-example-6">Upload - 500x122</h5>
+        <iframe
+          src="${embedBaseUrl}/uploads/177723939"
+          loading="lazy"
+          width="500"
+          height="122"
+        ></iframe>
+      </details>
+    </article>
+
+    <article>
+      <details>
+        <summary>
           <h2>Albums</h2>
         </summary>
 
@@ -145,7 +201,7 @@ export const generateHTML = queryParameters => {
           height="300"
         ></iframe>
 
-        <h5 id="album-example-5">Album with list - 800x300 (w explicits)</h5>
+        <h5 id="album-example-6">Album with list - 800x300 (w explicits)</h5>
         <iframe
           src="${embedBaseUrl}/albums/177723939"
           loading="lazy"
@@ -161,7 +217,7 @@ export const generateHTML = queryParameters => {
           height="360"
         ></iframe>
 
-        <h5 id="album-example-4">
+        <h5 id="album-example-8">
           Album Classic with list - 600x700 - Many artists
         </h5>
         <iframe
@@ -261,7 +317,9 @@ export const generateHTML = queryParameters => {
           height="406"
         ></iframe>
 
-        <h5 id="video-exlusive-badge-example">Video Exlusive Badge Example</h5>
+        <h5 id="video-exclusive-badge-example">
+          Video Exclusive Badge Example
+        </h5>
         <iframe
           src="${embedBaseUrl}/videos/90570909"
           loading="lazy"
@@ -394,7 +452,7 @@ export const generateHTML = queryParameters => {
           height="360"
         ></iframe>
 
-        <h5 id="album-example-7">Cover slide to classic + list below</h5>
+        <h5 id="playlist-example-17">Cover slide to classic + list below</h5>
         <iframe
           src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?coverInitially=true"
           loading="lazy"
