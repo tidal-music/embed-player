@@ -381,6 +381,13 @@ async function updateMediaSession(mediaProduct) {
   });
   const json = await response.json();
 
+  if ('status' in json && json.status === 404) {
+    return console.error(
+      `Media product with ID ${mediaProduct.productId} not found.`,
+    );
+    // TODO: Probably upload, should handle that with the data already loaded as this API call will fail.
+  }
+
   const resourceId = json.album?.cover ?? undefined;
 
   const artist = new Intl.ListFormat(navigator.language, {
