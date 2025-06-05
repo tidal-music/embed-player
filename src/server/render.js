@@ -111,7 +111,7 @@ function generateImageSourceAndSourceSetForUpload(imageUrl) {
   const poster = url;
   const sizes = '100vh';
 
-  // For uploads, we only have one size.
+  // For uploads, we only have one size?
   const srcset = `${url} 640w`;
 
   return { poster, sizes, src, srcset };
@@ -188,6 +188,7 @@ function artistsArrayToLinks(artists) {
  * @prop {ImageSet | undefined} image
  * @prop {string} link
  * @prop {boolean} isExplicit
+ * @prop {boolean} isUpload
  * @prop {number} duration
  */
 
@@ -213,7 +214,11 @@ function formatEmbedDataItem(itemType, itemId, json) {
 
   let imageType;
 
-  let artistLinks = artistsArrayToLinks(json.artists || [json.data.artist]);
+  let artistLinks = json.artists
+    ? artistsArrayToLinks(json.artists)
+    : json.data?.artist
+      ? artistsArrayToLinks([json.data?.artist])
+      : undefined;
 
   if (itemType !== 'mix') {
     artist =
@@ -283,6 +288,7 @@ function formatEmbedDataItem(itemType, itemId, json) {
   const itemTypeSingular = singularType(itemType);
   const link = `https://tidal.com/${itemTypeSingular}/${itemId}`;
   const isExplicit = json.explicit || json.metadata?.has_explicit_lyrics; // different location fo uploads
+  const isUpload = itemType === 'upload' || json.upload;
 
   return {
     album: escapeHTML(album),
@@ -293,6 +299,7 @@ function formatEmbedDataItem(itemType, itemId, json) {
     duration,
     image,
     isExplicit,
+    isUpload,
     link,
     title: escapeHTML(title),
   };
@@ -409,6 +416,7 @@ function getMediaInformationHTML({
   artist,
   artistLinks,
   isExplicit,
+  isUpload,
   link,
   title,
 }) {
@@ -419,7 +427,6 @@ function getMediaInformationHTML({
   } else {
     topHeader = `<h1 class="media-title" title="Track: ${title}">${title}</h1>`;
   }
-  const isUpload = false; // TODO: Implement upload check
 
   return `
     <div class="media-information ui-hide-cleaning-victim">
@@ -670,7 +677,7 @@ function generatePageHTML(options) {
     renderThumbnails,
   } = options;
 
-  const { album, artist, artistLinks, isExplicit, link, title } =
+  const { album, artist, artistLinks, isExplicit, isUpload, link, title } =
     mediaInformation;
 
   const isCollection =
@@ -720,6 +727,7 @@ function generatePageHTML(options) {
     artist,
     artistLinks,
     isExplicit,
+    isUpload,
     link,
     title,
   });

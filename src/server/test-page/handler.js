@@ -147,7 +147,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="default-example-6">Upload - 500x122</h5>
         <iframe
-          src="${embedBaseUrl}/uploads/177723939"
+          src="${embedBaseUrl}/upload/a8932cb2-c4cb-4a45-ba80-069a71ae3cbe"
           loading="lazy"
           width="500"
           height="122"
