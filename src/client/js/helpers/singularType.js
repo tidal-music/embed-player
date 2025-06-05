@@ -12,6 +12,7 @@ export default function singularType(type) {
     finalType === 'artist' ||
     finalType === 'track' ||
     finalType === 'mix' ||
+    finalType === 'upload' ||
     finalType === 'video'
   ) {
     return finalType;

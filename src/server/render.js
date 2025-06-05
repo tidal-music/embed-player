@@ -1,4 +1,6 @@
 /* eslint-env node */
+import singularType from '../client/js/helpers/singularType.js';
+
 import { getStaticFileLink } from './static-file-helper.js';
 
 /**
@@ -21,7 +23,7 @@ const trackJSCode =
     : '';
 
 /**
- * @typedef {('playlists' | 'videos' | 'tracks' | 'albums' | 'mix')} TidalItemType
+ * @typedef {('playlists' | 'videos' | 'tracks' | 'albums' | 'mix' | 'upload')} TidalItemType
  */
 
 /**
@@ -100,6 +102,21 @@ function generateImageSourceAndSourceSetForMix(imageObject) {
   return { poster, sizes, src, srcset };
 }
 
+/** * @param {String} imageUrl
+ * * @returns {ImageSet} - Object with src and srcset
+ * */
+function generateImageSourceAndSourceSetForUpload(imageUrl) {
+  const url = imageUrl ?? 'https://tidal.com/assets/cover-1400-BHdJoN8L.jpg'; // Fallback URL if no imageUrl is provided
+  const src = url;
+  const poster = url;
+  const sizes = '100vh';
+
+  // For uploads, we only have one size.
+  const srcset = `${url} 640w`;
+
+  return { poster, sizes, src, srcset };
+}
+
 /**
  * @param {String} imageId
  * @param {TidalImageType} type
@@ -157,7 +174,7 @@ function artistsArrayToLinks(artists) {
 }
 
 /**
- * @typedef {'tracks'|'videos'|'mix'|'albums'|'playlists'} EmbedItemType
+ * @typedef {'tracks'|'videos'|'mix'|'albums'|'playlists'|'upload'} EmbedItemType
  */
 
 /**
@@ -196,7 +213,7 @@ function formatEmbedDataItem(itemType, itemId, json) {
 
   let imageType;
 
-  let artistLinks = artistsArrayToLinks(json.artists);
+  let artistLinks = artistsArrayToLinks(json.artists || [json.artist]);
 
   if (itemType !== 'mix') {
     artist =
@@ -205,7 +222,7 @@ function formatEmbedDataItem(itemType, itemId, json) {
         : json.artist;
   }
 
-  const dialogTitle = json.title;
+  let dialogTitle = json.title;
 
   let dialogSubtitle = artist;
 
@@ -234,6 +251,13 @@ function formatEmbedDataItem(itemType, itemId, json) {
       imageType = 'albums';
       duration = json?.duration ?? 0; // Show full duration length for tracks, updates to real duration or 30 s on playback.
       break;
+    case 'upload':
+      title = json.name;
+      dialogTitle = json.name;
+      artist = json.artist?.name;
+      dialogSubtitle = artist;
+      duration = json?.duration ?? 0;
+      break;
     case 'videos':
       title = json.title;
       imageId = json.imageId;
@@ -252,9 +276,11 @@ function formatEmbedDataItem(itemType, itemId, json) {
   if (!imageId && !image && itemType === 'mix') {
     image = generateImageSourceAndSourceSetForMix(json.images);
   }
+  if (!imageId && !image && itemType === 'upload') {
+    image = generateImageSourceAndSourceSetForUpload(json.image_url);
+  }
 
-  const itemTypeSingular =
-    itemType === 'mix' ? 'mix' : itemType.substring(0, itemType.length - 1);
+  const itemTypeSingular = singularType(itemType);
   const link = `https://tidal.com/${itemTypeSingular}/${itemId}`;
 
   return {
