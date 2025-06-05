@@ -96,7 +96,7 @@ tidal-play-trigger {
 
 ::slotted([slot*="-icon"]) {
   display: block;
-  width: 48px;
+  width: 42px;
   height: 16px;
 }
 
