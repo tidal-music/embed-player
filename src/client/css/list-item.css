@@ -7,9 +7,9 @@
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.18px;
-  height: 48px;
+  height: 62px;
   contain: strict;
-  contain-intrinsic-height: 48px;
+  contain-intrinsic-height: 62px;
   border-bottom: 1px solid light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.10));
   color: light-dark(var(--black), var(--white));
 }
@@ -97,7 +97,7 @@ tidal-play-trigger {
 ::slotted([slot*="-icon"]) {
   display: block;
   width: 42px;
-  height: 16px;
+  height: 12px;
 }
 
 ::slotted([slot*="-badge"]) {

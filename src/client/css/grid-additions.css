@@ -48,7 +48,7 @@ main.gridify-wrapper {
   overflow: hidden;
   position: absolute;
   top: 0;
-  padding: 0;
+  margin: 0;
 }
 
 .gridify-wrapper .cover-art {

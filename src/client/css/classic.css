@@ -13,7 +13,7 @@
 
 .left-compartment {
   position: relative; /* For placing play button relative to image/video */
-  padding: 16px;
+  margin: 16px;
 }
 
 .right-compartment {
@@ -28,7 +28,7 @@
 }
 
 .media-information {
-  width: calc(100% - 45px);
+  width: calc(100% - 70px);
 }
 
 .right-compartment .media-information .media-album {
@@ -96,7 +96,6 @@ tidal-video-view {
   object-fit: cover;
   border-radius: 1px;
   box-shadow: 0 8px 16px 0 var(--utilities-shadow-no-dark-mode-shadow-10), 0 4px 32px 0 var(--utilities-shadow-no-dark-mode-shadow-10);
-  box-sizing: border-box;
   outline: 1px solid light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.08));
   outline-offset: -1px;
 }
@@ -157,7 +156,7 @@ tidal-video-view {
 .player {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 12px;
   position: relative;
 }
 

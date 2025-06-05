@@ -453,12 +453,14 @@ function getPlayerHTML({ duration, isLiveStream, productId, productType }) {
 
   return `
     <div class="player ui-hide-cleaning-victim">
+      <div class="progress-bar-wrapper">
+        <tidal-current-time></tidal-current-time>
+        ${progressBarOrLiveIndicator}
+        <tidal-duration-time>${duration}</tidal-duration-time>
+      </div>
       <button class="previous-track" aria-label="Play previous track">
         ${generateSVG('previous')}
       </button>
-      <tidal-current-time></tidal-current-time>
-      ${progressBarOrLiveIndicator}
-      <tidal-duration-time>${duration}</tidal-duration-time>
       <button class="next-track" aria-label="Play next track">
         ${generateSVG('next')}
       </button>

@@ -19,6 +19,10 @@ body {
   opacity: 1;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Hide native cast button */
 tidal-video-view video::-internal-media-controls-overlay-cast-button {
   display: none;
@@ -43,7 +47,7 @@ button {
   outline: none;
 
   &:focus {
-    outline: thin dotted var(--cyan);
+    outline: thin dotted light-dark(var(--black), var(--white));
   }
 }
 
@@ -225,13 +229,12 @@ tidal-progress-bar {
 .player tidal-play-trigger {
   display: block;
   pointer-events: auto;
-  width: 14px;
-  height: 14px;
+  width: 36px;
+  height: 36px;
   background-color: var(--white);
   border-radius: 50%;
-  padding: 11px;
+  padding: 12px;
   cursor: pointer;
-  margin-left: 16px;
 
   /* Elevation/20 */
   box-shadow: 0 4px 8px 0 var(--utilities-shadow-no-dark-mode-shadow-10), 0 2px 16px 0 var(--utilities-shadow-no-dark-mode-shadow-10);
@@ -286,18 +289,18 @@ tidal-progress-bar {
   &:not(.touchy-device):hover .media-type--is-collection .player button,
   &:not(.touchy-device):focus-within .media-type--is-collection .player button,
   &.touchy-device .media-type--is-collection .player button {
-    width: 14px;
-    height: 14px;
+    width: 24px;
+    height: 24px;
     margin-left: 0;
     opacity: 1;
-    color: white;
+    color: light-dark(var(--black), var(--white));
     pointer-events: auto;
+    padding: 6px;
   }
 }
 
 .player .toggle-fullscreen .fullscreen-icon {
   display: none;
-  color: #fff;
   width: 14px;
   height: 14px;
 
@@ -367,7 +370,7 @@ tidal-progress-bar {
   opacity: 1;
 
   &:focus {
-    outline: thin dotted var(--cyan);
+    outline: thin dotted light-dark(var(--black), var(--white));
   }
 
   & svg {
@@ -399,7 +402,6 @@ tidal-progress-bar {
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.10);
-  box-sizing: border-box;
 }
 
 .layout-type-wrapper .media-item-list {
@@ -447,6 +449,13 @@ media-item-list {
   border-radius: 4px;
 }
 
+.progress-bar-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  margin-right: 16px;
+}
+
 tidal-current-time,
 tidal-duration-time {
   text-rendering: geometricprecision;
@@ -456,11 +465,11 @@ tidal-duration-time {
   font-weight: 700;
   letter-spacing: 0.96px;
   position: absolute;
-  bottom: 0;
+  bottom: -16px;
 }
 
 tidal-duration-time {
-  right: 60px;
+  right: 0;
 }
 
 .badge {
@@ -470,7 +479,6 @@ tidal-duration-time {
   margin-left: 0.3em;
   flex-shrink: 0;
   width: 16px;
-  box-sizing: border-box;
   align-items: center;
   justify-content: center;
 }

@@ -42,5 +42,5 @@ dialog[open] .media-information {
 }
 
 .external-link:focus {
-  outline: thin dotted var(--cyan);
+  outline: thin dotted light-dark(var(--black), var(--white));
 }
