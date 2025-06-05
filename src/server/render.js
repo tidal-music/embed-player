@@ -541,6 +541,9 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
             const maybeExplicitBadge = item.explicit
               ? `<span slot="explicit-badge"><i class="badge" title="Explicit">${generateSVG('explicit')}</i></span>`
               : '';
+            const maybeUploadBadge = item.upload
+              ? `<span slot="upload-badge"><i class="badge upload" title="Uploaded">${generateSVG('upload')}</i></span>`
+              : '';
 
             let maybeThumbnail = '';
 
@@ -564,6 +567,7 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
           <span slot="play-icon">${generateSVG('play')}</span>
           <span slot="pause-icon">${generateSVG('pause')}</span>
           ${maybeVideoBadge}
+          ${maybeUploadBadge}
           ${maybeExplicitBadge}
           <span slot="title">${item.title + version}</span>
           <span slot="artist">${artists}</span>
@@ -778,7 +782,7 @@ function generatePageHTML(options) {
         <slot name="thumbnail"></slot>
         <div class="col">
           <div class="row">
-            <slot name="title"></slot><slot name="explicit-badge"></slot><slot name="video-badge"></slot>
+            <slot name="title"></slot><slot name="upload-badge"></slot><slot name="explicit-badge"></slot><slot name="video-badge"></slot>
           </div>
           <div class="row">
             <slot name="artist"></slot>
