@@ -213,7 +213,7 @@ function formatEmbedDataItem(itemType, itemId, json) {
 
   let imageType;
 
-  let artistLinks = artistsArrayToLinks(json.artists || [json.artist]);
+  let artistLinks = artistsArrayToLinks(json.artists || [json.data.artist]);
 
   if (itemType !== 'mix') {
     artist =
@@ -252,11 +252,11 @@ function formatEmbedDataItem(itemType, itemId, json) {
       duration = json?.duration ?? 0; // Show full duration length for tracks, updates to real duration or 30 s on playback.
       break;
     case 'upload':
-      title = json.name;
-      dialogTitle = json.name;
-      artist = json.artist?.name;
+      title = json.data.name;
+      dialogTitle = json.data.name;
+      artist = json.data.artist?.name;
       dialogSubtitle = artist;
-      duration = json?.duration ?? 0;
+      duration = json.data?.duration ?? 0;
       break;
     case 'videos':
       title = json.title;
@@ -277,11 +277,12 @@ function formatEmbedDataItem(itemType, itemId, json) {
     image = generateImageSourceAndSourceSetForMix(json.images);
   }
   if (!imageId && !image && itemType === 'upload') {
-    image = generateImageSourceAndSourceSetForUpload(json.image_url);
+    image = generateImageSourceAndSourceSetForUpload(json.data.image_url);
   }
 
   const itemTypeSingular = singularType(itemType);
   const link = `https://tidal.com/${itemTypeSingular}/${itemId}`;
+  const isExplicit = json.explicit || json.metadata?.has_explicit_lyrics; // different location fo uploads
 
   return {
     album: escapeHTML(album),
@@ -291,7 +292,7 @@ function formatEmbedDataItem(itemType, itemId, json) {
     dialogTitle: escapeHTML(dialogTitle),
     duration,
     image,
-    isExplicit: json.explicit,
+    isExplicit,
     link,
     title: escapeHTML(title),
   };

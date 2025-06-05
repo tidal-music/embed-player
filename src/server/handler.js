@@ -233,11 +233,11 @@ async function track(options) {
 async function upload(options) {
   const { country, itemId } = options;
 
-  const response = await getData(`v2/upload/open/items/${itemId}`, country);
+  const embedItem = await getData(`v2/upload/open/items/${itemId}`, country);
 
   return renderEmbed({
     ...options,
-    embedItem: response.data,
+    embedItem,
     itemType: 'upload',
   });
 }
