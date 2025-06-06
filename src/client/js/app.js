@@ -497,7 +497,7 @@ function registerEventListeners() {
     );
   }
 
-  $('.open-share-dialog')?.addEventListener(
+  $('.more-button')?.addEventListener(
     'click',
     () => shareController.triggerShare(),
     false,

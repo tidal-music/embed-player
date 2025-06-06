@@ -212,17 +212,14 @@ tidal-progress-bar {
   display: none;
   pointer-events: none;
   touch-action: none;
-  width: 14px;
-  height: 14px;
+  width: 24px;
+  height: 24px;
+  margin-left: 0;
+  color: light-dark(var(--black), var(--white));
+  padding: 6px;
 
   & svg {
     pointer-events: none;
-  }
-
-  &.toggle-fullscreen {
-    max-width: 0;
-    opacity: 0;
-    transition: max-width 150ms ease, var(--simple-opacity-transition);
   }
 }
 
@@ -253,27 +250,27 @@ tidal-progress-bar {
   }
 }
 
-/* stylelint-disable max-line-length */
-.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing):hover .player button.toggle-fullscreen,
-.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing).touchy-device .player button.toggle-fullscreen,
-.embed-media-type--videos.fullscreen-enabled:not(.initial-state-before-playing):hover .player button.toggle-fullscreen {
-  display: block;
+.player .more-button {
+  display: flex;
+  width: 24px;
+  height: 24px;
   pointer-events: auto;
-  max-width: 14px;
-  margin-left: 6px;
-  opacity: 1;
+  padding: 0;
+}
+
+/* stylelint-disable max-line-length */
+.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing) .player button.toggle-fullscreen,
+.embed-media-type--videos.fullscreen-enabled:not(.initial-state-before-playing) .player button.toggle-fullscreen {
+  display: flex;
+  pointer-events: auto;
 }
 /* stylelint-enable max-line-length */
 
-/* Player buttons to hide when not hovering */
 .media-type--is-collection .player .previous-track,
 .media-type--is-collection .player .next-track {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 0;
-  opacity: 0;
-  margin-left: -0.5em;
   transition: width 150ms ease, var(--simple-opacity-transition);
 
   &:disabled {
@@ -290,12 +287,8 @@ tidal-progress-bar {
   &:not(.touchy-device):focus-within .media-type--is-collection .player button,
   &.touchy-device .media-type--is-collection .player button {
     width: 24px;
-    height: 24px;
-    margin-left: 0;
     opacity: 1;
-    color: light-dark(var(--black), var(--white));
     pointer-events: auto;
-    padding: 6px;
   }
 }
 
@@ -348,22 +341,8 @@ tidal-progress-bar {
   margin-left: 30px;
 }
 
-.open-share-dialog {
-  color: light-dark(var(--emphasis-20), rgba(255, 255, 255, 0.7));
-
-  & svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.open-share-dialog,
 .tidal-logo {
   transition: var(--simple-opacity-transition);
-}
-
-.open-share-dialog {
-  opacity: 0;
 }
 
 .tidal-logo {
@@ -387,9 +366,6 @@ tidal-progress-bar {
    */
   color-scheme: light dark;
 
-  &:not(.touchy-device):hover .open-share-dialog,
-  &:not(.touchy-device):focus-within .open-share-dialog,
-  &.touchy-device .open-share-dialog,
   &.tidal-hide {
     opacity: 1;
   }
@@ -453,7 +429,7 @@ media-item-list {
   flex: 1;
   position: relative;
   display: flex;
-  margin-right: 16px;
+  margin-right: 20px;
 }
 
 tidal-current-time,

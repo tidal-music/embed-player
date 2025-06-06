@@ -458,6 +458,9 @@ function getPlayerHTML({ duration, isLiveStream, productId, productType }) {
         ${progressBarOrLiveIndicator}
         <tidal-duration-time>${duration}</tidal-duration-time>
       </div>
+      <button class="more-button" aria-label="Show more options">
+        ${generateSVG('threeDots')}
+      </button>
       <button class="previous-track" aria-label="Play previous track">
         ${generateSVG('previous')}
       </button>

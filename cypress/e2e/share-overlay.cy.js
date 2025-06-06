@@ -3,7 +3,7 @@ import { bootIntoClassicTrack, bootIntoGridTrack } from './helpers.js';
 const selectors = {
   closeDialogButton: '.dialog--share .button--close-dialog',
   mediaInformation: '.dialog--share .media-information',
-  shareButton: '.open-share-dialog',
+  shareButton: '.more-button',
   shareButtons: '.dialog--share .share-buttons',
   shareDialog: '.dialog--share',
 };
