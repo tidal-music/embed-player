@@ -317,14 +317,16 @@ function triggerCustomShareIntent(variant) {
 
           setTimeout(() => {
             DOMRefs.shareDialog?.classList.remove('copy--successful');
-          }, 2000);
+            DialogController.close('share');
+          }, 1000);
         })
-        .catch(() => {
+        .catch(err => {
+          console.error('Failed to copy text to clipboard:', err);
           DOMRefs.shareDialog?.classList.add('copy--failed');
 
           setTimeout(() => {
             DOMRefs.shareDialog?.classList.remove('copy--failed');
-          }, 2000);
+          }, 5000);
         });
       break;
     case 'twitter':

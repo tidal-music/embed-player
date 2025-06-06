@@ -11,8 +11,9 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(2px);
+  background-color: rgba(34, 34, 34, 0.70);
+  backdrop-filter: blur(17.5px);
+  border-radius: 12px;
 }
 
 dialog[open] {
@@ -29,11 +30,12 @@ dialog[open] .media-information {
 
 .button--close-dialog {
   position: fixed;
-  top: 16px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   width: 24px;
   height: 24px;
-  color: white;
+  color: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
 }
 
 .button--close-dialog svg {

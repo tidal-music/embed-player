@@ -3,7 +3,6 @@ import DOMRefs from './dom-refs.js';
 import {
   embedIsType,
   generateShareURL,
-  isOnAppleMobileDevice,
   isOnMobileWithTouchScreen,
   singularType,
 } from './helpers/index.js';
@@ -13,51 +12,36 @@ const FACEBOOK_APP_ID = 185717988231456;
 
 export default class ShareController {
   copyTextToClipboard(text) {
-    return new Promise((resolve, reject) => {
-      const textArea = document.createElement('textarea');
-
-      textArea.style.position = 'fixed';
-      textArea.style.top = '0';
-      textArea.style.left = '0';
-      textArea.style.width = '2em';
-      textArea.style.height = '2em';
-      textArea.style.padding = '0';
-      textArea.style.border = 'none';
-      textArea.style.outline = 'none';
-      textArea.style.boxShadow = 'none';
-      textArea.style.background = 'transparent';
-
-      textArea.value = text;
-
-      document.body.appendChild(textArea);
-
-      // From https://gist.github.com/rproenca/64781c6a1329b48a455b645d361a9aa3#L19
-      if (isOnAppleMobileDevice()) {
-        const range = document.createRange();
-
-        range.selectNodeContents(textArea);
-        const selection = window.getSelection();
-
-        if (selection) {
-          selection.removeAllRanges();
-          selection.addRange(range);
-        }
-
-        textArea.setSelectionRange(0, 999999);
-      } else {
-        textArea.select();
-      }
+    // not testing this function since it relies on many different browser APIs that all need to be mocked
+    const copyToClipboardFallback = textInner => {
+      const node = document.createElement('textarea');
+      const selection = document.getSelection();
+      const body = document.body;
 
       try {
-        document.execCommand('copy');
-        // @ts-expect-error - Cannot type generic with JSDoc
-        resolve();
-      } catch (error) {
-        reject(error instanceof Error ? error : new Error(error));
-      }
+        node.textContent = textInner;
+        if (body && selection) {
+          body.appendChild(node);
 
-      document.body.removeChild(textArea);
-    });
+          selection.removeAllRanges();
+          node.select();
+          document.execCommand('copy');
+
+          selection.removeAllRanges();
+          body.removeChild(node);
+          return Promise.resolve();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      return Promise.reject(new Error('Failed to copy text to clipboard'));
+    };
+
+    if (navigator.clipboard) {
+      return navigator.clipboard.writeText(text);
+    } else {
+      return copyToClipboardFallback(text);
+    }
   }
 
   /**
@@ -146,13 +130,13 @@ export default class ShareController {
   }
 
   triggerShare() {
-    if (this.webShareAPIIsAvailable()) {
+    /* if (this.webShareAPIIsAvailable()) {
       const { text, title, url } = this.getShareData();
 
       navigator.share({ text, title, url });
-    } else {
-      DialogController.show('share');
-    }
+    } else {*/
+    DialogController.show('share');
+    // }
   }
 
   webShareAPIIsAvailable() {

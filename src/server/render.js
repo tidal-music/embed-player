@@ -339,6 +339,11 @@ function humanReadableTime(sec = 0) {
 function getFinishedDialogHTML(title, subtitle, shareLink) {
   return `
   <dialog class="dialog--finished" role="dialog">
+    <form method="dialog">
+      <button class="button--close-dialog" aria-label="Close dialog">${generateSVG(
+        'close',
+      )}</button>
+    </form>
     <div class="media-information">
       <span class="media-album">${title}</span>
       <span class="media-artist">${subtitle}</span>
@@ -358,6 +363,11 @@ function getFinishedDialogHTML(title, subtitle, shareLink) {
 function getNostrDialogHTML() {
   return `
   <dialog class="dialog--nostr" role="dialog">
+    <form method="dialog">
+      <button class="button--close-dialog" aria-label="Close dialog">${generateSVG(
+        'close',
+      )}</button>
+    </form>
     <p>Hello nostr user! Linking your pubkey to TIDAL grants full playback.</p>
     <div class="buttons">
       <nostr-login-button>
@@ -379,11 +389,11 @@ function getNostrDialogHTML() {
  * @param {String} title
  * @param {String} subtitle
  */
-function getShareDialogHTML(title, subtitle) {
+function getShareDialogHTML(title, subtitle, shareLink) {
   return `
     <dialog class="dialog--share" role="dialog">
       <form method="dialog">
-        <button class="button--close-dialog" aria-label="Close share popup">${generateSVG(
+        <button class="button--close-dialog" aria-label="Close dialog">${generateSVG(
           'close',
         )}</button>
       </form>
@@ -394,17 +404,13 @@ function getShareDialogHTML(title, subtitle) {
         <span class="failed-copy-message">Failed copying to clipboard</span>
       </div>
       <div class="share-buttons">
-        <button class="share-button--facebook" aria-label="Share on Facebook">
-          ${generateSVG('facebook')}
-        </button>
-        <button class="share-button--facebook-messenger" aria-label="Share on Facebook Messenger">
-          ${generateSVG('messenger')}
-        </button>
-        <button class="share-button--twitter" aria-label="Share on Twitter">
-          ${generateSVG('twitter')}
-        </button>
+        <a href="${shareLink}" class="" target="_blank">
+          ${generateSVG('tidalLogo')}
+         <div class="external-link"></div>
+        </a>
         <button class="share-button--link" aria-label="Copy link to clipboard">
           ${generateSVG('link')}
+          <div>Copy link</div>
         </button>
       </div>
     </dialog>
@@ -847,7 +853,7 @@ function generatePageHTML(options) {
       </figure>
       ${getFinishedDialogHTML(dialogTitle, dialogSubtitle, link)}
       ${getNostrDialogHTML()}
-      ${getShareDialogHTML(dialogTitle, dialogSubtitle)}
+      ${getShareDialogHTML(dialogTitle, dialogSubtitle, link)}
       ${getTopRightIconsHTML()}
       <audio id=audio-player></audio>
       <main class="layout-type-wrapper ${layoutClasses}">
