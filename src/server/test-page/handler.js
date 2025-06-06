@@ -111,7 +111,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -121,7 +121,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="275"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -131,7 +131,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="275"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -141,7 +141,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="328"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -151,7 +151,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="275"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -161,7 +161,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -179,7 +179,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="444"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -189,7 +189,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -199,7 +199,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -209,7 +209,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -219,7 +219,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -229,7 +229,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -239,7 +239,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -251,7 +251,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -269,7 +269,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="348"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -279,7 +279,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="400"
           height="96"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -290,7 +290,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -301,7 +301,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -311,7 +311,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="200"
           height="200"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -321,7 +321,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="350"
           height="350"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -331,7 +331,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="550"
           height="550"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -349,7 +349,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -359,7 +359,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="720"
           height="406"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -371,7 +371,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="720"
           height="406"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -389,7 +389,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="444"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -399,7 +399,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -409,7 +409,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="700"
           height="600"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -419,7 +419,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -436,7 +436,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="800"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -446,7 +446,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="800"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -456,7 +456,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -468,7 +468,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -478,7 +478,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -488,7 +488,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="800"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -502,7 +502,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="800"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -512,7 +512,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -522,7 +522,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -532,7 +532,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -544,7 +544,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -562,7 +562,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="444"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -572,7 +572,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -582,7 +582,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -592,7 +592,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -602,7 +602,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="800"
           height="300"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -612,7 +612,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -630,7 +630,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="400"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -640,7 +640,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -650,7 +650,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -660,7 +660,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="444"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -670,7 +670,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -680,7 +680,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -690,7 +690,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -700,7 +700,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -720,7 +720,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -730,7 +730,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -740,7 +740,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -750,7 +750,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -768,7 +768,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="348"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -779,7 +779,7 @@ export const generateHTML = queryParameters => {
             loading="lazy"
             width="348"
             height="120"
-            allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+            allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
             sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
           ></iframe>
         </div>
@@ -792,7 +792,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
@@ -810,7 +810,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="348"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -820,7 +820,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -830,7 +830,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="444"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -840,7 +840,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="540"
           height="360"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -850,7 +850,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
         <iframe
@@ -858,7 +858,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -868,7 +868,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
         <iframe
@@ -876,7 +876,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="120"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
 
@@ -886,7 +886,7 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
-          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
         ></iframe>
       </details>
