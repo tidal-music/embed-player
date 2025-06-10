@@ -145,7 +145,7 @@ tidal-video-view {
   }
 
   & a:hover,
-  & a:focus {
+  & a:focus-visible {
     text-decoration: underline;
     outline: none;
   }

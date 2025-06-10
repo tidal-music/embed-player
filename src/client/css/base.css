@@ -46,7 +46,7 @@ button {
   cursor: pointer;
   outline: none;
 
-  &:focus {
+  &:focus-visible {
     outline: thin dotted light-dark(var(--black), var(--white));
   }
 }
@@ -202,7 +202,7 @@ tidal-progress-bar {
     color: transparent;
   }
 
-  &:focus {
+  &:focus-visible {
     outline: thin dotted var(--white);
   }
 }
@@ -348,7 +348,7 @@ tidal-progress-bar {
 .tidal-logo {
   opacity: 1;
 
-  &:focus {
+  &:focus-visible {
     outline: thin dotted light-dark(var(--black), var(--white));
   }
 

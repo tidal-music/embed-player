@@ -43,6 +43,6 @@ dialog[open] .media-information {
   width: 24px;
 }
 
-.external-link:focus {
+.external-link:focus-visible {
   outline: thin dotted light-dark(var(--black), var(--white));
 }
