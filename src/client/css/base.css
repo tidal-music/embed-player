@@ -378,6 +378,7 @@ tidal-progress-bar {
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.10);
+  position: relative;
 }
 
 .layout-type-wrapper .media-item-list {

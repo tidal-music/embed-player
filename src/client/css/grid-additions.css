@@ -202,6 +202,8 @@ main.gridify-wrapper {
     top: 0;
     max-height: 100vh;
     width: calc(100vw - calc(var(--img-max) * 1.77));
+    position: absolute;
+    right: 0;
 
     .initial-state-before-playing & {
       top: 0;
@@ -218,7 +220,6 @@ main.gridify-wrapper {
     width: calc(177.777vh - 32px);
 
     .initial-state-before-playing & {
-      max-height: 80px;
       transition: max-height 134ms ease;
     }
   }

@@ -338,7 +338,7 @@ tidal-video-view {
   }
 
   .embed-media-type--is-collection--only-videos .top-right-icons {
-    right: calc(100vw - calc(var(--img-max) * 1.77));
+    right: calc(100vw - calc(var(--img-max) * 1.77) + 16px);
   }
 
   .media-type--is-collection:not(.gridify) .classic-header {
