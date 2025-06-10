@@ -8,9 +8,7 @@ import DOMRefs from './dom-refs.js';
 import { $, $$ } from './fake-query.js';
 import {
   domainAllowedToCleanUI,
-  embedIsLivestream,
   embedIsType,
-  generateExternalLinkText,
   getTidalMediaFromURL,
   isOnMobileWithTouchScreen,
 } from './helpers/index.js';
