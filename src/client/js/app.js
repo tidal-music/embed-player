@@ -212,28 +212,7 @@ function mediaItemListItemClick(element) {
   }
 }
 
-/**
- * Goes through the DOM to find all .external-link and
- * fills their string in correctly and adds a click handler
- * for tracking usage via GA.
- */
-function updateExternalLinks() {
-  const type = URLOptions.itemType;
-  const livestream = embedIsLivestream();
-  const textForLink = generateExternalLinkText({ livestream, type });
-
-  const externalLinks = $$('.external-link');
-
-  if (externalLinks) {
-    for (const link of externalLinks) {
-      link.innerHTML = textForLink;
-    }
-  }
-}
-
 function handleClickOnExternalLinks() {
-  // Google Analytics is disabled for now
-  // triggerGAEvent('click_visit_tidal');
   if (currentState === 'PLAYING') {
     // @ts-expect-error - Click exists
     DOMRefs.playPauseButton?.click();
@@ -927,7 +906,6 @@ function runNostrInterval() {
 document.addEventListener('DOMContentLoaded', () => {
   checkIfFullscreenEnabled();
   registerEventListeners();
-  updateExternalLinks();
   registerExternalLinkClickHandlers();
   enforceVideoPlaylistGrid();
   runNostrInterval();

@@ -1,7 +1,6 @@
 .dialog--share[open] .media-information {
   justify-content: flex-end;
   margin-bottom: 8vh;
-  width: calc(100% - 32px); /* Needed for ellipsis */
 
   @media (width <= 250px) {
     margin-top: -24vh;
@@ -14,6 +13,25 @@
 
 .share-button--link {
   position: relative;
+}
+
+.copy--fail .share-button--link::after,
+.copy--successful .share-button--link::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  background-color: var(--emphasis-20);
+  animation: scale-in 1s var(--animation-timing);
+  border-radius: 50%;
+  font-size: 14px;
+  height: 20px;
+  width: 20px;
+  margin-left: calc(50% - 10px);
+  top: -2px;
+}
+
+.copy--fail .share-button--link::after {
+  content: "╳";
 }
 
 .copy--successful .media-information span,

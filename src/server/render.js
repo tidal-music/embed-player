@@ -354,7 +354,7 @@ function getFinishedDialogHTML(title, subtitle, shareLink) {
           ${generateSVG('replay')}
         </button>
       </form>
-      <a href="${shareLink}" class="external-link" target="_blank"></a>
+      <a href="${shareLink}" class="external-link" target="_blank">Play on TIDAL</a>
     </div>
   </dialog>
   `.trim();
@@ -398,15 +398,13 @@ function getShareDialogHTML(title, subtitle, shareLink) {
         )}</button>
       </form>
       <div class="media-information">
-        <span class="media-album">${title}</span>
-        <span class="media-artist">${subtitle}</span>
         <span class="successful-copy-message">Copied to clipboard</span>
         <span class="failed-copy-message">Failed copying to clipboard</span>
       </div>
       <div class="share-buttons">
         <a href="${shareLink}" class="" target="_blank">
           ${generateSVG('tidalLogo')}
-         <div class="external-link"></div>
+         <div class="external-link">Play on TIDAL</div>
         </a>
         <button class="share-button--link" aria-label="Copy link to clipboard">
           ${generateSVG('link')}
