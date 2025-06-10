@@ -12,7 +12,7 @@
 
 .dialog--nostr .button {
   all: unset;
-  background-color: #242429;
+  background-color: rgba(255, 255, 255, 0.1);
   color: rgb(244, 244, 244);
   border-radius: 6px;
   padding: 0.5em 1em;
@@ -23,36 +23,22 @@
 
   &:hover {
     color: white;
+    background-color: rgba(255, 255, 255, 0.25);
   }
 }
 
 .dialog--nostr .button--login {
-  background-color: rgba(163, 84, 178, 0.5);
-  border-color: rgba(163, 84, 178, 0.6);
+  background-color: rgba(160, 160, 160, 0.5);
+  border-color: rgba(160, 160, 160, 0.6);
 
   &:hover {
-    background-color: rgba(163, 84, 178, 0.6);
-    border-color: rgba(163, 84, 178, 0.7);
+    background-color: rgba(160, 160, 160, 0.6);
+    border-color: rgba(160, 160, 160, 0.7);
   }
 }
 
 .dialog--nostr nostr-login-button[loading] .button--login {
   padding: 0.542em;
-}
-
-.dialog--nostr .button--connect {
-  background-color: rgba(84, 179, 178, 0.5);
-  border-color: rgba(84, 179, 178, 0.6);
-
-  &:hover {
-    background-color: rgba(84, 179, 178, 0.6);
-    border-color: rgba(84, 179, 178, 0.7);
-  }
-}
-
-.dialog--nostr .button--close-dialog {
-  background-color: rgba(179, 93, 81, 0.5);
-  border-color: rgba(179, 93, 81, 0.6);
 }
 
 .dialog--nostr p {
