@@ -1,12 +1,6 @@
 :root {
   --white: #fff;
   --black: #000;
-  --grey3: #b5b4ba; /* Bombay */
-  --grey4: #78777f; /* Jumbo */
-  --grey5: #504f54; /* Scarpa Flow */
-  --grey6: #242428; /* Shark */
-  --grey7: #101012; /* Woodsmoke */
-  --cyan: #0ff; /* Cyan / Aqua */
   --simple-opacity-transition: opacity 150ms ease;
   --animation-timing: cubic-bezier(0.19, 1, 0.22, 1);
 
