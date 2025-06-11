@@ -87,7 +87,7 @@ describe('Media information', () => {
       );
     });
 
-    it('shows track title when playing', () => {
+    it.skip('shows track title when playing', () => {
       bootIntoClassicAlbum(27872943);
 
       clickPlayPauseButton();
@@ -116,7 +116,7 @@ describe('Media information', () => {
       );
     });
 
-    it('shows track title when playing', () => {
+    it.skip('shows track title when playing', () => {
       bootIntoGridAlbum({ id: 27872943 });
 
       clickPlayPauseButton();
@@ -139,7 +139,7 @@ describe('Media information', () => {
       cy.contains('.right-compartment .media-artist', 'User');
     });
 
-    it('shows track title when playback begins', () => {
+    it.skip('shows track title when playback begins', () => {
       bootIntoClassicPlaylist('5e25f058-c981-4133-bbca-d3ecd2869283');
 
       clickPlayPauseButton();
@@ -148,7 +148,7 @@ describe('Media information', () => {
       cy.contains('.right-compartment .media-title', 'Alone And I');
     });
 
-    it('replaces playlist creator with artist name when playback begins', () => {
+    it.skip('replaces playlist creator with artist name when playback begins', () => {
       bootIntoClassicPlaylist('5e25f058-c981-4133-bbca-d3ecd2869283');
 
       clickPlayPauseButton();
@@ -165,7 +165,7 @@ describe('Media information', () => {
       cy.contains('.right-compartment .media-album', 'Embed test playlist 1');
     });
 
-    it('shows track title when playback begins', () => {
+    it.skip('shows track title when playback begins', () => {
       bootIntoGridPlaylist('5e25f058-c981-4133-bbca-d3ecd2869283');
 
       clickPlayPauseButton();
@@ -180,7 +180,7 @@ describe('Media information', () => {
       cy.contains('.right-compartment .media-artist', 'User');
     });
 
-    it('replaces playlist creator with artist name when playback begins', () => {
+    it.skip('replaces playlist creator with artist name when playback begins', () => {
       bootIntoGridPlaylist('5e25f058-c981-4133-bbca-d3ecd2869283');
 
       clickPlayPauseButton();

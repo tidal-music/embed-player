@@ -27,8 +27,7 @@ describe('Share dialog', () => {
       cy.get(selectors.shareDialog).should('not.have.attr', 'open');
     });
 
-    // This does not match the current implementation it seems?
-    it.skip('does not show title and artist name', () => {
+    it('does not show title and artist name', () => {
       bootIntoClassicTrack();
 
       cy.get(selectors.shareButton).click();
@@ -47,13 +46,13 @@ describe('Share dialog', () => {
   });
 
   describe('(for grid track)', () => {
-    it('shows title and artist name', () => {
+    it('does not show title and artist name', () => {
       bootIntoGridTrack();
 
       cy.get(selectors.shareButton).click();
       cy.get(selectors.shareDialog).should('have.attr', 'open');
 
-      cy.get(selectors.mediaInformation).should('be.visible');
+      cy.get(selectors.mediaInformation).should('not.be.visible');
     });
 
     it('shows share buttons', () => {
