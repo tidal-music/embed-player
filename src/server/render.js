@@ -331,12 +331,7 @@ function humanReadableTime(sec = 0) {
     .join(':');
 }
 
-/**
- * @param {String} title
- * @param {String} subtitle
- * @param {String} shareLink
- */
-function getFinishedDialogHTML(title, subtitle, shareLink) {
+function getFinishedDialogHTML() {
   return `
   <dialog class="dialog--finished" role="dialog">
     <form method="dialog">
@@ -345,16 +340,12 @@ function getFinishedDialogHTML(title, subtitle, shareLink) {
       )}</button>
     </form>
     <div class="media-information">
-      <span class="media-album">${title}</span>
-      <span class="media-artist">${subtitle}</span>
+      ${generateSVG('tidalLongLogo')}
+      <span>Get the full experience for 30 days free.</span>
     </div>
     <div class="lower-part">
-      <form method="dialog">
-        <button class="replay-button" aria-label="Play again">
-          ${generateSVG('replay')}
-        </button>
-      </form>
-      <a href="${shareLink}" class="external-link" target="_blank">Play on TIDAL</a>
+      <a href="https://tidal.com/try-now" class="primary external-link" target="_blank">Sign up</a>
+      <a href="https://tidal.com/login?autoredirect=true" class="external-link" target="_blank">Log in</a>
     </div>
   </dialog>
   `.trim();
@@ -383,10 +374,11 @@ function getNostrDialogHTML() {
 }
 
 /**
- * @param {String} title
- * @param {String} subtitle
- */
-function getShareDialogHTML(title, subtitle, shareLink) {
+ * Generates the HTML for the share dialog.
+ * @param {string} shareLink - The link to be shared.
+ * @returns {string} - The HTML string for the share dialog.
+ * */
+function getShareDialogHTML(shareLink) {
   return `
     <dialog class="dialog--share" role="dialog">
       <form method="dialog">
@@ -712,9 +704,6 @@ function generatePageHTML(options) {
     layout,
   });
 
-  const dialogTitle = (isCollection ? album : title) || title;
-  const dialogSubtitle = artist;
-
   const appJSSrc = getStaticFileLink('js/app.js');
 
   const embedClasses = [
@@ -846,9 +835,9 @@ function generatePageHTML(options) {
           'img/loader.svg',
         )}" crossorigin="anonymous" alt="Loading spinner...">
       </figure>
-      ${getFinishedDialogHTML(dialogTitle, dialogSubtitle, link)}
+      ${getFinishedDialogHTML()}
       ${getNostrDialogHTML()}
-      ${getShareDialogHTML(dialogTitle, dialogSubtitle, link)}
+      ${getShareDialogHTML(link)}
       ${getTopRightIconsHTML()}
       <audio id=audio-player></audio>
       <main class="layout-type-wrapper ${layoutClasses}">
