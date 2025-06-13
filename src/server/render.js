@@ -341,7 +341,6 @@ function getFinishedDialogHTML() {
     </form>
     <div class="media-information">
       ${generateSVG('tidalLongLogo')}
-      <span>Get the full experience for 30 days free.</span>
     </div>
     <div class="lower-part">
       <a href="https://tidal.com/try-now" class="primary external-link" target="_blank">Sign up</a>
