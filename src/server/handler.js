@@ -284,7 +284,7 @@ const rootRouteHTML = `
   <br><br>
   <iframe src="/tracks/255207225" width="500" height="120"
     allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
-    sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
   ></iframe>
   <br><br>
   <p>
