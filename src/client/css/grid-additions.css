@@ -135,7 +135,6 @@ main.gridify-wrapper {
   }
 
   &.showing-finished-dialog .imagery-holder,
-  &.media-is-playing .imagery-holder,
   &.media-is-playing.ui-hider--hidden-controls .imagery-holder {
     opacity: 1;
   }
