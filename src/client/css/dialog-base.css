@@ -8,6 +8,7 @@ dialog {
   transition: var(--simple-opacity-transition);
   overflow: hidden;
   border: none;
+  color: var(--white);
 }
 
 dialog::backdrop {

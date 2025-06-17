@@ -45,6 +45,7 @@ button {
   padding: 0;
   cursor: pointer;
   outline: none;
+  color: inherit;
 
   &:focus-visible {
     outline: thin dotted light-dark(var(--black), var(--white));
@@ -189,7 +190,6 @@ media-item-list {
 }
 
 tidal-progress-bar {
-  color: light-dark(var(--black), var(--white));
   background-color: light-dark(var(--utilities-shadow-no-dark-mode-shadow-10), transparent);
   height: 4px;
   flex: 1;
@@ -215,7 +215,6 @@ tidal-progress-bar {
   width: 24px;
   height: 24px;
   margin-left: 0;
-  color: light-dark(var(--black), var(--white));
   padding: 6px;
 
   & svg {
