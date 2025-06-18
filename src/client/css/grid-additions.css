@@ -137,6 +137,7 @@ main.gridify-wrapper {
     height: 100%;
     z-index: 1;
     opacity: 1;
+    transition: var(--simple-opacity-transition);
   }
 
   &:hover .imagery-holder::after,
