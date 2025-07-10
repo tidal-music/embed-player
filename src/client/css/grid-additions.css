@@ -1,12 +1,12 @@
 /*
   Overrides to turn a "classic" layout to a grid one.
-  Since vidoe is always a "grid", it's stuff is here too.
+  Since video is always a "grid", it's stuff is here too.
 */
 
 /**
  *  Grid layout:
  *
- *    - Image (media item - cover/video/playlist image) has 100% widht and/or height.
+ *    - Image (media item - cover/video/playlist image) has 100% width and/or height.
  *    - Image is max 800px wide
  *    - Image shall not scale if media item width < 100%
  *    - Playlist should be under image if width < ~500px (tbd)
@@ -15,7 +15,7 @@
  *    - Logo shall lie in top right in grid with list
  *    - Logo shall lie over cover (top right) in grid without list
  *    - Grid design with list has media information on top of list, not overlaying cover
- *    - Unless list is only videos. Then regular media information overlay is shown.con
+ *    - Unless list is only videos. Then regular media information overlay is shown
  *    - Video shall only play as grid
  *    - Classic plays only audio
  */
@@ -24,7 +24,7 @@
   :hover doesn't work great on touch devices. To work around this we have
   UIHiderController for hiding UI when "not hovering" on mobile.
   Thus, do not use :hover in this file without prefixing with
-  :not(.touchy-device) (which disables hover rules for touch devies!)
+  :not(.touchy-device) (which disables hover rules for touch devices!)
 */
 
 .gridify-wrapper {
@@ -48,14 +48,15 @@ main.gridify-wrapper {
   overflow: hidden;
   position: absolute;
   top: 0;
+  margin: 0;
+}
+
+.gridify-wrapper .cover-art {
+  border: none;
 }
 
 .gridify-wrapper .right-compartment {
   z-index: 1;
-}
-
-.imagery-holder--video {
-  background-color: black;
 }
 
 .gridify-wrapper .classic-header {
@@ -63,6 +64,11 @@ main.gridify-wrapper {
   width: 100vw;
   height: 100vh;
   position: relative;
+  color: var(--white);
+}
+
+.gridify-wrapper.media-is-playing .player tidal-play-trigger {
+  background-color: var(--fill-30);
 }
 
 .gridify-wrapper .classic-header .media-information {
@@ -79,11 +85,11 @@ main.gridify-wrapper {
   }
 
   & .media-artist {
-    color: white;
+    color: var(--opacity-contrast-fill-thick);
   }
 }
 
-/* Collectiions has 3 rows á 16px! */
+/* Collections has 3 rows á 16px! */
 .gridify-wrapper .media-type--is-collection .classic-header .media-information {
   min-height: 64px;
 }
@@ -107,11 +113,11 @@ main.gridify-wrapper {
   padding: 0;
   max-width: none;
   width: auto;
-  max-height: 92px;
 }
 
 .gridify-wrapper .top-right-icons {
   z-index: 3;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .ui-hide-cleaning-victim {
@@ -121,36 +127,37 @@ main.gridify-wrapper {
 }
 
 .gridify-wrapper {
-  & .imagery-holder {
-    opacity: 0.7;
-  }
-
-  &:hover .imagery-holder,
-  &.touchy-device .imagery-holder {
-    opacity: 0.5;
-  }
-
-  &.showing-finished-dialog .imagery-holder,
-  &.media-is-playing .imagery-holder,
-  &.media-is-playing.ui-hider--hidden-controls .imagery-holder {
+  & .imagery-holder::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 33.65%, #000 100%);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
     opacity: 1;
+    transition: var(--simple-opacity-transition);
+  }
+
+  &:hover .imagery-holder::after,
+  &.touchy-device .imagery-holder::after {
+    opacity: 1;
+  }
+
+  &.showing-finished-dialog .imagery-holder::after,
+  &.media-is-playing.ui-hider--hidden-controls .imagery-holder::after {
+    opacity: 0;
   }
 }
 
 .gridify-wrapper.embed-player.media-is-playing {
   &.ui-hider--hidden-controls.fullscreen-active .ui-hide-cleaning-victim,
   &:not(.touchy-device, :hover, :focus-within) .ui-hide-cleaning-victim,
-  &.ui-hider--hidden-controls.touchy-device .ui-hide-cleaning-victim {
+  &.ui-hider--hidden-controls.touchy-device .ui-hide-cleaning-victim,
+  &:not(.touchy-device, :hover, :focus-within) .imagery-holder::after {
     opacity: 0;
     pointer-events: auto;
-  }
-}
-
-.gridify-wrapper.initial-state-before-playing {
-  & tidal-current-time,
-  & tidal-duration-time {
-    opacity: 0;
-    pointer-events: 0;
   }
 }
 
@@ -172,37 +179,6 @@ main.gridify-wrapper {
   .embed-media-type--is-collection--only-videos:not(.layout-option-grid-forced, .fullscreen-active) .classic-header,
   .embed-media-type--is-collection--only-videos:not(.layout-option-grid-forced, .fullscreen-active) .left-compartment {
     max-height: 56.25vw;
-  }
-}
-
-.gridify-wrapper.embed-media-type--videos.initial-state-before-playing {
-  & .player tidal-play-trigger {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 25vh;
-    height: 25vh;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-
-    & span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    & svg {
-      width: 50%;
-      height: 50%;
-      margin-left: 7%;
-    }
-  }
-
-  & .player {
-    height: 0;
   }
 }
 
@@ -237,6 +213,8 @@ main.gridify-wrapper {
     top: 0;
     max-height: 100vh;
     width: calc(100vw - calc(var(--img-max) * 1.77));
+    position: absolute;
+    right: 0;
 
     .initial-state-before-playing & {
       top: 0;
@@ -249,11 +227,10 @@ main.gridify-wrapper {
 
 @media (width >= 600px) and (height <= 310px) {
   .media-type--is-collection.gridify .right-compartment {
-    max-height: 96px;
+    max-height: 120px;
     width: calc(177.777vh - 32px);
 
     .initial-state-before-playing & {
-      max-height: 80px;
       transition: max-height 134ms ease;
     }
   }

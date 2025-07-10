@@ -32,7 +32,7 @@ export default {
   },
 
   /**
-   * @returns {('playlists' | 'videos' | 'tracks' | 'albums'|'mix')}
+   * @returns {('playlists' | 'videos' | 'tracks' | 'albums' | 'mix' | 'upload')}
    */
   get itemType() {
     const type = document.location.pathname.split('/')[1];
@@ -42,7 +42,8 @@ export default {
       type === 'tracks' ||
       type === 'mix' ||
       type === 'albums' ||
-      type === 'playlists'
+      type === 'playlists' ||
+      type === 'upload'
     ) {
       return type;
     }

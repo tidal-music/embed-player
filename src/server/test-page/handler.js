@@ -18,8 +18,6 @@ function getRandomTrackID() {
   const dankIds = [
     1766030, // Crazy in Love - Beyoncé, JAY-Z
     264898197, // Ecstasy of Soul
-    41341380, // Svenska liljor
-    115388596, // Fox Sevenson - Use Me
     121938135, // Ludwig Göransson - The Mandalorian
     267449398, // Hooja Älven
     32033408, // Muminpappan och havet
@@ -32,9 +30,8 @@ function getRandomVideoID() {
   const dankIds = [
     71196108, // dafty punky feely coming
     80124794, // MGMT
-    25708315, // sofi needs a ladder
+    348988463,
     64065078, // darling darling
-    25501214, // every time we touch
     26136887, // Crazy In Love - Beyoncé, JAY-Z
     64575017, // It Must Have Been Love - Roxette
     26196180, // All I wan't for chistmas is you - Mariah Carey (4:3 aspect)
@@ -55,7 +52,6 @@ function getRandomMixID() {
 
 function getRandomAlbumID() {
   const dankIds = [
-    159932869, // Iron Maiden - Nights of the Dead (Master)
     68638834, // Green Day - American Idiot (Master with some explicit tracks)
     1550545, // Discovery - Daft Punk
     160581228, // Olafur Arnalds - some kind of peace (Master)
@@ -72,9 +68,9 @@ function getRandomAlbumID() {
 
 function getRandomVideoPlaylistID() {
   const dankIds = [
-    '5cc2bcc5-13a6-4aec-bf36-f3c92477d4fd', // List with different aspect ratios: 12:5, 4:3, 16:9
-    'fea24939-0b4d-4024-b835-590dd0a2f974',
-    '962ed0d5-bf72-49f1-825e-e6a7e8938b02',
+    '90f29031-4b86-459d-a22b-c438cee75435',
+    '2e763788-b816-4011-a0c6-7cd9f08e5e6c',
+    '5ebe3635-f2ad-4382-9d41-53d15548a5a0',
   ];
 
   return dankIds[Math.floor(Math.random() * dankIds.length)];
@@ -105,15 +101,85 @@ export const generateHTML = queryParameters => {
     <article>
       <details>
         <summary>
+          <h2>Default sizes</h2>
+        </summary>
+
+        <h5 id="default-example-1">Track - 500x120</h5>
+        <iframe
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
+          loading="lazy"
+          width="500"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+
+        <h5 id="default-example-2">Album - 500x275</h5>
+        <iframe
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}"
+          loading="lazy"
+          width="500"
+          height="275"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+
+        <h5 id="default-example-3">Playlist - 500x275</h5>
+        <iframe
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}"
+          loading="lazy"
+          width="500"
+          height="275"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+
+        <h5 id="default-example-4">Video - 500x328</h5>
+        <iframe
+          src="${embedBaseUrl}/videos/${getRandomVideoID()}"
+          loading="lazy"
+          width="500"
+          height="328"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+
+        <h5 id="default-example-5">Mix - 500x275</h5>
+        <iframe
+          src="${embedBaseUrl}/mix/${getRandomMixID()}"
+          loading="lazy"
+          width="500"
+          height="275"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+
+        <h5 id="default-example-6">Upload - 500x120</h5>
+        <iframe
+          src="${embedBaseUrl}/upload/a8932cb2-c4cb-4a45-ba80-069a71ae3cbe"
+          loading="lazy"
+          width="500"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+      </details>
+    </article>
+
+    <article>
+      <details>
+        <summary>
           <h2>Albums</h2>
         </summary>
 
-        <h5 id="album-example-1">Album Classic - 444x96</h5>
+        <h5 id="album-example-1">Album Classic - 444x120</h5>
         <iframe
           src="${embedBaseUrl}/albums/${getRandomAlbumID()}"
           loading="lazy"
           width="444"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="album-example-2">Album Grid - 360x360</h5>
@@ -122,6 +188,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="album-example-3">Album Classic - 360x360</h5>
@@ -130,6 +198,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="album-example-4">Album Classic with list - 600x700</h5>
@@ -138,6 +208,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="album-example-5">Album with list - 800x300</h5>
@@ -146,14 +218,18 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
-        <h5 id="album-example-5">Album with list - 800x300 (w explicits)</h5>
+        <h5 id="album-example-6">Album with list - 800x300 (w explicits)</h5>
         <iframe
-          src="${embedBaseUrl}/albums/77708040"
+          src="${embedBaseUrl}/albums/177723939"
           loading="lazy"
           width="850"
           height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="album-example-7">Cover slide to classic + list below</h5>
@@ -162,32 +238,38 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
-        <h5 id="album-example-4">
+        <h5 id="album-example-8">
           Album Classic with list - 600x700 - Many artists
         </h5>
         <iframe
-          src="${embedBaseUrl}/albums/76990540?coverInitially=true"
+          src="${embedBaseUrl}/albums/353983134?coverInitially=true"
           loading="lazy"
           width="600"
           height="700"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>
 
-    <article>
+    <article style="background-color: antiquewhite;">
       <details>
         <summary>
           <h2>Tracks</h2>
         </summary>
 
-        <h5 id="track-example-1">Track Classic - 348x96</h5>
+        <h5 id="track-example-1">Track Classic - 348x120</h5>
         <iframe
           src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
           loading="lazy"
           width="348"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="track-example-2">Track Classic - 400x96</h5>
@@ -196,22 +278,30 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="400"
           height="96"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
-        <h5 id="track-example-3">Track Classic - 500x120</h5>
+        <h5 id="track-example-3">Track Classic - 500x120 (force light mode)</h5>
         <iframe
           src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
+          style="color-scheme: light;"
           loading="lazy"
           width="500"
           height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
-        <h5 id="track-example-4">Track Classic - 600x120</h5>
+        <h5 id="track-example-4">Track Classic - 600x120 (force dark mode)</h5>
         <iframe
           src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
+          style="color-scheme: dark;"
           loading="lazy"
           width="600"
           height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="track-example-5">Track Grid - 200x200</h5>
@@ -220,6 +310,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="200"
           height="200"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="track-example-6">Track Grid - 350x350</h5>
@@ -228,6 +320,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="350"
           height="350"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="track-example-7">Track Grid - 550x550</h5>
@@ -236,6 +330,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="550"
           height="550"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>
@@ -243,7 +339,7 @@ export const generateHTML = queryParameters => {
     <article>
       <details>
         <summary>
-          <h2>On-Demand Videos</h2>
+          <h2>Videos</h2>
         </summary>
 
         <h5 id="video-example-1">Video small - 500x282</h5>
@@ -252,6 +348,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="video-example-3">Video big - 720x406</h5>
@@ -260,58 +358,23 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="720"
           height="406"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
-        <h5 id="video-exlusive-badge-example">Video Exlusive Badge Example</h5>
+        <h5 id="video-exclusive-badge-example">
+          Video Exclusive Badge Example
+        </h5>
         <iframe
           src="${embedBaseUrl}/videos/90570909"
           loading="lazy"
           width="720"
           height="406"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
-
-        <h5 id="video-live-example-one">Video Live VOD Replace</h5>
-        <iframe
-          src="${embedBaseUrl}/videos/93295618"
-          loading="lazy"
-          width="720"
-          height="406"
-        ></iframe>
-
-        <!--
-      <h5 id="video-vod-preroll-time-limit-example">Video - On-demand with preroll and time limit</h5>
-      <iframe src="${embedBaseUrl}/videos/91324976" loading="lazy" width="720" height="406"></iframe>
-
-
-      <h5 id="video-live-preroll">Video - Live with preroll</h5>
-      <iframe src="${embedBaseUrl}/videos/70419832" loading="lazy" width="720" height="406"></iframe>
-      -->
       </details>
     </article>
-
-    <!--
-  <article>
-    <details>
-      <summary>
-        <h2>Live videos</h2>
-      </summary>
-
-      <h5 id="video-vod-preroll-time-limit-example">TIDAL Channel</h5>
-      <iframe src="${embedBaseUrl}/videos/140146556" loading="lazy" width="500" height="282"></iframe>
-
-      <h5 id="live-video-example-1">Full</h5>
-      <iframe src="${embedBaseUrl}/videos/174102050" loading="lazy" width="500" height="282"></iframe>
-
-      <h5 id="live-video-example-1">Full, with pre-roll</h5>
-      <iframe src="${embedBaseUrl}/videos/173649967" loading="lazy" width="500" height="282"></iframe>
-
-      <h5 id="live-video-example-1">30s preview</h5>
-      <iframe src="${embedBaseUrl}/videos/173650011" loading="lazy" width="500" height="282"></iframe>
-
-      <h5 id="live-video-example-1">30s preview, with preroll</h5>
-      <iframe src="${embedBaseUrl}/videos/173649985" loading="lazy" width="500" height="282"></iframe>
-  </article>
-  -->
 
     <article>
       <details>
@@ -319,12 +382,14 @@ export const generateHTML = queryParameters => {
           <h2>Playlists</h2>
         </summary>
 
-        <h5 id="playlist-example-1">Classic - 444x96</h5>
+        <h5 id="playlist-example-1">Classic - 444x120</h5>
         <iframe
           src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}"
           loading="lazy"
           width="444"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-2">Grid - 360x360</h5>
@@ -333,6 +398,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-3">Classic - 700x600 - List below</h5>
@@ -341,6 +408,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="700"
           height="600"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-4">Classic - 850x300 - List on side</h5>
@@ -349,6 +418,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Video only playlists</h4>
@@ -364,6 +435,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="800"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-6">800x600 - List below - With thumbnails</h5>
@@ -372,6 +445,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="800"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-8">850x300 - List on side</h5>
@@ -380,6 +455,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-7">
@@ -390,6 +467,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-10">Grid - 500x282</h5>
@@ -398,6 +477,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-12">600x800 - List below</h5>
@@ -406,6 +487,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="800"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Mixed playlists</h4>
@@ -414,34 +497,42 @@ export const generateHTML = queryParameters => {
 
         <h5 id="playlist-example-14">600x800 - List below</h5>
         <iframe
-          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
+          src="${embedBaseUrl}/playlists/c3c18106-c4f5-4021-bb18-108255c1f450"
           loading="lazy"
           width="600"
           height="800"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-15">800x350 - List side</h5>
         <iframe
-          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
+          src="${embedBaseUrl}/playlists/c3c18106-c4f5-4021-bb18-108255c1f450"
           loading="lazy"
           width="850"
           height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="playlist-example-16">Grid - 360x360</h5>
         <iframe
-          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee?layout=gridify"
+          src="${embedBaseUrl}/playlists/c3c18106-c4f5-4021-bb18-108255c1f450?layout=gridify"
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
-        <h5 id="album-example-7">Cover slide to classic + list below</h5>
+        <h5 id="playlist-example-17">Cover slide to classic + list below</h5>
         <iframe
           src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?coverInitially=true"
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Square playlist edge cases</h4>
@@ -452,14 +543,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="850"
           height="300"
-        ></iframe>
-
-        <h5>Old user playlist image</h5>
-        <iframe
-          src="${embedBaseUrl}/playlists/a0862cec-07f0-4531-9842-19e2434623ee"
-          loading="lazy"
-          width="850"
-          height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>
@@ -470,12 +555,14 @@ export const generateHTML = queryParameters => {
           <h2>Mixes</h2>
         </summary>
 
-        <h5 id="mix-example-1">Mix Classic - 444x96</h5>
+        <h5 id="mix-example-1">Mix Classic - 444x120</h5>
         <iframe
           src="${embedBaseUrl}/mix/${getRandomMixID()}"
           loading="lazy"
           width="444"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="mix-example-2">Mix Grid - 360x360</h5>
@@ -484,6 +571,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="mix-example-3">Mix Classic - 360x360</h5>
@@ -492,6 +581,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="mix-example-4">Mix Classic with list - 600x700</h5>
@@ -500,6 +591,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="mix-example-5">Mix with list - 800x300</h5>
@@ -508,6 +601,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="800"
           height="300"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="mix-example-7">Cover slide to classic + list below</h5>
@@ -516,6 +611,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="360"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>
@@ -531,15 +628,19 @@ export const generateHTML = queryParameters => {
           src="${embedBaseUrl}/tracks/106750510"
           loading="lazy"
           width="400"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="track-example-6">Track Grid</h5>
         <iframe
-          src="${embedBaseUrl}/tracks/119986218?layout=gridify"
+          src="${embedBaseUrl}/tracks/573301?layout=gridify"
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-video">Video Grid</h5>
@@ -548,14 +649,18 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="album-example-1">Album Classic</h5>
         <iframe
-          src="${embedBaseUrl}/albums/202466232"
+          src="${embedBaseUrl}/albums/166631639"
           loading="lazy"
           width="444"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-album">Album Grid</h5>
@@ -564,6 +669,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-track">Track Grid (cleanInitially)</h5>
@@ -572,6 +679,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-video">Video Grid (cleanInitially)</h5>
@@ -580,6 +689,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-album">Album Grid (cleanInitially)</h5>
@@ -588,6 +699,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>
@@ -602,10 +715,12 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-track">Track Grid</h5>
         <iframe
-          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/tracks/${getRandomTrackID()}?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-video">Video Grid</h5>
@@ -614,22 +729,28 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-album">Album Grid</h5>
         <iframe
-          src="${embedBaseUrl}/albums/${getRandomAlbumID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/albums/${getRandomAlbumID()}?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h5 id="clean-example-playlist">Playlist Grid</h5>
         <iframe
-          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?cleanInitially=true&layout=gridifty"
+          src="${embedBaseUrl}/playlists/${getRandomPlaylistID()}?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>
@@ -645,7 +766,9 @@ export const generateHTML = queryParameters => {
           src="${embedBaseUrl}/tracks/${getRandomTrackID()}?sendMediaEvents=true"
           loading="lazy"
           width="348"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Track - toggle playback via command</h4>
@@ -654,7 +777,9 @@ export const generateHTML = queryParameters => {
             src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
             loading="lazy"
             width="348"
-            height="96"
+            height="120"
+            allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
           ></iframe>
         </div>
         <button id="trigger-play-button">Play</button>
@@ -666,6 +791,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>
@@ -681,7 +808,9 @@ export const generateHTML = queryParameters => {
           src="${embedBaseUrl}/tracks/4981787465393"
           loading="lazy"
           width="348"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Video error</h4>
@@ -690,6 +819,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="500"
           height="282"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Album error - Not found</h4>
@@ -697,7 +828,9 @@ export const generateHTML = queryParameters => {
           src="${embedBaseUrl}/albums/4981793"
           loading="lazy"
           width="444"
-          height="96"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Playlist error - Not found</h4>
@@ -706,6 +839,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="540"
           height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Collection error - All tracks unstreamable</h4>
@@ -714,12 +849,16 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
         <iframe
           src="${embedBaseUrl}/playlists/d7be72b1-a80c-4c02-b786-ceebceb28952"
           loading="lazy"
           width="600"
           height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>Collection error - Some tracks unstreamable</h4>
@@ -728,12 +867,16 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
         <iframe
           src="${embedBaseUrl}/playlists/bfd5fc87-584b-41d0-862b-897a09412a75"
           loading="lazy"
           width="600"
           height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
         <h4>No image - should show fallback image</h4>
@@ -742,6 +885,8 @@ export const generateHTML = queryParameters => {
           loading="lazy"
           width="600"
           height="700"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
       </details>
     </article>

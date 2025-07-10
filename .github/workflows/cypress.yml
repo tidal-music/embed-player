@@ -25,22 +25,16 @@ concurrency:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - name: Set up Cypress binary cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/Cypress
-          key: ${{ runner.os }}-cypress-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
           EMBED_API_TOKEN: ${{ secrets.EMBED_API_TOKEN }}
         with:
-          install: false
           browser: chrome
           build: pnpm gh-action:build
           start: pnpm gh-action:start

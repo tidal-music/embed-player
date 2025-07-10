@@ -1,16 +1,22 @@
 :root {
   --white: #fff;
   --black: #000;
-  --grey3: #b5b4ba; /* Bombay */
-  --grey4: #78777f; /* Jumbo */
-  --grey5: #504f54; /* Scarpa Flow */
-  --grey6: #242428; /* Shark */
-  --grey7: #101012; /* Woodsmoke */
-  --cyan: #0ff; /* Cyan / Aqua */
-  --simple-opacity-transition: opacity 150ms ease;
+  --simple-opacity-transition: opacity 300ms ease;
   --animation-timing: cubic-bezier(0.19, 1, 0.22, 1);
 
   /* Possible widths for cover art image. Multiply by 1.5 for video width */
-  --img1: 96px;
+  --img1: 88px;
   --img-max: 375px;
+
+
+  /* design tokens 2025: */
+  --text-20: rgba(255, 255, 255, 0.55);
+  --fill-30: rgba(255, 255, 255, 0.15);
+  --opacity-contrast-fill-thick: rgba(255, 255, 255, 0.60);
+  --opacity-contrast-fill-thin: rgba(255, 255, 255, 0.20);
+  --utilities-shadow-no-dark-mode-shadow-10: rgba(0, 0, 0, 0.10);
+  --emphasis-20: #737373;
+  --emphasis-10: #B2B2B2;
+  --surface-20: #1C1C1C;
+  --grays-pure-white: #FCFCFC;
 }

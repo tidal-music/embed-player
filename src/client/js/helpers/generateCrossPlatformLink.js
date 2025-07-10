@@ -9,5 +9,5 @@ import singularType from './singularType.js';
 export default function generateCrossPlatformLink(type, id) {
   type = singularType(type);
 
-  return `https://listen.tidal.com/${type}/${id}`;
+  return `https://tidal.com/${type}/${id}`;
 }

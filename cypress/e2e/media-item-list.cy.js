@@ -1,12 +1,12 @@
 import {
-  bootIntoClassicTrack,
   bootIntoClassicAlbum,
   bootIntoClassicPlaylist,
-  bootIntoGridTrack,
+  bootIntoClassicTrack,
   bootIntoGridAlbum,
   bootIntoGridPlaylist,
+  bootIntoGridTrack,
   bootIntoVideo,
-  clickPlayPauseButton
+  clickPlayPauseButton,
 } from './helpers.js';
 
 describe('Media item list', () => {
@@ -34,7 +34,7 @@ describe('Media item list', () => {
     });
   });
 
-  describe('classic album, 96px high', () => {
+  describe('classic album, 120px high', () => {
     it('should have media item list in DOM', () => {
       bootIntoClassicAlbum();
 
@@ -65,7 +65,7 @@ describe('Media item list', () => {
   describe('grid album - coverInitially=true', () => {
     it('should have media item list in DOM', () => {
       bootIntoGridAlbum({
-        coverInitially: true
+        coverInitially: true,
       });
 
       cy.get('media-item-list').should('exist');
@@ -73,7 +73,7 @@ describe('Media item list', () => {
 
     it('should not show media item list', () => {
       bootIntoGridAlbum({
-        coverInitially: true
+        coverInitially: true,
       });
 
       cy.get('media-item-list').should('not.be.visible');
@@ -81,7 +81,7 @@ describe('Media item list', () => {
 
     it('should show media item list after playback has been triggered', () => {
       bootIntoGridAlbum({
-        coverInitially: true
+        coverInitially: true,
       });
 
       cy.get('media-item-list').should('not.be.visible');
@@ -90,7 +90,7 @@ describe('Media item list', () => {
     });
   });
 
-  describe('classic playlist, 96px high', () => {
+  describe('classic playlist, 120px high', () => {
     it('should have media item list in DOM', () => {
       bootIntoClassicPlaylist();
 

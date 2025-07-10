@@ -8,9 +8,7 @@ import DOMRefs from './dom-refs.js';
 import { $, $$ } from './fake-query.js';
 import {
   domainAllowedToCleanUI,
-  embedIsLivestream,
   embedIsType,
-  generateExternalLinkText,
   getTidalMediaFromURL,
   isOnMobileWithTouchScreen,
 } from './helpers/index.js';
@@ -74,6 +72,7 @@ function assignMediaProductToPlayTriggers({ id, type }) {
  * of the media information element to that artist.
  */
 function updateCurrentMediaArtistInDOM() {
+  /* noop for now, as we want to keep the artist/creator of the collection
   const artistSlot =
     DOMRefs.mediaItemList?.currentItem?.querySelector('[slot="artist"]');
 
@@ -101,7 +100,7 @@ function updateCurrentMediaArtistInDOM() {
 
       const artists = [...artistSlot.querySelectorAll('a')].reduce(
         (frag, a) => {
-          const anchor = /** @type {HTMLAnchorElement} */ (a.cloneNode(true));
+          const anchor = /** @type {HTMLAnchorElement} * / (a.cloneNode(true));
 
           anchor.classList.add('dynamic-artist');
           frag.appendChild(anchor);
@@ -113,7 +112,7 @@ function updateCurrentMediaArtistInDOM() {
 
       classicHeaderArtist.appendChild(artists);
     }
-  }
+  }*/
 }
 
 function updateCurrentMediaTitleInDOM({ tidalMedia, title }) {
@@ -211,30 +210,9 @@ function mediaItemListItemClick(element) {
   }
 }
 
-/**
- * Goes through the DOM to find all .external-link and
- * fills their string in correctly and adds a click handler
- * for tracking usage via GA.
- */
-function updateExternalLinks() {
-  const type = URLOptions.itemType;
-  const livestream = embedIsLivestream();
-  const textForLink = generateExternalLinkText({ livestream, type });
-
-  const externalLinks = $$('.external-link');
-
-  if (externalLinks) {
-    for (const link of externalLinks) {
-      link.innerHTML = textForLink;
-    }
-  }
-}
-
 function handleClickOnExternalLinks() {
-  // Google Analytics is disabled for now
-  // triggerGAEvent('click_visit_tidal');
   if (currentState === 'PLAYING') {
-    // @ts-expect-error - Click existss
+    // @ts-expect-error - Click exists
     DOMRefs.playPauseButton?.click();
   }
 }
@@ -263,9 +241,9 @@ function registerExternalLinkClickHandlers() {
 /**
  * There are cases where an iframe does not allow fullscreen.
  * This adds a class to embedWrapper if we can fullscreen, and also
- * loads the screenfull libarary.
+ * loads the screenfull library.
  *
- * If not; the abscense of this class will hide the fullscreen button.
+ * If not; the absence of this class will hide the fullscreen button.
  */
 async function checkIfFullscreenEnabled() {
   if (uiHideController.fullscreenEnabled()) {
@@ -316,14 +294,16 @@ function triggerCustomShareIntent(variant) {
 
           setTimeout(() => {
             DOMRefs.shareDialog?.classList.remove('copy--successful');
-          }, 2000);
+            DialogController.close('share');
+          }, 1000);
         })
-        .catch(() => {
+        .catch(err => {
+          console.error('Failed to copy text to clipboard:', err);
           DOMRefs.shareDialog?.classList.add('copy--failed');
 
           setTimeout(() => {
             DOMRefs.shareDialog?.classList.remove('copy--failed');
-          }, 2000);
+          }, 5000);
         });
       break;
     case 'twitter':
@@ -379,6 +359,13 @@ async function updateMediaSession(mediaProduct) {
     headers,
   });
   const json = await response.json();
+
+  if ('status' in json && json.status === 404) {
+    return console.error(
+      `Media product with ID ${mediaProduct.productId} not found.`,
+    );
+    // TODO: Probably upload, should handle that with the data already loaded as this API call will fail.
+  }
 
   const resourceId = json.album?.cover ?? undefined;
 
@@ -489,7 +476,7 @@ function registerEventListeners() {
     );
   }
 
-  $('.open-share-dialog')?.addEventListener(
+  $('.more-button')?.addEventListener(
     'click',
     () => shareController.triggerShare(),
     false,
@@ -917,7 +904,6 @@ function runNostrInterval() {
 document.addEventListener('DOMContentLoaded', () => {
   checkIfFullscreenEnabled();
   registerEventListeners();
-  updateExternalLinks();
   registerExternalLinkClickHandlers();
   enforceVideoPlaylistGrid();
   runNostrInterval();

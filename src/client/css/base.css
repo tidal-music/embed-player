@@ -19,6 +19,10 @@ body {
   opacity: 1;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Hide native cast button */
 tidal-video-view video::-internal-media-controls-overlay-cast-button {
   display: none;
@@ -41,9 +45,10 @@ button {
   padding: 0;
   cursor: pointer;
   outline: none;
+  color: inherit;
 
-  &:focus {
-    outline: thin dotted var(--cyan);
+  &:focus-visible {
+    outline: thin dotted light-dark(var(--black), var(--white));
   }
 }
 
@@ -78,9 +83,11 @@ a[href*="/artist/"] + a[href*="/artist/"]::before {
   background-position: 50% 50%;
 }
 
-h1.media-title {
+h1.media-title,
+h1.media-album {
   font-size: 1rem;
   margin: 0;
+  line-height: 1.5;
 }
 
 .floating-explicit-badge {
@@ -95,13 +102,6 @@ h1.media-title {
 
 .tidal-hide .floating-explicit-badge {
   display: block;
-}
-
-.media-information > header svg {
-  height: 1em;
-  margin-left: 0.3em;
-  flex-shrink: 0;
-  width: 52px;
 }
 
 .media-information > header {
@@ -190,8 +190,7 @@ media-item-list {
 }
 
 tidal-progress-bar {
-  color: var(--cyan);
-  background-color: var(--grey4);
+  background-color: light-dark(var(--utilities-shadow-no-dark-mode-shadow-10), transparent);
   height: 4px;
   flex: 1;
   overflow: hidden;
@@ -200,16 +199,11 @@ tidal-progress-bar {
   border-radius: 6px;
 
   .initial-state-before-playing & {
-    color: var(--grey4);
+    color: transparent;
   }
 
-  &:focus {
-    outline: thin dotted var(--cyan);
-  }
-
-  .initial-state-before-playing.gridify-wrapper & {
-    opacity: 0;
-    pointer-events: 0;
+  &:focus-visible {
+    outline: thin dotted var(--white);
   }
 }
 
@@ -218,52 +212,64 @@ tidal-progress-bar {
   display: none;
   pointer-events: none;
   touch-action: none;
-  width: 14px;
-  height: 14px;
+  width: 24px;
+  height: 24px;
+  margin-left: 0;
+  padding: 6px;
 
   & svg {
     pointer-events: none;
-  }
-
-  &.toggle-fullscreen {
-    max-width: 0;
-    opacity: 0;
-    transition: max-width 150ms ease, var(--simple-opacity-transition);
   }
 }
 
 .player tidal-play-trigger {
   display: block;
   pointer-events: auto;
-  width: 14px;
-  height: 14px;
+  width: 36px;
+  height: 36px;
+  background-color: var(--white);
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+
+  /* Elevation/20 */
+  box-shadow: 0 4px 8px 0 var(--utilities-shadow-no-dark-mode-shadow-10), 0 2px 16px 0 var(--utilities-shadow-no-dark-mode-shadow-10);
 
   & svg {
     pointer-events: none;
+    color: var(--black);
   }
 }
 
-/* stylelint-disable max-line-length */
-.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing):hover .player button.toggle-fullscreen,
-.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing).touchy-device .player button.toggle-fullscreen,
-.embed-media-type--videos.fullscreen-enabled:not(.initial-state-before-playing):hover .player button.toggle-fullscreen {
-  display: block;
+.media-is-playing .player tidal-play-trigger {
+  background-color: light-dark(var(--emphasis-10), var(--fill-30));
+
+  & svg {
+    color: var(--white)
+  }
+}
+
+.player .more-button {
+  display: flex;
+  width: 24px;
+  height: 24px;
   pointer-events: auto;
-  max-width: 14px;
-  margin-left: 6px;
-  opacity: 1;
+  padding: 0;
+}
+
+/* stylelint-disable max-line-length */
+.embed-media-type--is-collection--only-videos.fullscreen-enabled:not(.initial-state-before-playing) .player button.toggle-fullscreen,
+.embed-media-type--videos.fullscreen-enabled:not(.initial-state-before-playing) .player button.toggle-fullscreen {
+  display: flex;
+  pointer-events: auto;
 }
 /* stylelint-enable max-line-length */
 
-/* Player buttons to hide when not hovering */
 .media-type--is-collection .player .previous-track,
 .media-type--is-collection .player .next-track {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 0;
-  opacity: 0;
-  margin-left: -0.5em;
   transition: width 150ms ease, var(--simple-opacity-transition);
 
   &:disabled {
@@ -279,18 +285,14 @@ tidal-progress-bar {
   &:not(.touchy-device):hover .media-type--is-collection .player button,
   &:not(.touchy-device):focus-within .media-type--is-collection .player button,
   &.touchy-device .media-type--is-collection .player button {
-    width: 14px;
-    height: 14px;
-    margin-left: 0;
+    width: 24px;
     opacity: 1;
-    color: white;
     pointer-events: auto;
   }
 }
 
 .player .toggle-fullscreen .fullscreen-icon {
   display: none;
-  color: #fff;
   width: 14px;
   height: 14px;
 
@@ -314,15 +316,15 @@ tidal-progress-bar {
 .top-right-icons {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 16px;
   margin: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 30px;
-  color: white;
+  width: 69px;
+  color: light-dark(var(--emphasis-20), rgba(255, 255, 255, 0.7));
 
   .embed-player.tidal-hide & {
     display: none;
@@ -338,36 +340,31 @@ tidal-progress-bar {
   margin-left: 30px;
 }
 
-.open-share-dialog {
-  color: white;
-
-  & svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.open-share-dialog,
 .tidal-logo {
   transition: var(--simple-opacity-transition);
-}
-
-.open-share-dialog {
-  opacity: 0;
 }
 
 .tidal-logo {
   opacity: 1;
 
-  &:focus {
-    outline: thin dotted var(--cyan);
+  &:focus-visible {
+    outline: thin dotted light-dark(var(--black), var(--white));
+  }
+
+  & svg {
+    width: 69px;
+    height: 9px;
   }
 }
 
 .embed-player {
-  &:not(.touchy-device):hover .open-share-dialog,
-  &:not(.touchy-device):focus-within .open-share-dialog,
-  &.touchy-device .open-share-dialog,
+  /**
+   * Light/Dark mode support
+   * Use light-dark() function to get colors based on the current theme.
+   * Example: color: light-dark(black, white);
+   */
+  color-scheme: light dark;
+
   &.tidal-hide {
     opacity: 1;
   }
@@ -378,6 +375,9 @@ tidal-progress-bar {
   flex-flow: column nowrap;
   height: 100vh;
   overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  position: relative;
 }
 
 .layout-type-wrapper .media-item-list {
@@ -406,41 +406,10 @@ tidal-progress-bar {
   background-color: #ffb800;
 }
 
-media-item-list + .external-link {
-  display: flex;
-  background-color: var(--black);
-  transition: background-color 150ms ease;
-  text-decoration: none;
-  color: white;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  font-size: 12px;
-  flex: none;
-
-  &:active {
-    background-color: var(--grey7);
-  }
-
-  &:hover {
-    background-color: var(--grey6);
-  }
-
-  &:focus {
-    background-color: var(--grey6);
-    text-decoration: underline;
-    outline: none;
-  }
-
-  .media-is-playing & {
-    background-color: var(--grey6);
-  }
-
-  & svg {
-    height: 14px;
-    margin-right: 8px;
-    max-width: 16px;
-  }
+media-item-list {
+  background-color: light-dark(var(--white), var(--black));
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 *::-webkit-scrollbar {
@@ -448,16 +417,55 @@ media-item-list + .external-link {
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--black);
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--grey4);
+  background: light-dark(var(--emphasis-10), var(--fill-30));
   border-radius: 4px;
+}
+
+.progress-bar-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  margin-right: 20px;
 }
 
 tidal-current-time,
 tidal-duration-time {
   text-rendering: geometricprecision;
   font-variant-numeric: tabular-nums;
+  font-size: 8px;
+  color: light-dark(var(--emphasis-10), var(--text-20));
+  font-weight: 700;
+  letter-spacing: 0.96px;
+  position: absolute;
+  bottom: -16px;
+}
+
+tidal-duration-time {
+  right: 0;
+}
+
+.badge {
+  display: inline-flex;
+  height: 16px;
+  color: var(--black);
+  margin-left: 0.3em;
+  flex-shrink: 0;
+  width: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge.upload {
+  border-radius: 4px;
+  border: 1px solid light-dark(rgba(0, 0, 0, 0.10), var(--opacity-contrast-fill-thin));
+  color: light-dark(var(--black), var(--white));
+
+  svg {
+    width: 8px;
+    height: 10px;
+  }
 }

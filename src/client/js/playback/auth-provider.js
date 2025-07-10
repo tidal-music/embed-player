@@ -52,6 +52,17 @@ class NostrCredentialsProvider {
     try {
       let accessToken = nostrAuthProvider.getAccessToken();
       let userId = nostrAuthProvider.getUserId();
+      const oneMinute = 60 * 1000;
+
+      // Validate access token expiry time
+      if (accessToken) {
+        const expiryTimeMS =
+          JSON.parse(atob(accessToken.split('.')[1])).exp * 1000;
+        // If the token is about to expire in less than one minute, renew it
+        if (expiryTimeMS < Date.now() + oneMinute) {
+          accessToken = null;
+        }
+      }
 
       if (!accessToken) {
         const { accessToken: newAccessToken, userId: newUserId } =

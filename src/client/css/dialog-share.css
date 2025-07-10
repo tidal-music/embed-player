@@ -1,13 +1,12 @@
 .dialog--share[open] .media-information {
   justify-content: flex-end;
   margin-bottom: 8vh;
-  width: calc(100% - 32px); /* Needed for ellipsis */
 
   @media (width <= 250px) {
     margin-top: -24vh;
   }
 
-  @media (height <= 96px) {
+  @media (height <= 120px) {
     display: none;
   }
 }
@@ -21,11 +20,14 @@
   content: "✓";
   position: absolute;
   inset: 0;
-  background-color: var(--cyan);
+  background-color: var(--emphasis-20);
   animation: scale-in 1s var(--animation-timing);
   border-radius: 50%;
-  font-size: 24px;
-  padding-top: 6px;
+  font-size: 14px;
+  height: 20px;
+  width: 20px;
+  margin-left: calc(50% - 10px);
+  top: -2px;
 }
 
 .copy--fail .share-button--link::after {
@@ -57,50 +59,31 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  font-size: 12px;
+  line-height: 1.5;
+  gap: 32px;
+  text-align: center;
 
   @media (width <= 250px) {
     width: 80vw;
   }
 
-  @media (height <= 96px) {
+  @media (height <= 120px) {
     align-items: center;
   }
 }
 
-.share-buttons button svg {
-  width: 100%;
-  height: 100%;
+.share-buttons button svg,
+.share-buttons a svg {
+  width: 16px;
+  height: 16px;
   fill: currentcolor;
+  margin-bottom: 2px;
 }
 
 .share-buttons button {
-  width: 40px;
-  height: 40px;
-  padding: 10px;
-  margin: 0 16px;
-  border-radius: 50%;
-  background-color: white;
-  transition: transform 250ms var(--animation-timing);
-
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  &:active {
-    transform: none;
-  }
-}
-
-.share-button--facebook {
-  color: #3c5a9a;
-}
-
-.share-button--facebook-messenger {
-  color: #0084ff;
-}
-
-.share-button--twitter {
-  color: #1da1f2;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 @keyframes scale-in {

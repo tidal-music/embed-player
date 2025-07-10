@@ -1,9 +1,11 @@
 /* eslint-env node */
+import singularType from '../client/js/helpers/singularType.js';
+
 import { getStaticFileLink } from './static-file-helper.js';
 
 /**
  * Get the SVG string for a specific icon type.
- * @param {('close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'twitter' | 'videoBadge')} type - The type of the icon.
+ * @param {('close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'tidalLongLogo' | 'twitter' | 'videoBadge' | 'upload')} type - The type of the icon.
  * @returns {string} - The SVG string for the icon.
  */
 export function generateSVG(type) {
@@ -21,7 +23,7 @@ const trackJSCode =
     : '';
 
 /**
- * @typedef {('playlists' | 'videos' | 'tracks' | 'albums' | 'mix')} TidalItemType
+ * @typedef {('playlists' | 'videos' | 'tracks' | 'albums' | 'mix' | 'upload')} TidalItemType
  */
 
 /**
@@ -50,11 +52,11 @@ function getPlaylistCreator(creatorObject, playlistType) {
 
   /* eslint default-case: 0 */
   switch (playlistType) {
-    case 'USER':
-    case 'PUBLIC':
-      return 'User';
     case 'EDITORIAL':
       return 'TIDAL';
+    case 'PUBLIC':
+    case 'USER':
+      return 'User';
     case 'ARTIST':
     default:
       return generateArtistString();
@@ -65,7 +67,7 @@ function escapeHTML(string) {
   const entityMap = {
     '"': '&quot;',
     '&': '&amp;',
-    "'": '&#39;', // eslint-disable-line quotes
+    "'": '&#39;',
     '/': '&#x2F;',
     '<': '&lt;',
     '=': '&#x3D;',
@@ -96,6 +98,21 @@ function generateImageSourceAndSourceSetForMix(imageObject) {
   const src = srcset[0];
   const poster = imageObject.LARGE.url;
   const sizes = '100vh';
+
+  return { poster, sizes, src, srcset };
+}
+
+/** * @param {String} imageUrl
+ * * @returns {ImageSet} - Object with src and srcset
+ * */
+function generateImageSourceAndSourceSetForUpload(imageUrl) {
+  const url = imageUrl ?? 'https://tidal.com/assets/cover-1400-BHdJoN8L.jpg'; // Fallback URL if no imageUrl is provided
+  const src = url;
+  const poster = url;
+  const sizes = '100vh';
+
+  // For uploads, we only have one size?
+  const srcset = `${url} 640w`;
 
   return { poster, sizes, src, srcset };
 }
@@ -150,14 +167,14 @@ function artistsArrayToLinks(artists) {
     ? artists
         .map(
           ({ id, name }) =>
-            `<a href="https://listen.tidal.com/artist/${id}" target="_blank">${name}</a>`,
+            `<a href="https://tidal.com/artist/${id}" target="_blank">${name}</a>`,
         )
         .join('')
     : undefined;
 }
 
 /**
- * @typedef {'tracks'|'videos'|'mix'|'albums'|'playlists'} EmbedItemType
+ * @typedef {'tracks'|'videos'|'mix'|'albums'|'playlists'|'upload'} EmbedItemType
  */
 
 /**
@@ -171,6 +188,7 @@ function artistsArrayToLinks(artists) {
  * @prop {ImageSet | undefined} image
  * @prop {string} link
  * @prop {boolean} isExplicit
+ * @prop {boolean} isUpload
  * @prop {number} duration
  */
 
@@ -181,6 +199,7 @@ function artistsArrayToLinks(artists) {
  * @param {Object} json
  * @returns {MediaInformation}
  */
+// eslint-disable-next-line complexity
 function formatEmbedDataItem(itemType, itemId, json) {
   let artist = '';
 
@@ -195,7 +214,11 @@ function formatEmbedDataItem(itemType, itemId, json) {
 
   let imageType;
 
-  let artistLinks = artistsArrayToLinks(json.artists);
+  let artistLinks = json.artists
+    ? artistsArrayToLinks(json.artists)
+    : json.data?.artist
+      ? artistsArrayToLinks([json.data?.artist])
+      : undefined;
 
   if (itemType !== 'mix') {
     artist =
@@ -204,21 +227,20 @@ function formatEmbedDataItem(itemType, itemId, json) {
         : json.artist;
   }
 
-  const dialogTitle = json.title;
+  let dialogTitle = json.title;
 
   let dialogSubtitle = artist;
 
   switch (itemType) {
-    case 'tracks':
-      imageId = json.album.cover;
-      title = json.title;
-      imageType = 'albums';
-      duration = json?.duration ?? 0; // Show full duration length for tracks, updates to real duration or 30 s on playback.
-      break;
     case 'albums':
       imageId = json.cover;
       album = json.title;
       imageType = 'albums';
+      break;
+    case 'mix':
+      album = json.title;
+      artist = json.subTitle;
+      dialogSubtitle = json.subTitle;
       break;
     case 'playlists':
       album = json.title;
@@ -228,16 +250,24 @@ function formatEmbedDataItem(itemType, itemId, json) {
       artistLinks = artist;
       imageType = json.squareImage ? 'playlistsSquare' : itemType;
       break;
+    case 'tracks':
+      imageId = json.album.cover;
+      title = json.title;
+      imageType = 'albums';
+      duration = json?.duration ?? 0; // Show full duration length for tracks, updates to real duration or 30 s on playback.
+      break;
+    case 'upload':
+      title = json.data.name;
+      dialogTitle = json.data.name;
+      artist = json.data.artist?.name;
+      dialogSubtitle = artist;
+      duration = json.data?.duration ?? 0;
+      break;
     case 'videos':
       title = json.title;
       imageId = json.imageId;
       imageType = 'videos';
       duration = json?.duration ?? 0; // Show full duration length for videos
-      break;
-    case 'mix':
-      album = json.title;
-      artist = json.subTitle;
-      dialogSubtitle = json.subTitle;
       break;
     default:
       imageId = undefined;
@@ -251,10 +281,14 @@ function formatEmbedDataItem(itemType, itemId, json) {
   if (!imageId && !image && itemType === 'mix') {
     image = generateImageSourceAndSourceSetForMix(json.images);
   }
+  if (!imageId && !image && itemType === 'upload') {
+    image = generateImageSourceAndSourceSetForUpload(json.data.image_url);
+  }
 
-  const itemTypeSingular =
-    itemType === 'mix' ? 'mix' : itemType.substring(0, itemType.length - 1);
-  const link = `https://listen.tidal.com/${itemTypeSingular}/${itemId}`;
+  const itemTypeSingular = singularType(itemType);
+  const link = `https://tidal.com/${itemTypeSingular}/${itemId}`;
+  const isExplicit = json.explicit || json.metadata?.has_explicit_lyrics; // different location fo uploads
+  const isUpload = itemType === 'upload' || json.upload;
 
   return {
     album: escapeHTML(album),
@@ -264,7 +298,8 @@ function formatEmbedDataItem(itemType, itemId, json) {
     dialogTitle: escapeHTML(dialogTitle),
     duration,
     image,
-    isExplicit: json.explicit,
+    isExplicit,
+    isUpload,
     link,
     title: escapeHTML(title),
   };
@@ -296,25 +331,20 @@ function humanReadableTime(sec = 0) {
     .join(':');
 }
 
-/**
- * @param {String} title
- * @param {String} subtitle
- * @param {String} shareLink
- */
-function getFinishedDialogHTML(title, subtitle, shareLink) {
+function getFinishedDialogHTML() {
   return `
   <dialog class="dialog--finished" role="dialog">
+    <form method="dialog">
+      <button class="button--close-dialog" aria-label="Close dialog">${generateSVG(
+        'close',
+      )}</button>
+    </form>
     <div class="media-information">
-      <span class="media-album">${title}</span>
-      <span class="media-artist">${subtitle}</span>
+      ${generateSVG('tidalLongLogo')}
     </div>
     <div class="lower-part">
-      <form method="dialog">
-        <button class="replay-button" aria-label="Play again">
-          ${generateSVG('replay')}
-        </button>
-      </form>
-      <a href="${shareLink}" class="external-link" target="_blank"></a>
+      <a href="https://tidal.com/try-now" class="primary external-link" target="_blank">Sign up</a>
+      <a href="https://tidal.com/login?autoredirect=true" class="external-link" target="_blank">Log in</a>
     </div>
   </dialog>
   `.trim();
@@ -323,6 +353,11 @@ function getFinishedDialogHTML(title, subtitle, shareLink) {
 function getNostrDialogHTML() {
   return `
   <dialog class="dialog--nostr" role="dialog">
+    <form method="dialog">
+      <button class="button--close-dialog" aria-label="Close dialog">${generateSVG(
+        'close',
+      )}</button>
+    </form>
     <p>Hello nostr user! Linking your pubkey to TIDAL grants full playback.</p>
     <div class="buttons">
       <nostr-login-button>
@@ -331,45 +366,37 @@ function getNostrDialogHTML() {
           <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_l9ve{animation:spinner_rcyq 1.2s cubic-bezier(0.52,.6,.25,.99) infinite}.spinner_cMYp{animation-delay:.4s}.spinner_gHR3{animation-delay:.8s}@keyframes spinner_rcyq{0%{transform:translate(12px,12px) scale(0);opacity:1}100%{transform:translate(0,0) scale(1);opacity:0}}</style><path class="spinner_l9ve" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" transform="translate(12, 12) scale(0)"/><path class="spinner_l9ve spinner_cMYp" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" transform="translate(12, 12) scale(0)"/><path class="spinner_l9ve spinner_gHR3" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" transform="translate(12, 12) scale(0)"/></svg>
         </button>
       </nostr-login-button>
-      <a href="https://account.tidal.com" target="_blank" class="button button--connect">Connect</a>
-      <form method="dialog">
-        <button class="button button--close-dialog" aria-label="Close share popup">No thanks</button>
-      </form>
+      <a href="https://account.tidal.com" target="_blank" class="button button--connect">Connect pubkey</a>
     </div>
   </dialog>
   `.trim();
 }
 
 /**
- * @param {String} title
- * @param {String} subtitle
- */
-function getShareDialogHTML(title, subtitle) {
+ * Generates the HTML for the share dialog.
+ * @param {string} shareLink - The link to be shared.
+ * @returns {string} - The HTML string for the share dialog.
+ * */
+function getShareDialogHTML(shareLink) {
   return `
     <dialog class="dialog--share" role="dialog">
       <form method="dialog">
-        <button class="button--close-dialog" aria-label="Close share popup">${generateSVG(
+        <button class="button--close-dialog" aria-label="Close dialog">${generateSVG(
           'close',
         )}</button>
       </form>
       <div class="media-information">
-        <span class="media-album">${title}</span>
-        <span class="media-artist">${subtitle}</span>
         <span class="successful-copy-message">Copied to clipboard</span>
         <span class="failed-copy-message">Failed copying to clipboard</span>
       </div>
       <div class="share-buttons">
-        <button class="share-button--facebook" aria-label="Share on Facebook">
-          ${generateSVG('facebook')}
-        </button>
-        <button class="share-button--facebook-messenger" aria-label="Share on Facebook Messenger">
-          ${generateSVG('messenger')}
-        </button>
-        <button class="share-button--twitter" aria-label="Share on Twitter">
-          ${generateSVG('twitter')}
-        </button>
+        <a href="${shareLink}" class="" target="_blank">
+          ${generateSVG('tidalLogo')}
+         <div class="external-link">Play on TIDAL</div>
+        </a>
         <button class="share-button--link" aria-label="Copy link to clipboard">
           ${generateSVG('link')}
+          <div>Copy link</div>
         </button>
       </div>
     </dialog>
@@ -381,25 +408,25 @@ function getMediaInformationHTML({
   artist,
   artistLinks,
   isExplicit,
+  isUpload,
   link,
   title,
 }) {
   let topHeader = '';
-  const titleHeader = `<h1 class="media-title" title="Track: ${title}">${title}</h1>`;
 
   if (album) {
-    topHeader = `<span class="media-album" title="Album: ${album}"><a href="${link}" target="_blank">${album}</a></span>`;
+    topHeader = `<h1 class="media-album" title="Album: ${album}"><a href="${link}" target="_blank">${album}</a></h1>`;
   } else {
-    topHeader = titleHeader;
+    topHeader = `<h1 class="media-title" title="Track: ${title}">${title}</h1>`;
   }
 
   return `
     <div class="media-information ui-hide-cleaning-victim">
       <header>
       ${topHeader}
-      ${isExplicit ? generateSVG('explicitBadge') : ''}
+      ${isUpload ? '<i class="badge upload" title="Uploaded">' + generateSVG('upload') + '</i>' : ''}
+      ${isExplicit ? '<i class="badge" title="Explicit">' + generateSVG('explicit') + '</i>' : ''}
       </header>
-      ${album ? titleHeader : ''}
       <span class="media-artist" title="Artist: ${artist}">${
         artistLinks || artist
       }</span>
@@ -418,18 +445,17 @@ function getPlayerHTML({ duration, isLiveStream, productId, productType }) {
 
   return `
     <div class="player ui-hide-cleaning-victim">
-      <tidal-play-trigger tabindex="1" product-id=${productId} product-type=${productType}>
-        <i class="playback-state-icon">
-          <span class="play-icon">${generateSVG('play')}</span>
-          <span class="pause-icon">${generateSVG('pause')}</span>
-        </i>
-      </tidal-play-trigger>
+      <div class="progress-bar-wrapper">
+        <tidal-current-time></tidal-current-time>
+        ${progressBarOrLiveIndicator}
+        <tidal-duration-time>${duration}</tidal-duration-time>
+      </div>
+      <button class="more-button" aria-label="Show more options">
+        ${generateSVG('threeDots')}
+      </button>
       <button class="previous-track" aria-label="Play previous track">
         ${generateSVG('previous')}
       </button>
-      <tidal-current-time></tidal-current-time>
-      ${progressBarOrLiveIndicator}
-      <tidal-duration-time>${duration}</tidal-duration-time>
       <button class="next-track" aria-label="Play next track">
         ${generateSVG('next')}
       </button>
@@ -441,6 +467,12 @@ function getPlayerHTML({ duration, isLiveStream, productId, productType }) {
           'minimize',
         )}</span>
       </button>
+      <tidal-play-trigger tabindex="1" product-id=${productId} product-type=${productType}>
+        <i class="playback-state-icon">
+          <span class="play-icon">${generateSVG('play')}</span>
+          <span class="pause-icon">${generateSVG('pause')}</span>
+        </i>
+      </tidal-play-trigger>
     </div>
   `;
 }
@@ -449,11 +481,8 @@ function getTopRightIconsHTML() {
   return `
   <div class="top-right-icons ui-hide-cleaning-victim">
     <a href="https://tidal.com" target="_blank" class="tidal-logo" aria-label="Visit TIDAL">
-      ${generateSVG('tidalLogo')}
+      ${generateSVG('tidalLongLogo')}
     </a>
-    <button class="open-share-dialog" aria-label="Share">
-      ${generateSVG('share')}
-    </button>
   </div>
   `;
 }
@@ -471,7 +500,7 @@ function assumeItemTypeFromObject(item) {
  */
 function generateMediaItemListHTML(itemsJson, parentItemType, options) {
   try {
-    const { link, renderThumbnails } = options;
+    const { renderThumbnails } = options;
 
     const listItems = itemsJson
       ? itemsJson
@@ -507,9 +536,10 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
                 ? `<span slot="video-badge">${generateSVG('videoBadge')}</span>`
                 : '';
             const maybeExplicitBadge = item.explicit
-              ? `<span slot="explicit-badge">${generateSVG(
-                  'explicitBadge',
-                )}</span>`
+              ? `<span slot="explicit-badge"><i class="badge" title="Explicit">${generateSVG('explicit')}</i></span>`
+              : '';
+            const maybeUploadBadge = item.upload
+              ? `<span slot="upload-badge"><i class="badge upload" title="Uploaded">${generateSVG('upload')}</i></span>`
               : '';
 
             let maybeThumbnail = '';
@@ -534,6 +564,7 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
           <span slot="play-icon">${generateSVG('play')}</span>
           <span slot="pause-icon">${generateSVG('pause')}</span>
           ${maybeVideoBadge}
+          ${maybeUploadBadge}
           ${maybeExplicitBadge}
           <span slot="title">${item.title + version}</span>
           <span slot="artist">${artists}</span>
@@ -547,7 +578,6 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
     return `
       <div class="media-item-list-wrapper">
         <media-item-list role="list">${listItems}</media-item-list>
-        <a href="${link}" class="external-link" target="_blank">Listen to full</a>
       </div>
     `.trim();
   } catch (e) {
@@ -585,7 +615,7 @@ function generateImageryHoldersHTML({
   let sizesAttribute = image ? image.sizes : '';
 
   if (isCollection && layout !== 'gridify') {
-    sizesAttribute = '96px';
+    sizesAttribute = '120px';
   }
 
   const figureClasses = [
@@ -648,7 +678,7 @@ function generatePageHTML(options) {
     renderThumbnails,
   } = options;
 
-  const { album, artist, artistLinks, isExplicit, link, title } =
+  const { album, artist, artistLinks, isExplicit, isUpload, link, title } =
     mediaInformation;
 
   const isCollection =
@@ -673,9 +703,6 @@ function generatePageHTML(options) {
     layout,
   });
 
-  const dialogTitle = (isCollection ? album : title) || title;
-  const dialogSubtitle = artist;
-
   const appJSSrc = getStaticFileLink('js/app.js');
 
   const embedClasses = [
@@ -698,6 +725,7 @@ function generatePageHTML(options) {
     artist,
     artistLinks,
     isExplicit,
+    isUpload,
     link,
     title,
   });
@@ -705,7 +733,9 @@ function generatePageHTML(options) {
   const maybeExplicitBadge = isExplicit
     ? `
     <figure class=floating-explicit-badge>
-      ${generateSVG('explicitBadge')}
+      <i class="badge" title="Explicit">
+        ${generateSVG('explicit')}
+      </i>
     </figure>
   `
     : '';
@@ -731,16 +761,6 @@ function generatePageHTML(options) {
   const maybeIncludeMediaListItemTemplates = isCollection
     ? `
     <template id="wc-media-item-list">
-      <style>
-      :host {
-        background-color: var(--grey7);
-        color: var(--white);
-        width: 100%;
-        max-width: 100vw;
-        overflow: hidden;
-        overflow-y: scroll;
-      }
-      </style>
       <slot></slot>
     </template>
     <template id="wc-list-item">
@@ -756,7 +776,7 @@ function generatePageHTML(options) {
         <slot name="thumbnail"></slot>
         <div class="col">
           <div class="row">
-            <slot name="title"></slot><slot name="explicit-badge"></slot><slot name="video-badge"></slot>
+            <slot name="title"></slot><slot name="upload-badge"></slot><slot name="explicit-badge"></slot><slot name="video-badge"></slot>
           </div>
           <div class="row">
             <slot name="artist"></slot>
@@ -792,7 +812,6 @@ function generatePageHTML(options) {
       )}') format('woff')
     }
     body {opacity:0;transition:opacity 200ms ease}
-    media-item-list{background-color:#101012}
     </style>
     <style id="svg-fouc">
     list-item svg {
@@ -815,9 +834,9 @@ function generatePageHTML(options) {
           'img/loader.svg',
         )}" crossorigin="anonymous" alt="Loading spinner...">
       </figure>
-      ${getFinishedDialogHTML(dialogTitle, dialogSubtitle, link)}
+      ${getFinishedDialogHTML()}
       ${getNostrDialogHTML()}
-      ${getShareDialogHTML(dialogTitle, dialogSubtitle)}
+      ${getShareDialogHTML(link)}
       ${getTopRightIconsHTML()}
       <audio id=audio-player></audio>
       <main class="layout-type-wrapper ${layoutClasses}">
@@ -926,7 +945,7 @@ export const renderEmbed = options => {
   const isLiveStream =
     embedItem.streamType === 'LIVE' || embedItem.type === 'Live Stream';
 
-  if (itemTypesWithMediaItemList.indexOf(itemType) !== -1) {
+  if (itemTypesWithMediaItemList.includes(itemType)) {
     // Mix media items are not scoped under an item prop. Limit to 50.
     items = mediaItems.items
       .map(obj => ('item' in obj ? obj.item : obj))

@@ -1,12 +1,17 @@
 :host {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) 42px;
+  grid-template-columns: 42px minmax(0, 1fr);
   grid-template-rows: none;
   align-items: center;
-  font-size: 14px;
-  height: 48px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.18px;
+  height: 62px;
   contain: strict;
-  contain-intrinsic-height: 48px;
+  contain-intrinsic-height: 62px;
+  border-bottom: 1px solid light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.10));
+  color: light-dark(var(--black), var(--white));
 }
 
 ::slotted(svg) {
@@ -14,11 +19,11 @@
 }
 
 :host(:hover) {
-  background-color: rgb(36, 36, 40);
+  background-color: light-dark(rgba(0, 0, 0, 0.05), var(--surface-20));
 }
 
 :host(:focus-visible) {
-  outline: var(--cyan) dotted 2px;
+  outline: light-dark(var(--black), var(--white)) dotted 2px;
   outline-offset: -2px;
 }
 
@@ -30,11 +35,11 @@
 
 .index-col {
   text-align: center;
+  color: light-dark(var(--emphasis-20), var(--opacity-contrast-fill-thick));
 }
 
 ::slotted([slot="duration"]) {
-  text-align: right;
-  padding-right: 12px;
+  display: none;
 }
 
 :host(:hover) ::slotted([slot="index"]),
@@ -50,6 +55,7 @@ tidal-play-trigger {
 :host(.current) tidal-play-trigger,
 :host(:hover) tidal-play-trigger {
   display: grid;
+  color: light-dark(var(--black), var(--white));
 }
 
 /* touchscreens */
@@ -61,7 +67,8 @@ tidal-play-trigger {
 }
 
 :host(.current) {
-  color: var(--cyan);
+  color: light-dark(var(--black), var(--white));
+  background-color: light-dark(rgba(0, 0, 0, 0.05), var(--fill-30));
 }
 
 .col {
@@ -82,15 +89,15 @@ tidal-play-trigger {
 }
 
 ::slotted([slot="artist"]) {
-  font-weight: 300;
-  font-size: 12px;
-  color: #78777f;
+  font-size: 10px;
+  color: light-dark(var(--emphasis-20), var(--opacity-contrast-fill-thick));
+  line-height: 16px; /* 160% */
 }
 
 ::slotted([slot*="-icon"]) {
   display: block;
-  width: 48px;
-  height: 16px;
+  width: 42px;
+  height: 12px;
 }
 
 ::slotted([slot*="-badge"]) {
@@ -100,10 +107,6 @@ tidal-play-trigger {
 
 ::slotted([slot="video-badge"]) {
   width: 42px;
-}
-
-::slotted([slot="explicit-badge"]) {
-  width: 52px;
 }
 
 ::slotted([slot="video-icon"]),

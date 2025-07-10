@@ -38,7 +38,7 @@ function printObj (o, indent) {
  */
 
 async function getData(endpoint, country, xForwardedFor) {
-  const url = new URL(`https://api.tidal.com/v1/${endpoint}`);
+  const url = new URL(`https://api.tidal.com/${endpoint}`);
 
   if (endpoint.includes('/items')) {
     url.searchParams.append('replace', 'true');
@@ -106,7 +106,7 @@ async function mix(options) {
   const { country, itemId } = options;
 
   const response = await getData(
-    `pages/mix?mixId=${itemId}&deviceType=BROWSER`,
+    `v1/pages/mix?mixId=${itemId}&deviceType=BROWSER`,
     country,
   );
 
@@ -129,8 +129,8 @@ async function album(options) {
   const { country, itemId } = options;
 
   const [embedItem, mediaItems] = await Promise.all([
-    getData(`albums/${itemId}`, country),
-    getData(`albums/${itemId}/items`, country),
+    getData(`v1/albums/${itemId}`, country),
+    getData(`v1/albums/${itemId}/items`, country),
   ]);
 
   return renderEmbed({
@@ -148,8 +148,8 @@ async function playlist(options) {
   const { country, itemId } = options;
 
   const [embedItem, mediaItems] = await Promise.all([
-    getData(`playlists/${itemId}`, country),
-    getData(`playlists/${itemId}/items`, country),
+    getData(`v1/playlists/${itemId}`, country),
+    getData(`v1/playlists/${itemId}/items`, country),
   ]);
 
   return renderEmbed({
@@ -165,14 +165,14 @@ async function playlist(options) {
  * @param {string} country
  */
 async function getVideoData(itemId, country) {
-  const data = await getData(`videos/${itemId}`, country);
+  const data = await getData(`v1/videos/${itemId}`, country);
 
   let streamType = data.type === 'Live Stream' ? 'LIVE' : 'ON_DEMAND';
 
   let videoId = data.id;
 
   const playbackInfo = await getData(
-    `videos/${itemId}/playbackinfoprepaywall/v4?videoquality=HIGH&assetpresentation=FULL`,
+    `v1/videos/${itemId}/playbackinfoprepaywall/v4?videoquality=HIGH&assetpresentation=FULL`,
     country,
   );
 
@@ -193,7 +193,7 @@ async function video(options) {
   const embedItem = await getVideoData(itemId, country);
   const possiblyUpdatedItemId = embedItem.id; // If replaced
   const embedConfig = await getData(
-    `embed/${possiblyUpdatedItemId}`,
+    `v1/embed/${possiblyUpdatedItemId}`,
     country,
     xForwardedFor,
   );
@@ -218,7 +218,7 @@ async function video(options) {
 async function track(options) {
   const { country, itemId } = options;
 
-  const embedItem = await getData(`tracks/${itemId}`, country);
+  const embedItem = await getData(`v1/tracks/${itemId}`, country);
 
   return renderEmbed({
     ...options,
@@ -227,16 +227,31 @@ async function track(options) {
   });
 }
 
+/**
+ * @param {HandlerOptions} options
+ */
+async function upload(options) {
+  const { country, itemId } = options;
+
+  const embedItem = await getData(`v2/upload/open/items/${itemId}`, country);
+
+  return renderEmbed({
+    ...options,
+    embedItem,
+    itemType: 'upload',
+  });
+}
+
 function redirectWimpEmbed(queryParams) {
   let { type } = queryParams;
   const cacheTime = isOnLambdaProd ? 300 : 60;
 
   switch (type) {
-    case 'p':
-      type = 'playlists';
-      break;
     case 'a':
       type = 'albums';
+      break;
+    case 'p':
+      type = 'playlists';
       break;
     case 't':
       type = 'tracks';
@@ -267,7 +282,10 @@ const rootRouteHTML = `
   </blockquote>
   <cite>– <a href="https://tidal.com/artist/3557299"  target="_blank">Taylor Swift</a>
   <br><br>
-  <iframe src="/tracks/255207225" width="500" height="96" frameborder="0"></iframe>
+  <iframe src="/tracks/255207225" width="500" height="120"
+    allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com; web-share"
+    sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+  ></iframe>
   <br><br>
   <p>
     You're looking for the test page. <a href="/test"  target="_blank">It's here.</a>
@@ -316,8 +334,8 @@ export const embed = async event => {
 
     try {
       switch (event.pathParameters.type) {
-        case 'mix':
-          responseBody = await mix({
+        case 'albums':
+          responseBody = await album({
             country,
             coverInitially,
             disableAnalytics,
@@ -325,8 +343,10 @@ export const embed = async event => {
             layout,
           });
           break;
-        case 'albums':
-          responseBody = await album({
+        case 'embedded':
+          return redirectWimpEmbed(event.queryStringParameters);
+        case 'mix':
+          responseBody = await mix({
             country,
             coverInitially,
             disableAnalytics,
@@ -344,15 +364,8 @@ export const embed = async event => {
             renderThumbnails,
           });
           break;
-        case 'videos':
-          responseBody = await video({
-            country,
-            coverInitially: false,
-            disableAnalytics,
-            itemId,
-            layout: 'gridify',
-            xForwardedFor,
-          });
+        case 'test':
+          responseBody = generateTestPageHTML(event.queryStringParameters);
           break;
         case 'tracks':
           responseBody = await track({
@@ -363,10 +376,24 @@ export const embed = async event => {
             layout,
           });
           break;
-        case 'embedded':
-          return redirectWimpEmbed(event.queryStringParameters);
-        case 'test':
-          responseBody = generateTestPageHTML(event.queryStringParameters);
+        case 'upload':
+          responseBody = await upload({
+            country,
+            coverInitially,
+            disableAnalytics,
+            itemId,
+            layout,
+          });
+          break;
+        case 'videos':
+          responseBody = await video({
+            country,
+            coverInitially: false,
+            disableAnalytics,
+            itemId,
+            layout: 'gridify',
+            xForwardedFor,
+          });
           break;
         default:
           responseBody = 'Invalid embed type:' + event.pathParameters.type;
