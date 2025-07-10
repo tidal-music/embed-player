@@ -711,7 +711,7 @@ export const generateHTML = queryParameters => {
 
         <h5 id="clean-example-track">Track Grid (cleanInitially)</h5>
         <iframe
-          src="${embedBaseUrl}/tracks/119644843?cleanInitially=true&layout?gridify"
+          src="${embedBaseUrl}/tracks/119644843?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
