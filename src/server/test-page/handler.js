@@ -166,6 +166,42 @@ export const generateHTML = queryParameters => {
       </details>
     </article>
 
+    <article
+      style="color-scheme: light dark; background-color: light-dark(#fff, #000); color: light-dark(#000, #fff);"
+    >
+      <details>
+        <summary>
+          <h2>Magazine (like) examples</h2>
+        </summary>
+
+        <h5 id="magazine-example-1">Album</h5>
+        <iframe
+          data-v-e6e3f438=""
+          id="tidal-embed-2"
+          src="${embedBaseUrl}/albums/420666277?pid=2&amp;cleanInitially=true&amp;layout=gridify&amp;coverInitially=true"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen="allowfullscreen"
+          allow="encrypted-media"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+          style="aspect-ratio: 1 / 1;"
+        ></iframe>
+
+        <h5 id="magazine-example-2">Track</h5>
+        <iframe
+          data-v-e6e3f438=""
+          id="tidal-embed-4"
+          src="${embedBaseUrl}/tracks/432222812?pid=4&amp;cleanInitially=true&amp;layout=gridify&amp;coverInitially=true"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen="allowfullscreen"
+          allow="encrypted-media"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+          style="aspect-ratio: 1 / 1;"
+        ></iframe>
+      </details>
+    </article>
+
     <article>
       <details>
         <summary>
