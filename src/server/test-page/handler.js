@@ -308,7 +308,9 @@ export const generateHTML = queryParameters => {
           sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
         ></iframe>
 
-        <h5 id="track-example-2">Track Classic - 400x96</h5>
+        <h5 id="track-example-2">
+          Track Classic - 400x96 (less than expected min-height)
+        </h5>
         <iframe
           src="${embedBaseUrl}/tracks/${getRandomTrackID()}"
           loading="lazy"
