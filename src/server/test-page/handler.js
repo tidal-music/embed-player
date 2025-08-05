@@ -903,7 +903,7 @@ export const generateHTML = () => {
         allowfullscreen="allowfullscreen"
         allow="encrypted-media"
         sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
-        style="aspect-ratio: 1 / 1;"
+        style="aspect-ratio: 1 / 1; width: 100%;"
       ></iframe>
 
       <h5 id="magazine-example-2">Track</h5>
@@ -916,7 +916,7 @@ export const generateHTML = () => {
         allowfullscreen="allowfullscreen"
         allow="encrypted-media"
         sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
-        style="aspect-ratio: 1 / 1;"
+        style="aspect-ratio: 1 / 1; width: 100%;"
       ></iframe>
     </article>
   `;
