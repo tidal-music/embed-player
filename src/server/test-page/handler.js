@@ -897,7 +897,7 @@ export const generateHTML = () => {
       <iframe
         data-v-e6e3f438=""
         id="tidal-embed-2"
-        src="/albums/420666277?pid=2&amp;cleanInitially=true&amp;layout=gridify&amp;coverInitially=true"
+        src="/albums/120419967?pid=2&amp;cleanInitially=true&amp;layout=gridify&amp;coverInitially=true"
         frameborder="0"
         scrolling="no"
         allowfullscreen="allowfullscreen"

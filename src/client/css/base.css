@@ -92,12 +92,13 @@ h1.media-album {
 
 .floating-explicit-badge {
   position: absolute;
-  width: 52px;
+  width: 16px;
   height: 16px;
-  bottom: 16px;
-  right: 16px;
+  bottom: 24px;
+  left: 16px;
   margin: 0;
   display: none;
+  z-index: 1;
 }
 
 .tidal-hide .floating-explicit-badge {
