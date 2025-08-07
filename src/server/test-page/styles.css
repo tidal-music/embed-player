@@ -69,18 +69,6 @@ article iframe {
   display: block;
 }
 
-@media (max-width: 800px) {
-  iframe:not(.square) {
-    width: 100%;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none
-  }
-}
-
 header {
   background: black;
   padding: 0.4rem 0.8rem;
@@ -97,10 +85,6 @@ header h1 {
 .fullwidth .tidal-embed {
   width: 100% !important;
   max-width: 100% !important;
-}
-
-.old-wimp {
-  max-width: 1000px;
 }
 
 summary {

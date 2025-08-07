@@ -365,7 +365,7 @@ export const embed = async event => {
           });
           break;
         case 'test':
-          responseBody = generateTestPageHTML(event.queryStringParameters);
+          responseBody = generateTestPageHTML();
           break;
         case 'tracks':
           responseBody = await track({

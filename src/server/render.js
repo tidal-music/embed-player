@@ -282,7 +282,9 @@ function formatEmbedDataItem(itemType, itemId, json) {
     image = generateImageSourceAndSourceSetForMix(json.images);
   }
   if (!imageId && !image && itemType === 'upload') {
-    image = generateImageSourceAndSourceSetForUpload(json.data.image_url);
+    image = generateImageSourceAndSourceSetForUpload(
+      json.data.image_data.data.url,
+    );
   }
 
   const itemTypeSingular = singularType(itemType);

@@ -50,6 +50,7 @@ tidal-play-trigger {
 tidal-play-trigger {
   height: 48px;
   place-items: center;
+  cursor: pointer;
 }
 
 :host(.current) tidal-play-trigger,
