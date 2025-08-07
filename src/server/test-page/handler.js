@@ -891,7 +891,7 @@ export const generateHTML = () => {
     <article
       style="color-scheme: light dark; background-color: light-dark(#fff, #000); color: light-dark(#000, #fff);"
     >
-      <h2>Magazine (like) examples</h2>
+      <h2>Magazine (like) responsive examples</h2>
 
       <h5 id="magazine-example-1">Album</h5>
       <iframe
