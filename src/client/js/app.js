@@ -885,7 +885,8 @@ function runNostrInterval() {
       clearInterval(interval);
 
       if (!('nostr' in window)) {
-        console.error(
+        // eslint-disable-next-line no-console
+        console.log(
           'Nostr not available in window. Install a NIP-07 extension or try another one.',
         );
       }
