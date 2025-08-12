@@ -901,10 +901,16 @@ function runNostrInterval() {
   }, 500);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function afterDOMLoaded() {
   checkIfFullscreenEnabled();
   registerEventListeners();
   registerExternalLinkClickHandlers();
   enforceVideoPlaylistGrid();
   runNostrInterval();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', afterDOMLoaded);
+} else {
+  afterDOMLoaded();
+}
