@@ -1,8 +1,11 @@
 import DialogController from '../dialog-controller.js';
 
-const credentialsUpdatedEvent = new CustomEvent('CredentialsUpdatedMessage', {
+/**
+ * @type {import("@tidal-music/common/dist").BusEvent}
+ */
+const credentialsUpdatedEvent = new CustomEvent('credentialsUpdated', {
   detail: {
-    type: 'credentialsUpdated',
+    type: 'CredentialsUpdatedMessage',
   },
 });
 
@@ -35,7 +38,7 @@ class NostrCredentialsProvider {
   /**
    * @param {import('@tidal-music/common/dist').BusEvent} _event
    */
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   #busFn = _event => {};
 
   /**

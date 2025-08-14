@@ -1,7 +1,4 @@
-import {
-  events as playerSdkEvents,
-  setCredentialsProvider,
-} from '@tidal-music/player-web-components';
+import { events as playerSdkEvents } from '@tidal-music/player-web-components';
 
 import DialogController from './dialog-controller.js';
 import DOMRefs from './dom-refs.js';
@@ -14,7 +11,7 @@ import {
 } from './helpers/index.js';
 import MessageBridge from './message-bridge.js';
 import { showNostrDialog } from './nostr.js';
-import { defaultCredentialsProvider } from './playback/auth-provider.js';
+import { initializePlayback } from './playback/init.js';
 import ShareController from './share-controller.js';
 import TidalMedia from './tidal-media.js';
 import UIHideController from './ui-hide-controller.js';
@@ -821,8 +818,6 @@ async function initializeCollectionEmbed() {
   bootFirstPlayableItemInPlayer();
 }
 
-setCredentialsProvider(defaultCredentialsProvider);
-
 checkGrid();
 checkBannerRatio();
 
@@ -903,6 +898,7 @@ function runNostrInterval() {
 }
 
 function afterDOMLoaded() {
+  initializePlayback();
   checkIfFullscreenEnabled();
   registerEventListeners();
   registerExternalLinkClickHandlers();
