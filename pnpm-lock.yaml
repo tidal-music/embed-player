@@ -15,11 +15,11 @@ importers:
         specifier: 2.4.0
         version: 2.4.0
       '@tidal-music/player':
-        specifier: 0.10.2
-        version: 0.10.2
+        specifier: 0.11.0
+        version: 0.11.0
       '@tidal-music/player-web-components':
-        specifier: 0.2.0
-        version: 0.2.0
+        specifier: 0.2.1
+        version: 0.2.1
       '@types/mocha':
         specifier: ^10.0.10
         version: 10.0.10
@@ -1000,11 +1000,11 @@ packages:
   '@tidal-music/event-producer@2.4.0':
     resolution: {integrity: sha512-tlv7bIGkkS57nsbI4c2M7NGFQ03DQmU/wejnYv0fQ9veeRG6EH8g85Jbd+/MMw2qBqndtMq1fqk/GhjzB7bmJA==}
 
-  '@tidal-music/player-web-components@0.2.0':
-    resolution: {integrity: sha512-+xRpoZrFMowBT7A3W8QODkLGSnzKCtKJmpfEiZdWW0wXt835CpMyDVqJ1GLSmlnk/Utmjhtw8QfHijVkMu0hQA==}
+  '@tidal-music/player-web-components@0.2.1':
+    resolution: {integrity: sha512-IzAwT+UiH7frOny8XsTLQRgdpIMTQ3i2OC4mTMyqTdcOFQkg8+ndVD7Y52bRqkyZKdoco5Nio3sItDEKF3upDg==}
 
-  '@tidal-music/player@0.10.2':
-    resolution: {integrity: sha512-U8ZujD1tRHl7bIgiI8F4jnb8nh0N1cc5ht08wIB724lmz1lePBhP39jHUbwkPkiL4G1VmNHqcsSEI3YjnMqbdg==}
+  '@tidal-music/player@0.11.0':
+    resolution: {integrity: sha512-V1dcdNvnmLZPXKDkarjdWpKgrOBOYi3N+LChtbMUIT5A5LhIymehpcJUi3ywz1bZuD55oIpwyIbV0PgNG5qVUA==}
 
   '@tidal-music/true-time@0.3.0':
     resolution: {integrity: sha512-nO9DfLKLu5sCI/v6Yp8DSseu8qis0RI1r6l7oIFCusOAedkIbQT/K+ELaaz7cxXR4cboopUZGW55v4RVwxHE/g==}
@@ -2331,6 +2331,10 @@ packages:
 
   eslint-visitor-keys@4.2.0:
     resolution: {integrity: sha512-UyLnSehNt62FFhSwjZlHmeokpRK59rcz29j+F1/aDgbkbRTk7wIc9XzdoasMUbRNKDM0qQt/+BJ4BrpFeABemw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  eslint-visitor-keys@4.2.1:
+    resolution: {integrity: sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   eslint@9.14.0:
@@ -5469,9 +5473,9 @@ snapshots:
       localforage: 1.10.0
       nanoid: 5.1.5
 
-  '@tidal-music/player-web-components@0.2.0': {}
+  '@tidal-music/player-web-components@0.2.1': {}
 
-  '@tidal-music/player@0.10.2': {}
+  '@tidal-music/player@0.11.0': {}
 
   '@tidal-music/true-time@0.3.0': {}
 
@@ -5776,7 +5780,7 @@ snapshots:
   '@typescript-eslint/visitor-keys@8.33.0':
     dependencies:
       '@typescript-eslint/types': 8.33.0
-      eslint-visitor-keys: 4.2.0
+      eslint-visitor-keys: 4.2.1
 
   '@vitest/eslint-plugin@1.1.8(@typescript-eslint/utils@8.33.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.14.0)(typescript@5.6.3)(vitest@2.1.4(@types/node@20.17.12))':
     dependencies:
@@ -7254,6 +7258,8 @@ snapshots:
   eslint-visitor-keys@3.4.3: {}
 
   eslint-visitor-keys@4.2.0: {}
+
+  eslint-visitor-keys@4.2.1: {}
 
   eslint@9.14.0:
     dependencies:
