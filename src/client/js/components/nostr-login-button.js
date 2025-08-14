@@ -13,7 +13,7 @@ export class NostrLoginButton extends HTMLElement {
       setCredentialsProvider(nostrCredentialsProvider);
 
       nostrCredentialsProvider.bus(e => {
-        if (e.detail.type === 'credentialsUpdated') {
+        if (e.detail.type === 'CredentialsUpdatedMessage') {
           this.removeAttribute('loading');
           DialogController.close('nostr');
         }
