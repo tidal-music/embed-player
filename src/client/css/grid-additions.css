@@ -168,6 +168,8 @@ main.gridify-wrapper {
   }
 
   & .progress-bar-track,
+  & .progress-bar-wrapper,
+  & .more-button,
   &:not(.ui-hider--hidden-controls, .touchy-device) .media-type--is-collection:hover .player button.next-track,
   & .toggle-fullscreen {
     opacity: 0;

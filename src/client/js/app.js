@@ -1,7 +1,4 @@
-import {
-  events as playerSdkEvents,
-  setCredentialsProvider,
-} from '@tidal-music/player-web-components';
+import { events as playerSdkEvents } from '@tidal-music/player-web-components';
 
 import DialogController from './dialog-controller.js';
 import DOMRefs from './dom-refs.js';
@@ -14,7 +11,7 @@ import {
 } from './helpers/index.js';
 import MessageBridge from './message-bridge.js';
 import { showNostrDialog } from './nostr.js';
-import { defaultCredentialsProvider } from './playback/auth-provider.js';
+import { initializePlayback } from './playback/init.js';
 import ShareController from './share-controller.js';
 import TidalMedia from './tidal-media.js';
 import UIHideController from './ui-hide-controller.js';
@@ -821,8 +818,6 @@ async function initializeCollectionEmbed() {
   bootFirstPlayableItemInPlayer();
 }
 
-setCredentialsProvider(defaultCredentialsProvider);
-
 checkGrid();
 checkBannerRatio();
 
@@ -885,7 +880,8 @@ function runNostrInterval() {
       clearInterval(interval);
 
       if (!('nostr' in window)) {
-        console.error(
+        // eslint-disable-next-line no-console
+        console.log(
           'Nostr not available in window. Install a NIP-07 extension or try another one.',
         );
       }
@@ -901,10 +897,17 @@ function runNostrInterval() {
   }, 500);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function afterDOMLoaded() {
+  initializePlayback();
   checkIfFullscreenEnabled();
   registerEventListeners();
   registerExternalLinkClickHandlers();
   enforceVideoPlaylistGrid();
   runNostrInterval();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', afterDOMLoaded);
+} else {
+  afterDOMLoaded();
+}

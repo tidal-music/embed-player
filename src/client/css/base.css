@@ -23,6 +23,15 @@ body {
   box-sizing: border-box;
 }
 
+html {  
+  /**
+   * Light/Dark mode support
+   * Use light-dark() function to get colors based on the current theme.
+   * Example: color: light-dark(black, white);
+   */
+  color-scheme: light dark;
+}
+
 /* Hide native cast button */
 tidal-video-view video::-internal-media-controls-overlay-cast-button {
   display: none;
@@ -92,12 +101,13 @@ h1.media-album {
 
 .floating-explicit-badge {
   position: absolute;
-  width: 52px;
+  width: 16px;
   height: 16px;
-  bottom: 16px;
-  right: 16px;
+  bottom: 24px;
+  left: 16px;
   margin: 0;
   display: none;
+  z-index: 1;
 }
 
 .tidal-hide .floating-explicit-badge {
@@ -358,13 +368,6 @@ tidal-progress-bar {
 }
 
 .embed-player {
-  /**
-   * Light/Dark mode support
-   * Use light-dark() function to get colors based on the current theme.
-   * Example: color: light-dark(black, white);
-   */
-  color-scheme: light dark;
-
   &.tidal-hide {
     opacity: 1;
   }
@@ -376,7 +379,7 @@ tidal-progress-bar {
   height: 100vh;
   overflow: hidden;
   border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid light-dark(rgba(0, 0, 0, 0.10), rgba(255, 255, 255, 0.10));
   position: relative;
 }
 

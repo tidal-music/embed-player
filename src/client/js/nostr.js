@@ -1,4 +1,5 @@
-import { setCredentialsProvider } from '@tidal-music/player-web-components';
+import { setCredentialsProvider as eventProducerSetCredentialsProvider } from '@tidal-music/event-producer';
+import { setCredentialsProvider as playerSetCredentialsProvider } from '@tidal-music/player-web-components';
 
 import DialogController from './dialog-controller.js';
 import { nostrCredentialsProvider } from './playback/auth-provider.js';
@@ -28,7 +29,8 @@ export async function showNostrDialog() {
     });
 
     if (sessionStorage.getItem('accessToken')) {
-      setCredentialsProvider(nostrCredentialsProvider);
+      playerSetCredentialsProvider(nostrCredentialsProvider);
+      eventProducerSetCredentialsProvider(nostrCredentialsProvider);
     } else {
       await import('./components/nostr-login-button.js');
 

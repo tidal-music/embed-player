@@ -1,12 +1,11 @@
 {
   "name": "tidal-embed-player",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.1.3",
+  "packageManager": "pnpm@10.14.0",
   "description": "TIDAL Embed Player with Serverless AWS Lambda rendering",
   "type": "module",
   "engine": {
-    "node": "20.14.0",
-    "pnpm": ">=9.1.3"
+    "node": "20.14.0"
   },
   "browserslist": [
     "defaults",
@@ -32,9 +31,10 @@
     "gh-action:start": "LAMBDA_TASK_ROOT=true AWS_EXECUTION_ENV=true AWS_ENV=fakelamda node src/server/local/index.js"
   },
   "devDependencies": {
-    "@tidal-music/common": "^0.1.5",
-    "@tidal-music/player": "^0.2.0",
-    "@tidal-music/player-web-components": "^0.1.2",
+    "@tidal-music/common": "0.2.0",
+    "@tidal-music/event-producer": "2.4.0",
+    "@tidal-music/player": "0.11.0",
+    "@tidal-music/player-web-components": "0.2.1",
     "@types/mocha": "^10.0.10",
     "@types/node": "^20.17.12",
     "@web/test-runner": "^0.18.3",
@@ -54,6 +54,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.3.0",
     "npm-run-all": "^4.1.5",
+    "platform": "1.3.6",
     "playwright": "1.52.0",
     "postcss": "^8.4.49",
     "postcss-flexbugs-fixes": "^5.0.2",

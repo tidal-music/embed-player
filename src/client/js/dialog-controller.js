@@ -30,6 +30,9 @@ class DialogController {
 
     if (dialog instanceof HTMLDialogElement) {
       dialog.showModal();
+      dialog.addEventListener('close', () => {
+        DOMRefs.embedWrapper?.classList.remove(`showing-${dialogName}-dialog`);
+      });
     }
 
     DOMRefs.embedWrapper?.classList.add(`showing-${dialogName}-dialog`);
