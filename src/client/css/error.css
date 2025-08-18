@@ -2,6 +2,10 @@
 @import url("dialog-base.css");
 @import url("dialog-error.css");
 
+html {
+  color-scheme: light dark;
+}
+
 body {
   font-family: Nationale, system-ui;
   margin: 0;
