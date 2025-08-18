@@ -118,6 +118,7 @@ h1.media-album {
   display: flex;
   align-items: center;
   min-width: 0;
+  gap: 8px;
 }
 
 /* Elipsis in title with exclusive badge */
@@ -455,7 +456,6 @@ tidal-duration-time {
   display: inline-flex;
   height: 16px;
   color: var(--black);
-  margin-left: 0.3em;
   flex-shrink: 0;
   width: 16px;
   align-items: center;
