@@ -12,6 +12,7 @@
   height: 100vh;
 
   user-select: none;
+  border-radius: 12px;
 }
 
 .dialog--error .feedback-message {

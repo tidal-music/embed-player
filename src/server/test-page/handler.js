@@ -709,7 +709,7 @@ export const generateHTML = () => {
 
         <h5 id="clean-example-album">Album Grid</h5>
         <iframe
-          src="/albums/18283830?layout=gridify"
+          src="/albums/264155187?layout=gridify"
           loading="lazy"
           width="500"
           height="500"
@@ -742,7 +742,7 @@ export const generateHTML = () => {
 
         <h5 id="clean-example-album">Album Grid (cleanInitially)</h5>
         <iframe
-          src="/albums/120419967?cleanInitially=true"
+          src="/albums/120419967?cleanInitially=true&layout=gridify"
           loading="lazy"
           width="500"
           height="500"
