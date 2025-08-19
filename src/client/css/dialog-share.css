@@ -15,9 +15,8 @@
   position: relative;
 }
 
-.copy--fail .share-button--link::after,
-.copy--successful .share-button--link::after {
-  content: "✓";
+.copy--fail .share-button--link::after {
+  content: "╳";
   position: absolute;
   inset: 0;
   background-color: var(--emphasis-20);
@@ -28,10 +27,6 @@
   width: 20px;
   margin-left: calc(50% - 10px);
   top: -2px;
-}
-
-.copy--fail .share-button--link::after {
-  content: "╳";
 }
 
 .copy--successful .media-information span,
@@ -45,13 +40,18 @@
   height: 0;
   pointer-events: none;
   transition: opacity 500ms ease;
+  display: none;
 }
 
-.copy--successful .media-information .successful-copy-message,
+.copy--successful .successful-copy-message,
 .copy--fail .media-information .failed-copy-message {
   opacity: 1;
   height: auto;
   display: block;
+}
+
+.copy--successful .share-button--link {
+  display: none;
 }
 
 .share-buttons {
@@ -73,8 +73,7 @@
   }
 }
 
-.share-buttons button svg,
-.share-buttons a svg {
+.share-buttons svg {
   width: 16px;
   height: 16px;
   fill: currentcolor;
