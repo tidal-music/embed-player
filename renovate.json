@@ -2,5 +2,21 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "ignoreDeps": [],
+  "packageRules": [{
+    "description": "Group Npm packages",
+    "groupName": "Npm non-major dependencies",
+    "groupSlug": "npm-minor-patch",
+    "matchDatasources": [
+      "npm"
+    ],
+    "matchUpdateTypes": [
+      "minor",
+      "patch"
+    ]
+  }],
+  "schedule": [
+    "every weekend"
   ]
 }
