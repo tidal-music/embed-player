@@ -430,7 +430,7 @@ function getMediaInformationHTML({
       <header>
       ${topHeader}
       ${isUpload ? '<i class="badge upload" title="Uploaded">' + generateSVG('upload') + '</i>' : ''}
-      ${isExplicit ? '<i class="badge" title="Explicit">' + generateSVG('explicit') + '</i>' : ''}
+      ${isExplicit ? '<i class="badge explicit" title="Explicit">' + generateSVG('explicit') + '</i>' : ''}
       </header>
       <span class="media-artist" title="Artist: ${artist}">${
         artistLinks || artist
@@ -541,7 +541,7 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
                 ? `<span slot="video-badge">${generateSVG('videoBadge')}</span>`
                 : '';
             const maybeExplicitBadge = item.explicit
-              ? `<span slot="explicit-badge"><i class="badge" title="Explicit">${generateSVG('explicit')}</i></span>`
+              ? `<span slot="explicit-badge"><i class="badge explicit" title="Explicit">${generateSVG('explicit')}</i></span>`
               : '';
             const maybeUploadBadge = item.upload
               ? `<span slot="upload-badge"><i class="badge upload" title="Uploaded">${generateSVG('upload')}</i></span>`
@@ -738,7 +738,7 @@ function generatePageHTML(options) {
   const maybeExplicitBadge = isExplicit
     ? `
     <figure class=floating-explicit-badge>
-      <i class="badge" title="Explicit">
+      <i class="badge explicit" title="Explicit">
         ${generateSVG('explicit')}
       </i>
     </figure>
