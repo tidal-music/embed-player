@@ -5,7 +5,7 @@ import { getStaticFileLink } from './static-file-helper.js';
 
 /**
  * Get the SVG string for a specific icon type.
- * @param {('close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'tidalLongLogo' | 'twitter' | 'videoBadge' | 'upload')} type - The type of the icon.
+ * @param {('check' | 'close' | 'explicit' | 'explicitBadge' | 'facebook' | 'link' | 'liveBadge' | 'maximize' | 'messenger' | 'minimize' | 'next' | 'pause' | 'play' | 'previous' | 'replay' | 'share' | 'threeDots' | 'tidalLogo' | 'tidalLongLogo' | 'twitter' | 'videoBadge' | 'upload')} type - The type of the icon.
  * @returns {string} - The SVG string for the icon.
  */
 export function generateSVG(type) {
@@ -388,7 +388,6 @@ function getShareDialogHTML(shareLink) {
         )}</button>
       </form>
       <div class="media-information">
-        <span class="successful-copy-message">Copied to clipboard</span>
         <span class="failed-copy-message">Failed copying to clipboard</span>
       </div>
       <div class="share-buttons">
@@ -400,6 +399,10 @@ function getShareDialogHTML(shareLink) {
           ${generateSVG('link')}
           <div>Copy link</div>
         </button>
+        <div class="successful-copy-message">
+          ${generateSVG('check')}
+          <div>Link copied</div>
+        </div>
       </div>
     </dialog>
   `.trim();
@@ -427,7 +430,7 @@ function getMediaInformationHTML({
       <header>
       ${topHeader}
       ${isUpload ? '<i class="badge upload" title="Uploaded">' + generateSVG('upload') + '</i>' : ''}
-      ${isExplicit ? '<i class="badge" title="Explicit">' + generateSVG('explicit') + '</i>' : ''}
+      ${isExplicit ? '<i class="badge explicit" title="Explicit">' + generateSVG('explicit') + '</i>' : ''}
       </header>
       <span class="media-artist" title="Artist: ${artist}">${
         artistLinks || artist
@@ -538,7 +541,7 @@ function generateMediaItemListHTML(itemsJson, parentItemType, options) {
                 ? `<span slot="video-badge">${generateSVG('videoBadge')}</span>`
                 : '';
             const maybeExplicitBadge = item.explicit
-              ? `<span slot="explicit-badge"><i class="badge" title="Explicit">${generateSVG('explicit')}</i></span>`
+              ? `<span slot="explicit-badge"><i class="badge explicit" title="Explicit">${generateSVG('explicit')}</i></span>`
               : '';
             const maybeUploadBadge = item.upload
               ? `<span slot="upload-badge"><i class="badge upload" title="Uploaded">${generateSVG('upload')}</i></span>`
@@ -735,7 +738,7 @@ function generatePageHTML(options) {
   const maybeExplicitBadge = isExplicit
     ? `
     <figure class=floating-explicit-badge>
-      <i class="badge" title="Explicit">
+      <i class="badge explicit" title="Explicit">
         ${generateSVG('explicit')}
       </i>
     </figure>

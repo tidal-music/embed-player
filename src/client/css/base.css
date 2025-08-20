@@ -462,6 +462,14 @@ tidal-duration-time {
   justify-content: center;
 }
 
+.badge.explicit {
+  color: light-dark(rgba(0, 0, 0, 0.1), #AFAFB6 /*Solid/Contrast/Darker*/);
+}
+
+.floating-explicit-badge .badge.explicit {
+  color:  #AFAFB6 /*Solid/Contrast/Darker*/;
+}
+
 .badge.upload {
   border-radius: 4px;
   border: 1px solid light-dark(rgba(0, 0, 0, 0.10), var(--opacity-contrast-fill-thin));
