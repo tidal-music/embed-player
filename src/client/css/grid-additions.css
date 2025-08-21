@@ -175,6 +175,10 @@ main.gridify-wrapper {
     opacity: 0;
     pointer-events: 0;
   }
+
+  & .floating-explicit-badge {
+    display: block;
+  }
 }
 
 @media (orientation: portrait) {

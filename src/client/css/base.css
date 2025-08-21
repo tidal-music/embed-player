@@ -110,10 +110,6 @@ h1.media-album {
   z-index: 1;
 }
 
-.tidal-hide .floating-explicit-badge {
-  display: block;
-}
-
 .media-information > header {
   display: flex;
   align-items: center;
