@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: ./.github/actions/setup
       - name: Install Playwright Browsers
         run: pnpm dlx playwright@1.52.0 install --with-deps chromium
