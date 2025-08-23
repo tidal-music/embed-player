@@ -58,7 +58,7 @@
     "playwright": "1.52.0",
     "postcss": "^8.4.49",
     "postcss-flexbugs-fixes": "^5.0.2",
-    "postcss-preset-env": "^9.6.0",
+    "postcss-preset-env": "^10.0.0",
     "postcss-reporter": "^7.1.0",
     "screenfull": "^6.0.2",
     "stylelint": "^16.13.0",
