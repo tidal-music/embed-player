@@ -48,7 +48,7 @@
     "eslint": "9.18.0",
     "eslint-config-tidal": "4.0.0",
     "eslint-plugin-compat": "^6.0.2",
-    "eslint-plugin-cypress": "^4.1.0",
+    "eslint-plugin-cypress": "^5.0.0",
     "express": "^4.21.2",
     "hasha": "^6.0.0",
     "husky": "^9.1.7",
