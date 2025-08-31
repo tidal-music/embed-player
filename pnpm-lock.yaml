@@ -102,8 +102,8 @@ importers:
         specifier: ^16.13.0
         version: 16.13.0(typescript@5.7.3)
       stylelint-config-standard:
-        specifier: ^36.0.1
-        version: 36.0.1(stylelint@16.13.0(typescript@5.7.3))
+        specifier: ^39.0.0
+        version: 39.0.0(stylelint@16.13.0(typescript@5.7.3))
       svgo:
         specifier: ^3.3.2
         version: 3.3.2
@@ -4188,17 +4188,17 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  stylelint-config-recommended@14.0.1:
-    resolution: {integrity: sha512-bLvc1WOz/14aPImu/cufKAZYfXs/A/owZfSMZ4N+16WGXLoX5lOir53M6odBxvhgmgdxCVnNySJmZKx73T93cg==}
+  stylelint-config-recommended@17.0.0:
+    resolution: {integrity: sha512-WaMSdEiPfZTSFVoYmJbxorJfA610O0tlYuU2aEwY33UQhSPgFbClrVJYWvy3jGJx+XW37O+LyNLiZOEXhKhJmA==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
-      stylelint: ^16.1.0
+      stylelint: ^16.23.0
 
-  stylelint-config-standard@36.0.1:
-    resolution: {integrity: sha512-8aX8mTzJ6cuO8mmD5yon61CWuIM4UD8Q5aBcWKGSf6kg+EC3uhB+iOywpTK4ca6ZL7B49en8yanOFtUW0qNzyw==}
+  stylelint-config-standard@39.0.0:
+    resolution: {integrity: sha512-JabShWORb8Bmc1A47ZyJstran60P3yUdI1zWMpGYPeFiC6xzHXJMkpKAd8EjIhq3HPUplIWWMDJ/xu0AiPd+kA==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
-      stylelint: ^16.1.0
+      stylelint: ^16.23.0
 
   stylelint@16.13.0:
     resolution: {integrity: sha512-muxVjMhZB8BrDFSKNva0dmvD2tM0o/szrvuZuXYcAnN9a8nQmbGLqNUOemSgumaCMCPQ+0USYyG3hA5vJjUC1Q==}
@@ -6994,7 +6994,7 @@ snapshots:
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.14.0)
       eslint-plugin-no-only-tests: 3.3.0
       eslint-plugin-perfectionist: 3.9.1(eslint@9.14.0)(typescript@5.6.3)
-      eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.14.0))(eslint@9.14.0)(prettier@3.3.3)
+      eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0))(eslint@9.14.0)(prettier@3.3.3)
       eslint-plugin-react: 7.37.2(eslint@9.14.0)
       eslint-plugin-react-hooks: 5.0.0(eslint@9.14.0)
       eslint-plugin-storybook: 0.11.0(eslint@9.14.0)(typescript@5.6.3)
@@ -7152,7 +7152,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@9.14.0))(eslint@9.14.0)(prettier@3.3.3):
+  eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0))(eslint@9.14.0)(prettier@3.3.3):
     dependencies:
       eslint: 9.14.0
       prettier: 3.3.3
@@ -9304,14 +9304,14 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  stylelint-config-recommended@14.0.1(stylelint@16.13.0(typescript@5.7.3)):
+  stylelint-config-recommended@17.0.0(stylelint@16.13.0(typescript@5.7.3)):
     dependencies:
       stylelint: 16.13.0(typescript@5.7.3)
 
-  stylelint-config-standard@36.0.1(stylelint@16.13.0(typescript@5.7.3)):
+  stylelint-config-standard@39.0.0(stylelint@16.13.0(typescript@5.7.3)):
     dependencies:
       stylelint: 16.13.0(typescript@5.7.3)
-      stylelint-config-recommended: 14.0.1(stylelint@16.13.0(typescript@5.7.3))
+      stylelint-config-recommended: 17.0.0(stylelint@16.13.0(typescript@5.7.3))
 
   stylelint@16.13.0(typescript@5.7.3):
     dependencies:
