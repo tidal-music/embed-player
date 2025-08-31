@@ -52,7 +52,7 @@
     "express": "^4.21.2",
     "hasha": "^6.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.3.0",
+    "lint-staged": "^16.0.0",
     "npm-run-all2": "^5.0.0",
     "platform": "1.3.6",
     "playwright": "1.52.0",
