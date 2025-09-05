@@ -33,8 +33,8 @@ importers:
         specifier: ^0.11.0
         version: 0.11.0
       chai:
-        specifier: ^5.2.0
-        version: 5.2.0
+        specifier: ^6.0.0
+        version: 6.0.1
       cypress:
         specifier: ^13.17.0
         version: 13.17.0
@@ -1668,6 +1668,10 @@ packages:
   chai@5.2.0:
     resolution: {integrity: sha512-mCuXncKXk5iCLhfhwTc0izo0gtEmpz5CtG2y8GiOINBlMVS6v8TMRc5TaLWKS6692m9+dVVfzgeVxR5UxWHTYw==}
     engines: {node: '>=12'}
+
+  chai@6.0.1:
+    resolution: {integrity: sha512-/JOoU2//6p5vCXh00FpNgtlw0LjvhGttaWc+y7wpW9yjBm3ys0dI8tSKZxIOgNruz5J0RleccatSIC3uxEZP0g==}
+    engines: {node: '>=18'}
 
   chalk-template@0.4.0:
     resolution: {integrity: sha512-/ghrgmhfY8RaSdeo43hNXxpoHAtxdbskUHjPpfqUWGttFgycUhYPGx3YZBCnUCvOa7Doivn1IZec3DEGFoMgLg==}
@@ -6320,6 +6324,8 @@ snapshots:
       loupe: 3.1.3
       pathval: 2.0.0
 
+  chai@6.0.1: {}
+
   chalk-template@0.4.0:
     dependencies:
       chalk: 4.1.2
@@ -6994,7 +7000,7 @@ snapshots:
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.14.0)
       eslint-plugin-no-only-tests: 3.3.0
       eslint-plugin-perfectionist: 3.9.1(eslint@9.14.0)(typescript@5.6.3)
-      eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.14.0))(eslint@9.14.0)(prettier@3.3.3)
+      eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0))(eslint@9.14.0)(prettier@3.3.3)
       eslint-plugin-react: 7.37.2(eslint@9.14.0)
       eslint-plugin-react-hooks: 5.0.0(eslint@9.14.0)
       eslint-plugin-storybook: 0.11.0(eslint@9.14.0)(typescript@5.6.3)
@@ -7152,7 +7158,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@9.14.0))(eslint@9.14.0)(prettier@3.3.3):
+  eslint-plugin-prettier@5.2.1(eslint-config-prettier@9.1.0(eslint@9.18.0))(eslint@9.14.0)(prettier@3.3.3):
     dependencies:
       eslint: 9.14.0
       prettier: 3.3.3
