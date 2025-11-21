@@ -20,7 +20,7 @@
   cursor: pointer;
   transition: transform 150ms ease;
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.20);
+  background: rgb(255, 255, 255, 0.20);
 
   &:hover {
     transform: scale(1.05);

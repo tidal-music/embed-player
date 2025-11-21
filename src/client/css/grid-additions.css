@@ -117,7 +117,7 @@ main.gridify-wrapper {
 
 .gridify-wrapper .top-right-icons {
   z-index: 3;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgb(255, 255, 255, 0.7);
 }
 
 .ui-hide-cleaning-victim {
@@ -128,7 +128,7 @@ main.gridify-wrapper {
 
 .gridify-wrapper {
   & .imagery-holder::after {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 33.65%, #000 100%);
+    background: linear-gradient(180deg, rgb(0, 0, 0, 0.1) 0%, rgb(0, 0, 0, 0.2) 33.65%, #000 100%);
     content: "";
     position: absolute;
     top: 0;
@@ -173,7 +173,7 @@ main.gridify-wrapper {
   &:not(.ui-hider--hidden-controls, .touchy-device) .media-type--is-collection:hover .player button.next-track,
   & .toggle-fullscreen {
     opacity: 0;
-    pointer-events: 0;
+    pointer-events: none;
   }
 
   & .floating-explicit-badge {

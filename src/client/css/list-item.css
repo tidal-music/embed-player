@@ -10,7 +10,7 @@
   height: 62px;
   contain: strict;
   contain-intrinsic-height: 62px;
-  border-bottom: 1px solid light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.10));
+  border-bottom: 1px solid light-dark(rgb(0, 0, 0, 0.05), rgb(255, 255, 255, 0.10));
   color: light-dark(var(--black), var(--white));
 }
 
@@ -19,7 +19,7 @@
 }
 
 :host(:hover) {
-  background-color: light-dark(rgba(0, 0, 0, 0.05), var(--surface-20));
+  background-color: light-dark(rgb(0, 0, 0, 0.05), var(--surface-20));
 }
 
 :host(:focus-visible) {
@@ -69,7 +69,7 @@ tidal-play-trigger {
 
 :host(.current) {
   color: light-dark(var(--black), var(--white));
-  background-color: light-dark(rgba(0, 0, 0, 0.05), var(--fill-30));
+  background-color: light-dark(rgb(0, 0, 0, 0.05), var(--fill-30));
 }
 
 .col {

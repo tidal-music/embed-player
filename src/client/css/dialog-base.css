@@ -12,7 +12,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background-color: rgba(34, 34, 34, 0.70);
+  background-color: rgb(34, 34, 34, 0.70);
   backdrop-filter: blur(17.5px);
   border-radius: 12px;
 }
@@ -35,7 +35,7 @@ dialog[open] .media-information {
   right: 8px;
   width: 24px;
   height: 24px;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgb(255, 255, 255, 0.55);
   border-radius: 50%;
 }
 

@@ -96,7 +96,7 @@ tidal-video-view {
   object-fit: cover;
   border-radius: 1px;
   box-shadow: 0 8px 16px 0 var(--utilities-shadow-no-dark-mode-shadow-10), 0 4px 32px 0 var(--utilities-shadow-no-dark-mode-shadow-10);
-  outline: 1px solid light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.08));
+  outline: 1px solid light-dark(rgb(0, 0, 0, 0.08), rgb(255, 255, 255, 0.08));
   outline-offset: -1px;
 }
 
@@ -222,10 +222,6 @@ tidal-video-view {
     width: 100vw;
     max-height: none;
     max-width: none;
-  }
-
-  .media-item-list {
-    position: auto;
   }
 
   .media-information {
