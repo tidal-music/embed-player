@@ -5,6 +5,12 @@ export default {
     return url.searchParams.has('cleanInitially');
   },
 
+  get context() {
+    const url = new URL(document.location.href);
+
+    return url.searchParams.get('context');
+  },
+
   get coverInitially() {
     const url = new URL(document.location.href);
     const parameterIsDefined = url.searchParams.has('coverInitially');
@@ -22,6 +28,12 @@ export default {
     const url = new URL(document.location.href);
 
     return url.searchParams.has('forceUI');
+  },
+
+  get hideOverlays() {
+    const url = new URL(document.location.href);
+
+    return url.searchParams.has('hideOverlays');
   },
 
   /**

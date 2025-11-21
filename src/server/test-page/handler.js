@@ -855,6 +855,78 @@ export const generateHTML = () => {
     <article>
       <details>
         <summary>
+          <h2>Slack Context (No Overlays)</h2>
+        </summary>
+        <p>
+          These examples demonstrate the Slack video block compliance feature.
+          Overlays are disabled per
+          <a
+            href="https://docs.slack.dev/reference/block-kit/blocks/video-block/#constraints"
+            target="_blank"
+            >Slack's constraints</a
+          >. Share button, fullscreen button, and all dialogs are hidden.
+        </p>
+
+        <h4>Track - with context=slack parameter</h4>
+        <iframe
+          src="/tracks/${getRandomTrackID()}?context=slack"
+          loading="lazy"
+          width="348"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+          style="color-scheme: light dark"
+        ></iframe>
+
+        <h4>Track - with hideOverlays parameter</h4>
+        <iframe
+          src="/tracks/${getRandomTrackID()}?hideOverlays=true"
+          loading="lazy"
+          width="348"
+          height="120"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+          style="color-scheme: light dark"
+        ></iframe>
+
+        <h4>Video - with context=slack (no fullscreen or share buttons)</h4>
+        <iframe
+          src="/videos/${getRandomVideoID()}?context=slack"
+          loading="lazy"
+          width="500"
+          height="282"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+          style="color-scheme: light dark"
+        ></iframe>
+
+        <h4>Album Grid - with hideOverlays (no share button)</h4>
+        <iframe
+          src="/albums/${getRandomAlbumID()}?layout=gridify&hideOverlays=true"
+          loading="lazy"
+          width="500"
+          height="500"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+          style="color-scheme: light dark"
+        ></iframe>
+
+        <h4>Playlist - with context=slack (no dialogs or overlay buttons)</h4>
+        <iframe
+          src="/playlists/${getRandomPlaylistID()}?context=slack"
+          loading="lazy"
+          width="540"
+          height="360"
+          allow="encrypted-media; fullscreen; clipboard-write https://embed.tidal.com https://embed.stage.tidal.com http://localhost:3000; web-share"
+          sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+          style="color-scheme: light dark"
+        ></iframe>
+      </details>
+    </article>
+
+    <article>
+      <details>
+        <summary>
           <h2>Errors</h2>
         </summary>
 
