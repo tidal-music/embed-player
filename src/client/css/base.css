@@ -476,3 +476,11 @@ tidal-duration-time {
     height: 10px;
   }
 }
+
+/* Slack context: Hide overlay-triggering buttons per Slack's video block constraints */
+.slack-context .player .more-button,
+.slack-context .player .toggle-fullscreen,
+.slack-context nostr-login-button {
+  display: none !important;
+  pointer-events: none !important;
+}

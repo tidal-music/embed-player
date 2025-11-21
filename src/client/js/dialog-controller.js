@@ -1,5 +1,6 @@
 import DOMRefs from './dom-refs.js';
 import { $ } from './fake-query.js';
+import isRunningInSlack from './helpers/isRunningInSlack.js';
 
 /**
  * @typedef {"finished"|"share"|"nostr"} DialogName
@@ -26,6 +27,14 @@ class DialogController {
    * @param {DialogName} dialogName
    */
   static show(dialogName) {
+    // Prevent showing dialogs in Slack context (overlays not allowed)
+    if (isRunningInSlack()) {
+      console.debug(
+        `Skipping dialog "${dialogName}" - overlays disabled in Slack context`,
+      );
+      return;
+    }
+
     const dialog = $(`dialog.dialog--${dialogName}`);
 
     if (dialog instanceof HTMLDialogElement) {

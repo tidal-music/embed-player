@@ -9,6 +9,7 @@ import {
   getTidalMediaFromURL,
   isOnMobileWithTouchScreen,
 } from './helpers/index.js';
+import isRunningInSlack from './helpers/isRunningInSlack.js';
 import MessageBridge from './message-bridge.js';
 import { showNostrDialog } from './nostr.js';
 import { initializePlayback } from './playback/init.js';
@@ -873,6 +874,11 @@ if (
 }
 
 function runNostrInterval() {
+  // Skip nostr dialog in Slack context (overlays not allowed)
+  if (isRunningInSlack()) {
+    return;
+  }
+
   let counter = 0;
 
   const interval = setInterval(() => {
@@ -897,7 +903,21 @@ function runNostrInterval() {
   }, 500);
 }
 
+/**
+ * Detects if running in Slack context and applies the slack-context class
+ * to disable overlay-triggering buttons per Slack's video block constraints
+ */
+function applySlackContextIfNeeded() {
+  if (isRunningInSlack()) {
+    console.debug(
+      'Slack context detected - disabling overlays per Slack video block constraints',
+    );
+    DOMRefs.embedWrapper?.classList.add('slack-context');
+  }
+}
+
 function afterDOMLoaded() {
+  applySlackContextIfNeeded();
   initializePlayback();
   checkIfFullscreenEnabled();
   registerEventListeners();
