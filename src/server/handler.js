@@ -233,7 +233,15 @@ async function track(options) {
 async function upload(options) {
   const { country, itemId } = options;
 
-  const embedItem = await getData(`v2/upload/open/items/${itemId}`, country);
+  let embedItem;
+  try {
+    // Attempt fetch from endpoint that can handle both Upload API and TIDAL API shares
+    embedItem = await getData(`v2/upload/open/items/shares/${itemId}`, country);
+  } catch (sharesEndpointError) {
+    // Fallback to legacy endpoint if share was not found via open/items/shares/:code endpoint
+    // (this would mean the share is not yet migrated to TIDAL API).
+    embedItem = await getData(`v2/upload/open/items/${itemId}`, country);
+  }
 
   return renderEmbed({
     ...options,
