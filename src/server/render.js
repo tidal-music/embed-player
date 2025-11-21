@@ -801,21 +801,9 @@ function generatePageHTML(options) {
     <link rel=preload href="${mainCSSHref}" as=style>
     ${maybePreloadGridAdditionsStyles}
     ${maybePreloadListItemStyles}
-    <link rel=preload href="${getStaticFileLink(
-      'fonts/nationale-medium.woff2',
-    )}" as=font>
     <title>TIDAL Embed Player</title>
+    <link rel="stylesheet" href="https://square-fonts-production-f.squarecdn.com/square-sans.css">
     <style>
-    @font-face {
-      font-family:Nationale;
-      font-weight:500;
-      font-display:fallback;
-      src:url('${getStaticFileLink(
-        'fonts/nationale-medium.woff2',
-      )}') format('woff2'), url('${getStaticFileLink(
-        'fonts/nationale-medium.woff',
-      )}') format('woff')
-    }
     body {opacity:0;transition:opacity 200ms ease}
     </style>
     <style id="svg-fouc">
@@ -895,6 +883,7 @@ export const renderError = () => {
         'img/error-background-image.jpg',
       )}')}</style>
       <link rel="stylesheet" href="${errorCSSHref}">
+      <link rel="stylesheet" href="https://square-fonts-production-f.squarecdn.com/square-sans.css">
     </head>
     <body>
       <div class="embed-player embed-player--showing-error">
