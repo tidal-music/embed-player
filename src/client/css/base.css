@@ -3,7 +3,7 @@ html,
 body {
   margin: 0;
   user-select: none;
-  font-family: Nationale, system-ui;
+  font-family: 'Square Sans Text VF', 'Square Sans Text', Helvetica, Arial, sans-serif;
   font-weight: 500;
   height: 100%;
 
