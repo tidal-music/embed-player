@@ -29,7 +29,7 @@ app.get('/', async (req, res) => {
   res.send(embedResult.body);
 });
 
-app.get('/:type/:id?', async (req, res) => {
+app.get('/:type{/:id}', async (req, res) => {
   const embedResult = await embedHandler({
     pathParameters: req.params,
     queryStringParameters: req.query,
