@@ -31,6 +31,7 @@
     "gh-action:start": "LAMBDA_TASK_ROOT=true AWS_EXECUTION_ENV=true AWS_ENV=fakelamda node src/server/local/index.js"
   },
   "devDependencies": {
+    "@tidal-music/auth": "1.4.0",
     "@tidal-music/common": "0.2.0",
     "@tidal-music/event-producer": "2.4.0",
     "@tidal-music/player": "0.11.0",

@@ -1,3 +1,5 @@
+import { credentialsProvider, init as authSDKInit } from '@tidal-music/auth';
+
 import DialogController from '../dialog-controller.js';
 
 /**
@@ -10,6 +12,28 @@ const credentialsUpdatedEvent = new CustomEvent('credentialsUpdated', {
 });
 
 class DefaultCredentialsProvider {
+  constructor() {
+    if (
+      !process.env.EMBED_API_TOKEN ||
+      !process.env.EMBED_API_PUBLIC_KEY ||
+      process.env.EMBED_API_PUBLIC_KEY === 'undefined'
+    ) {
+      throw new ReferenceError(
+        'You are running without setting an EMBED_API_TOKEN and an EMBED_API_PUBLIC_KEY variable',
+      );
+    }
+
+    authSDKInit({
+      clientId: process.env.EMBED_API_TOKEN,
+      clientSecret: process.env.EMBED_API_PUBLIC_KEY,
+      clientUniqueKey: 'tidal_embed_player',
+      credentialsStorageKey: 'tidal_embed_player',
+      scopes: [],
+      tidalAuthServiceBaseUri: 'https://auth.tidal.com/v1/',
+      tidalLoginServiceBaseUri: 'https://login.tidal.com/',
+    });
+  }
+
   /**
    * @type {import('@tidal-music/common/dist').Bus} fn
    */
@@ -20,17 +44,8 @@ class DefaultCredentialsProvider {
   /**
    * @type {import('@tidal-music/common/dist').GetCredentials} fn
    */
-  async getCredentials() {
-    if (process.env.EMBED_API_TOKEN) {
-      return {
-        clientId: process.env.EMBED_API_TOKEN,
-        requestedScopes: [],
-      };
-    }
-
-    throw new ReferenceError(
-      'You are running without setting an EMBED_API_TOKEN variable',
-    );
+  getCredentials(apiErrorSubStatus) {
+    return credentialsProvider.getCredentials(apiErrorSubStatus);
   }
 }
 

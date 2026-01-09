@@ -31,6 +31,7 @@ const context = await esbuild.context({
   define: {
     // @ts-ignore
     'process.env.EMBED_API_TOKEN': `'${process.env.EMBED_API_TOKEN}'`,
+    'process.env.EMBED_API_PUBLIC_KEY': `'${process.env.EMBED_API_PUBLIC_KEY}'`,
     'process.env.EMBED_API_TOKEN__NOSTR': `'${process.env.EMBED_API_TOKEN__NOSTR}'`,
   },
   plugins: [
