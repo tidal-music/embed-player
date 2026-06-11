@@ -15,5 +15,7 @@ The build commands outputs to the dist folder where the front-end parts are outp
 | Variable Name | Description |
 | ------------- | ----------- |
 | EMBED_API_TOKEN | Required - Your TIDAL API token |
+| EMBED_API_PUBLIC_KEY | Required - API key for new Tidal API calls |
+| EMBED_API_TOKEN__NOSTR| Not required - for Nostr logged in full length playback support |
 | TRACK_JS_TOKEN | Not required - Specify along with TRACK_JS_APPLICATION to include TrackJS |
 | TRACK_JS_APPLICATION | Not required - Specify along with TRACK_JS_TOKEN to include TrackJS |
