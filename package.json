@@ -45,7 +45,7 @@
     "esbuild-plugin-clean": "^1.0.1",
     "esbuild-plugin-copy": "^2.1.1",
     "esbuild-postcss": "^0.0.4",
-    "eslint": "9.39.1",
+    "eslint": "10.10.0",
     "eslint-config-tidal": "4.0.0",
     "eslint-plugin-compat": "^6.0.2",
     "eslint-plugin-cypress": "^5.0.0",
